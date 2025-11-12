@@ -34,12 +34,12 @@ section {
 }
 
 h2 {
-  color: #ff0101;
+  color: #000000;
   margin-bottom: 0.5rem;
 }
 
 a {
-  color: #003366;
+  color: #5D6532;
   text-decoration: none;
 }
 
@@ -49,7 +49,7 @@ a:hover {
 
 footer {
   text-align: center;
-  background-color: #003366;
+  background-color: #5D6532;
   color: white;
   padding: 1rem;
   font-size: 0.9rem;
