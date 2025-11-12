@@ -7,7 +7,7 @@ body {
 }
 
 header {
-  background-color: #003366;
+  background-color: #ff0808;
   color: white;
   text-align: center;
   padding: 2rem 1rem;
@@ -34,7 +34,7 @@ section {
 }
 
 h2 {
-  color: #003366;
+  color: #ff0101;
   margin-bottom: 0.5rem;
 }
 
