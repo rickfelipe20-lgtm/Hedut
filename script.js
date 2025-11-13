@@ -1,2 +1,5 @@
-// Site de Henrique Duarte - Hedut Projetos HVAC
-console.log("Hedut HVAC site loaded!");
+// Exemplo simples: animação ao rolar
+window.addEventListener("scroll", function() {
+    const header = document.querySelector("header");
+    header.classList.toggle("scrolled", window.scrollY > 20);
+});
