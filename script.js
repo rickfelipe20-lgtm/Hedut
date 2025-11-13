@@ -1,5 +1,6 @@
-// Exemplo simples: animação ao rolar
+// Header transparente ao rolar
 window.addEventListener("scroll", function() {
     const header = document.querySelector("header");
-    header.classList.toggle("scrolled", window.scrollY > 20);
+    if (window.scrollY > 20) header.style.background = "#ffffffee";
+    else header.style.background = "#ffffffcc";
 });
