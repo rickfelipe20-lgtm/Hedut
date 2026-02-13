@@ -1,13 +1,43 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
+  const pathname = usePathname();
+
+  const linkStyle = (path: string) =>
+    `pb-1 border-b-2 transition-all duration-200 ${
+      pathname === path
+        ? "border-black font-semibold"
+        : "border-transparent hover:border-neutral-400"
+    }`;
+
   return (
-    <h2 className="text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8 flex items-center">
-      <Link href="/" className="hover:underline">
-        Blog
-      </Link>
-      .
-    </h2>
+    <header className="w-full border-b border-neutral-200">
+      <div className="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center">
+        
+        {/* Logo / Nome do site */}
+        <Link href="/" className="text-xl font-bold tracking-tight">
+          Hedut Projetos
+        </Link>
+
+        {/* Menu */}
+        <nav className="flex gap-10 text-base">
+          <Link href="/projetos" className={linkStyle("/projetos")}>
+            Projetos
+          </Link>
+
+          <Link href="/produtos" className={linkStyle("/produtos")}>
+            Produtos
+          </Link>
+
+          <Link href="/contatos" className={linkStyle("/contatos")}>
+            Contatos
+          </Link>
+        </nav>
+      </div>
+    </header>
   );
 };
 
