@@ -14,17 +14,25 @@ export function Intro() {
         </h4>
       </div>
 
-      <div className="hidden md:block">
+      <div className="hidden md:flex flex-col items-center">
         <Image
           src="/images/perfil.jpg"
-          alt="Juliana Minerbo"
+          alt="Henrique Duarte"
           width={160}
           height={160}
           className="rounded-full object-cover shadow-sm"
         />
+
+        <div className="mt-4 text-center">
+          <p className="font-semibold text-lg">
+            Eng. Henrique Duarte
+          </p>
+          <p className="text-sm text-neutral-500">
+            CREA 2623524742
+          </p>
+        </div>
       </div>
 
     </section>
   );
 }
-
