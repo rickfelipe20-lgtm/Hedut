@@ -1,3 +1,4 @@
+import Header from "@/app/_components/header";
 import Footer from "@/app/_components/footer";
 import { HOME_OG_IMAGE_URL } from "@/lib/constants";
 import type { Metadata } from "next";
@@ -36,9 +37,14 @@ export default function RootLayout({
           "dark:bg-slate-900 dark:text-slate-400"
         )}
       >
+        {/* 🔹 HEADER AQUI */}
+        <Header />
+
         <div className="min-h-screen">{children}</div>
+
         <Footer />
       </body>
     </html>
   );
 }
+
