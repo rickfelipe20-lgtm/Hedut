@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaInstagram, FaLinkedinIn, FaFacebookF } from "react-icons/fa";
+import { FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 
 const Header = () => {
   const pathname = usePathname();
@@ -18,19 +18,19 @@ const Header = () => {
     <header className="w-full bg-blue-100 border-b border-blue-200">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
-        {/* Logo */}
-        <Link href="/" className="text-2xl font-bold text-blue-700">
-          Hedut
-        </Link>
+        {/* Espaço vazio à esquerda (para equilibrar layout) */}
+        <div className="w-24" />
 
-        {/* Menu */}
-        <nav className="flex gap-6 text-base font-medium">
+        {/* Menu CENTRALIZADO */}
+        <nav className="flex gap-8 text-base font-medium">
           <Link href="/projetos" className={linkStyle("/projetos")}>
             Projetos
           </Link>
+
           <Link href="/produtos" className={linkStyle("/produtos")}>
             Produtos
           </Link>
+
           <Link href="/contatos" className={linkStyle("/contatos")}>
             Contato
           </Link>
@@ -49,7 +49,7 @@ const Header = () => {
             href="#"
             className="w-9 h-9 flex items-center justify-center rounded-full bg-blue-500 text-white hover:bg-blue-700 transition"
           >
-            <FaFacebookF size={14} />
+            <FaWhatsapp size={14} />
           </a>
 
           <a
@@ -66,4 +66,3 @@ const Header = () => {
 };
 
 export default Header;
-
