@@ -6,11 +6,11 @@ export function Intro() {
       
       <div>
         <h1 className="text-5xl md:text-5xl font-bold tracking-tight">
-          Juliana Minerbo.
+          Hedut Projetos
         </h1>
 
         <h4 className="text-lg mt-4 text-neutral-600 max-w-xl">
-          Interiores autorais, sofisticados e cuidadosamente planejados.
+          Onde a visão técnica garante a viabilidade do projeto
         </h4>
       </div>
 
