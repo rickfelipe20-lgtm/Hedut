@@ -8,21 +8,21 @@ const Header = () => {
   const pathname = usePathname();
 
   const linkStyle = (path: string) =>
-    `px-4 py-2 rounded-md transition-all duration-300 ${
+    `pb-1 border-b-2 transition-all duration-200 ${
       pathname === path
-        ? "bg-blue-600 text-white"
-        : "text-neutral-700 hover:bg-blue-500 hover:text-white"
+        ? "border-black font-semibold"
+        : "border-transparent hover:border-neutral-400"
     }`;
 
   return (
-    <header className="w-full bg-blue-100 border-b border-blue-200">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <header className="w-full bg-white border-b border-neutral-200">
+      <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
 
-        {/* Espaço vazio à esquerda (para equilibrar layout) */}
+        {/* Espaço invisível à esquerda para centralizar menu */}
         <div className="w-24" />
 
-        {/* Menu CENTRALIZADO */}
-        <nav className="flex gap-8 text-base font-medium">
+        {/* Menu CENTRAL */}
+        <nav className="flex gap-10 text-base text-neutral-800">
           <Link href="/projetos" className={linkStyle("/projetos")}>
             Projetos
           </Link>
@@ -36,25 +36,25 @@ const Header = () => {
           </Link>
         </nav>
 
-        {/* Redes Sociais */}
-        <div className="flex gap-3">
+        {/* Ícones sociais */}
+        <div className="flex gap-4">
           <a
             href="#"
-            className="w-9 h-9 flex items-center justify-center rounded-full bg-blue-500 text-white hover:bg-blue-700 transition"
+            className="w-9 h-9 flex items-center justify-center rounded-full border border-neutral-300 text-neutral-700 hover:bg-neutral-100 transition"
           >
             <FaInstagram size={14} />
           </a>
 
           <a
             href="#"
-            className="w-9 h-9 flex items-center justify-center rounded-full bg-blue-500 text-white hover:bg-blue-700 transition"
+            className="w-9 h-9 flex items-center justify-center rounded-full border border-neutral-300 text-neutral-700 hover:bg-neutral-100 transition"
           >
             <FaWhatsapp size={14} />
           </a>
 
           <a
             href="#"
-            className="w-9 h-9 flex items-center justify-center rounded-full bg-blue-500 text-white hover:bg-blue-700 transition"
+            className="w-9 h-9 flex items-center justify-center rounded-full border border-neutral-300 text-neutral-700 hover:bg-neutral-100 transition"
           >
             <FaLinkedinIn size={14} />
           </a>
