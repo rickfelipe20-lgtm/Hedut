@@ -15,15 +15,8 @@ const Header = () => {
 
   return (
     <header className="w-full border-b border-neutral-200">
-      <div className="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center">
-        
-        {/* Logo / Nome do site */}
-        <Link href="/" className="text-xl font-bold tracking-tight">
-          Hedut Projetos
-        </Link>
-
-        {/* Menu */}
-        <nav className="flex gap-10 text-base">
+      <div className="max-w-6xl mx-auto px-6 py-6 flex justify-center">
+        <nav className="flex gap-16 text-base">
           <Link href="/projetos" className={linkStyle("/projetos")}>
             Projetos
           </Link>
