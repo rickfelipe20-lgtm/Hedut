@@ -18,7 +18,7 @@ const Header = () => {
       <div className="max-w-6xl mx-auto px-6 py-6 flex justify-center">
         <nav className="flex gap-16 text-base">
           <Link href="/projetos" className={linkStyle("/projetos")}>
-            Projetos
+            Serviços
           </Link>
 
           <Link href="/produtos" className={linkStyle("/produtos")}>
