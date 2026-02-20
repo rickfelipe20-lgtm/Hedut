@@ -9,7 +9,7 @@ type Props = {
 export function HeroPost({ coverImage }: Props) {
   return (
     <section className="mb-24">
-      <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div className="grid md:grid-cols-2 gap-6 items-center">
 
         {/* LADO ESQUERDO */}
         <div>
@@ -24,30 +24,44 @@ export function HeroPost({ coverImage }: Props) {
           </p>
 
           {/* LOGOS DOS SOFTWARES */}
-          <div className="flex gap-6">
-            <div className="w-24 h-24 bg-neutral-100 rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition">
-              <Image
-                src="/revit.png"
-                alt="Revit"
-                width={60}
-                height={60}
-              />
+          <div className="flex gap-10">
+
+            {/* Revit */}
+            <div className="flex flex-col items-center">
+              <div className="w-24 h-24 bg-neutral-100 rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition">
+                <Image
+                  src="/revit.png"
+                  alt="Revit"
+                  width={60}
+                  height={60}
+                />
+              </div>
+              <span className="mt-3 text-sm font-medium text-neutral-700">
+                Revit 3D
+              </span>
             </div>
 
-            <div className="w-24 h-24 bg-neutral-100 rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition">
-              <Image
-                src="/autocad.png"
-                alt="AutoCAD"
-                width={60}
-                height={60}
-              />
+            {/* AutoCAD */}
+            <div className="flex flex-col items-center">
+              <div className="w-24 h-24 bg-neutral-100 rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition">
+                <Image
+                  src="/autocad.png"
+                  alt="AutoCAD"
+                  width={60}
+                  height={60}
+                />
+              </div>
+              <span className="mt-3 text-sm font-medium text-neutral-700">
+                AutoCAD 2D
+              </span>
             </div>
+
           </div>
         </div>
 
         {/* LADO DIREITO - IMAGEM PRINCIPAL */}
-        <div className="flex justify-end">
-          <div className="w-[85%]">
+        <div>
+          <div className="w-[95%] bg-white p-4 rounded-2xl border border-neutral-200 shadow-2xl">
             <CoverImage
               title="Projeto em destaque"
               src={coverImage}
