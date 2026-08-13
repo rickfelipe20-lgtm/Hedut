@@ -20,7 +20,7 @@ export function Footer() {
 </a>
 
  <a
-  href="https://www.instagram.com/minerbo.arq"
+  href="https://www.instagram.com/hedut.create"
   target="_blank"
   rel="noopener noreferrer"
   className="w-64 text-center bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-12 duration-200 transition-colors"
@@ -29,7 +29,7 @@ export function Footer() {
 </a>
 
 <a
-  href="https://www.linkedin.com/in/juliana-minerbo-2021a7282"
+  href="https://www.linkedin.com/in/henrique-duarte-a07525156/"
   target="_blank"
   rel="noopener noreferrer"
   className="w-64 text-center bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-12 duration-200 transition-colors"

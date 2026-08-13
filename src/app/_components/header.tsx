@@ -39,21 +39,27 @@ const Header = () => {
         {/* Ícones sociais */}
         <div className="flex gap-4">
           <a
-            href="#"
+            href="https://www.instagram.com/hedut.create"
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-9 h-9 flex items-center justify-center rounded-full border border-neutral-300 text-neutral-700 hover:bg-neutral-100 transition"
           >
             <FaInstagram size={14} />
           </a>
 
           <a
-            href="#"
+            href="https://wa.me/5515991610562"
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-9 h-9 flex items-center justify-center rounded-full border border-neutral-300 text-neutral-700 hover:bg-neutral-100 transition"
           >
             <FaWhatsapp size={14} />
           </a>
 
           <a
-            href="#"
+            href="https://www.linkedin.com/in/henrique-duarte-a07525156/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-9 h-9 flex items-center justify-center rounded-full border border-neutral-300 text-neutral-700 hover:bg-neutral-100 transition"
           >
             <FaLinkedinIn size={14} />
