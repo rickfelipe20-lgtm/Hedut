@@ -10,13 +10,15 @@ type Props = {
 
 const CoverImage = ({ title, src, slug }: Props) => {
   const image = (
-    <Image
-  src={src}
-  alt={`Cover Image for ${title}`}
-  className="w-full"
-  width={1300}
-  height={630}
-    />
+    <div className="relative w-full aspect-[1300/630] overflow-hidden">
+      <Image
+        src={src}
+        alt={`Cover Image for ${title}`}
+        fill
+        sizes="(max-width: 768px) 100vw, 50vw"
+        className="object-cover"
+      />
+    </div>
   );
   return (
     <div className="sm:mx-0">
