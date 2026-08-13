@@ -28,7 +28,7 @@ const Header = () => {
           </Link>
 
           <Link href="/produtos" className={linkStyle("/produtos")}>
-            Produtos
+            Tipos de Projeto
           </Link>
 
           <Link href="/contatos" className={linkStyle("/contatos")}>
