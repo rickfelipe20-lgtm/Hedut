@@ -1,0 +1,61 @@
+import Container from "@/app/_components/container";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Cursos",
+};
+
+type Curso = {
+  titulo: string;
+  valor: string;
+  link: string;
+};
+
+const cursos: Curso[] = [
+  { titulo: "Curso 1", valor: "R$ XX", link: "#" },
+  { titulo: "Curso 2", valor: "R$ XX", link: "#" },
+  { titulo: "Curso 3", valor: "R$ XX", link: "#" },
+];
+
+export default function CursosPage() {
+  return (
+    <main>
+      <Container>
+        <section className="mt-16 mb-8">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+            Cursos
+          </h1>
+          <p className="text-lg mt-4 text-neutral-600 max-w-2xl">
+            Cursos e treinamentos disponíveis para quem deseja se especializar em
+            projetos de climatização.
+          </p>
+        </section>
+
+        <section className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-16 mb-32">
+          {cursos.map((curso, i) => (
+            <div key={i}>
+              <div className="w-full aspect-video bg-neutral-100 border border-neutral-200 flex items-center justify-center text-neutral-400 text-sm mb-4">
+                Imagem em breve
+              </div>
+
+              <h3 className="text-xl font-semibold mb-2 leading-snug">
+                {curso.titulo}
+              </h3>
+
+              <p className="text-neutral-700 font-medium mb-4">
+                {curso.valor}
+              </p>
+
+              <a
+                href={curso.link}
+                className="inline-block w-full text-center bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-2.5 px-6 duration-200 transition-colors"
+              >
+                Acessar curso
+              </a>
+            </div>
+          ))}
+        </section>
+      </Container>
+    </main>
+  );
+}

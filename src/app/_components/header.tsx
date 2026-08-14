@@ -31,8 +31,8 @@ const Header = () => {
             Tipos de Projeto
           </Link>
 
-          <Link href="/contatos" className={linkStyle("/contatos")}>
-            Contato
+          <Link href="/cursos" className={linkStyle("/cursos")}>
+            Cursos
           </Link>
         </nav>
 
