@@ -11,8 +11,8 @@ export default function Page() {
 
   return (
     <main>
+      <Intro />
       <Container>
-        <Intro />
         <HeroPost
           title={heroPost.title}
           coverImage={heroPost.coverImage}
