@@ -23,12 +23,12 @@ const Header = () => {
 
         {/* Menu CENTRAL */}
         <nav className="flex gap-10 text-base font-medium text-hedut-abissal">
-          <Link href="/projetos" className={linkStyle("/projetos")}>
-            Projetos
+          <Link href="/" className={linkStyle("/")}>
+            Home
           </Link>
 
           <Link href="/produtos" className={linkStyle("/produtos")}>
-            Tipos de Projeto
+            Projetos
           </Link>
 
           <Link href="/cursos" className={linkStyle("/cursos")}>
@@ -42,27 +42,27 @@ const Header = () => {
             href="https://www.instagram.com/hedut.create"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-9 h-9 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-hedut-nevoa hover:border-hedut-blue/40 transition"
+            className="w-11 h-11 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-hedut-nevoa hover:border-hedut-blue/40 transition"
           >
-            <FaInstagram size={14} />
+            <FaInstagram size={18} />
           </a>
 
           <a
             href="https://wa.me/5515991610562"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-9 h-9 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-hedut-nevoa hover:border-hedut-blue/40 transition"
+            className="w-11 h-11 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-hedut-nevoa hover:border-hedut-blue/40 transition"
           >
-            <FaWhatsapp size={14} />
+            <FaWhatsapp size={18} />
           </a>
 
           <a
             href="https://www.linkedin.com/in/henrique-duarte-a07525156/"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-9 h-9 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-hedut-nevoa hover:border-hedut-blue/40 transition"
+            className="w-11 h-11 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-hedut-nevoa hover:border-hedut-blue/40 transition"
           >
-            <FaLinkedinIn size={14} />
+            <FaLinkedinIn size={18} />
           </a>
         </div>
 
