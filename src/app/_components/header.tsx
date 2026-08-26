@@ -32,7 +32,7 @@ const Header = () => {
         </Link>
 
         {/* Menu CENTRAL */}
-        <nav className="flex gap-10 text-base font-medium text-hedut-abissal">
+        <nav className="flex gap-10 text-lg font-medium text-hedut-abissal">
           <Link href="/" className={linkStyle("/")}>
             Home
           </Link>
