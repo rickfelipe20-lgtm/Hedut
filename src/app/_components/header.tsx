@@ -20,13 +20,13 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
 
         {/* Logo */}
-        <Link href="/" className="w-24 flex items-center">
+        <Link href="/" className="flex items-center">
           <Image
             src="/hedut-logo-vertical.svg"
             alt="Hedut Projetos"
-            width={49}
-            height={56}
-            className="h-14 w-auto"
+            width={98}
+            height={112}
+            className="h-28 w-auto"
             priority
           />
         </Link>
