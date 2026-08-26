@@ -23,7 +23,7 @@ export function Intro() {
         precisão técnica que evita retrabalho em obra.
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-12 pt-8 border-t border-hedut-aco/25 max-w-4xl">
+      <div className="grid grid-cols-2 sm:grid-cols-5 gap-8 mt-12 pt-8 border-t border-hedut-aco/25 max-w-6xl">
         {servicos.map((item) => (
           <div key={item.n}>
             <span className="font-mono text-xs tracking-[0.2em] text-hedut-blue">
