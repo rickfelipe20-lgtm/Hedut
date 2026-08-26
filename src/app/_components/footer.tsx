@@ -13,7 +13,7 @@ export function Footer() {
 <div className="flex flex-col justify-center items-center lg:pl-4 lg:w-1/2 space-y-4">
   
  <a
-  href="mailto:minerboarq@gmail.com"
+  href="mailto:hedut.projetos@hotmail.com"
   className="w-64 text-center bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-12 duration-200 transition-colors"
 >
   Entre em contato
