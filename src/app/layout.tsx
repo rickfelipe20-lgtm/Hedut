@@ -52,7 +52,7 @@ export default function RootLayout({
           saira.variable,
           plexSans.variable,
           plexMono.variable,
-          "text-hedut-abissal dark:bg-slate-900 dark:text-slate-400"
+          "font-sans text-hedut-abissal dark:bg-slate-900 dark:text-slate-400"
         )}
       >
         {/* 🔹 HEADER AQUI */}
