@@ -44,9 +44,9 @@ export function Footer() {
             <Image
               src="/hedut-assinatura-email.svg"
               alt="Henrique Duarte — Responsável técnico · CREA 2623524742"
-              width={340}
-              height={84}
-              className="w-full max-w-[340px] h-auto"
+              width={460}
+              height={114}
+              className="w-full max-w-[460px] h-auto"
             />
           </div>
         </div>
