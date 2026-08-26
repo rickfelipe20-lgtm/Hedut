@@ -1,5 +1,4 @@
 import Container from "./container";
-import CoverImage from "./cover-image";
 import Image from "next/image";
 
 type Props = {
@@ -145,11 +144,16 @@ export function HeroPost({ coverImage }: Props) {
 
         {/* LADO DIREITO - IMAGEM PRINCIPAL */}
         <div>
-          <div className="w-[95%] bg-white p-5 rounded-3xl border border-hedut-aco/25 shadow-[0_30px_60px_rgba(0,0,0,0.08)]">
-            <CoverImage
-              title="Projeto em destaque"
-              src={coverImage}
-            />
+          <div className="w-[95%] mx-auto md:mx-0 bg-white p-5 rounded-3xl border border-hedut-aco/25 shadow-[0_30px_60px_rgba(0,0,0,0.08)]">
+            <div className="relative w-full aspect-[4/5] overflow-hidden bg-hedut-nevoa rounded-xl">
+              <Image
+                src={coverImage}
+                alt="Projeto em destaque"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
 
