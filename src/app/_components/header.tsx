@@ -16,7 +16,7 @@ const Header = () => {
     }`;
 
   return (
-    <header className="w-full bg-white border-b border-hedut-aco/25">
+    <header className="w-full bg-hedut-nevoa border-b border-hedut-aco/25">
       <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
 
         {/* Logo */}
@@ -52,7 +52,7 @@ const Header = () => {
             href="https://www.instagram.com/hedut.create"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-11 h-11 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-hedut-nevoa hover:border-hedut-blue/40 transition"
+            className="w-11 h-11 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-white hover:border-hedut-blue/40 transition"
           >
             <FaInstagram size={18} />
           </a>
@@ -61,7 +61,7 @@ const Header = () => {
             href="https://wa.me/5515991610562"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-11 h-11 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-hedut-nevoa hover:border-hedut-blue/40 transition"
+            className="w-11 h-11 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-white hover:border-hedut-blue/40 transition"
           >
             <FaWhatsapp size={18} />
           </a>
@@ -70,7 +70,7 @@ const Header = () => {
             href="https://www.linkedin.com/in/henrique-duarte-a07525156/"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-11 h-11 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-hedut-nevoa hover:border-hedut-blue/40 transition"
+            className="w-11 h-11 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-white hover:border-hedut-blue/40 transition"
           >
             <FaLinkedinIn size={18} />
           </a>
