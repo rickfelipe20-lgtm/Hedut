@@ -13,10 +13,14 @@ export default function Page() {
     <main>
       <Container>
         <Intro />
-        <HeroPost
-          title={heroPost.title}
-          coverImage={heroPost.coverImage}
-        />
+      </Container>
+
+      <HeroPost
+        title={heroPost.title}
+        coverImage={heroPost.coverImage}
+      />
+
+      <Container>
         {morePosts.length > 0 && <MoreStories posts={morePosts} />}
       </Container>
     </main>
