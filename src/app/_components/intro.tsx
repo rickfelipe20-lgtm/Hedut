@@ -1,7 +1,9 @@
 const servicos = [
-  { n: "01", t: "Projetos 3D" },
-  { n: "02", t: "Carga Térmica" },
-  { n: "03", t: "Seleção de Equipamentos" },
+  { n: "01", t: "Carga Térmica" },
+  { n: "02", t: "Seleção de Equipamentos" },
+  { n: "03", t: "Projeto 2D/3D" },
+  { n: "04", t: "Consultorias" },
+  { n: "05", t: "ART's" },
 ];
 
 export function Intro() {
