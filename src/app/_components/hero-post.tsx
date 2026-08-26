@@ -144,7 +144,7 @@ export function HeroPost({ coverImage }: Props) {
 
         {/* LADO DIREITO - IMAGEM PRINCIPAL */}
         <div>
-          <div className="w-[95%] mx-auto md:mx-0 bg-white p-5 rounded-3xl border border-hedut-aco/25 shadow-[0_30px_60px_rgba(0,0,0,0.08)]">
+          <div className="w-[75%] mx-auto md:mx-0 bg-white p-5 rounded-3xl border border-hedut-aco/25 shadow-[0_30px_60px_rgba(0,0,0,0.08)]">
             <div className="relative w-full aspect-[4/5] overflow-hidden bg-hedut-nevoa rounded-xl">
               <Image
                 src={coverImage}
