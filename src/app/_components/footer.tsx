@@ -12,7 +12,7 @@ export function Footer() {
           </h3>
 
           <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10">
-            <div className="flex flex-col justify-center items-center space-y-4">
+            <div className="flex flex-col justify-start items-center space-y-4">
 
  <a
   href="mailto:hedut.projetos@hotmail.com"
@@ -44,9 +44,9 @@ export function Footer() {
             <Image
               src="/hedut-assinatura-email.svg"
               alt="Henrique Duarte — Responsável técnico · CREA 2623524742"
-              width={460}
-              height={114}
-              className="w-full max-w-[460px] h-auto"
+              width={600}
+              height={148}
+              className="w-full max-w-[600px] h-auto mt-0 lg:self-start"
             />
           </div>
         </div>
