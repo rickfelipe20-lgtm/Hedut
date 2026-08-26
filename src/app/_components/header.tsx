@@ -52,27 +52,27 @@ const Header = () => {
             href="https://www.instagram.com/hedut.create"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-14 h-14 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-white hover:border-hedut-blue/40 transition"
+            className="w-16 h-16 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-white hover:border-hedut-blue/40 transition"
           >
-            <FaInstagram size={24} />
+            <FaInstagram size={28} />
           </a>
 
           <a
             href="https://wa.me/5515991610562"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-14 h-14 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-white hover:border-hedut-blue/40 transition"
+            className="w-16 h-16 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-white hover:border-hedut-blue/40 transition"
           >
-            <FaWhatsapp size={24} />
+            <FaWhatsapp size={28} />
           </a>
 
           <a
             href="https://www.linkedin.com/in/henrique-duarte-a07525156/"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-14 h-14 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-white hover:border-hedut-blue/40 transition"
+            className="w-16 h-16 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-white hover:border-hedut-blue/40 transition"
           >
-            <FaLinkedinIn size={24} />
+            <FaLinkedinIn size={28} />
           </a>
         </div>
 
