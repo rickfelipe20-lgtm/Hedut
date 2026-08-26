@@ -3,7 +3,6 @@ const servicos = [
   { n: "02", t: "Seleção de Equipamentos" },
   { n: "03", t: "Projeto 2D/3D" },
   { n: "04", t: "Consultorias" },
-  { n: "05", t: "ART's" },
 ];
 
 export function Intro() {
@@ -23,7 +22,7 @@ export function Intro() {
         precisão técnica que evita retrabalho em obra.
       </p>
 
-      <div className="grid grid-cols-2 sm:grid-cols-5 gap-8 mt-12 pt-8 border-t border-hedut-aco/25 max-w-6xl">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 mt-12 pt-8 border-t border-hedut-aco/25 max-w-5xl">
         {servicos.map((item) => (
           <div key={item.n}>
             <span className="font-mono text-xs tracking-[0.2em] text-hedut-blue">
