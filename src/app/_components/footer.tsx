@@ -1,5 +1,6 @@
 import Container from "@/app/_components/container";
 import { EXAMPLE_PATH } from "@/lib/constants";
+import Image from "next/image";
 
 export function Footer() {
   return (
@@ -38,6 +39,27 @@ export function Footer() {
 </a>
 
 </div>
+        </div>
+
+        <div className="pb-16 flex justify-center lg:justify-end">
+          <div className="flex flex-col items-center">
+            <Image
+              src="/images/perfil.jpg"
+              alt="Henrique Duarte"
+              width={160}
+              height={160}
+              className="rounded-full object-cover shadow-sm"
+            />
+
+            <div className="mt-4 text-center">
+              <p className="font-display font-bold text-hedut-abissal text-lg">
+                Eng. Henrique Duarte
+              </p>
+              <p className="font-mono text-sm text-hedut-aco">
+                CREA 2623524742
+              </p>
+            </div>
+          </div>
         </div>
       </Container>
     </footer>
