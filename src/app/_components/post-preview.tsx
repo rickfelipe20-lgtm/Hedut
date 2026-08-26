@@ -19,11 +19,11 @@ export function PostPreview({
 
       {isDucts ? (
         <>
-          <h3 className="text-2xl font-semibold mb-4 leading-snug">
+          <h3 className="font-display font-bold text-hedut-abissal text-2xl mb-4 leading-snug">
             Execução — Rede de Dutos
           </h3>
 
-          <p className="text-neutral-700 leading-relaxed max-w-md">
+          <p className="text-hedut-abissal/80 leading-relaxed max-w-md">
             Fabricação e instalação de dutos metálicos para climatização, com acabamento
             em chapa galvanizada, reforços estruturais e conexões de precisão.
             A montagem segue rigorosos padrões dimensionais, garantindo vedação,
@@ -32,11 +32,11 @@ export function PostPreview({
         </>
       ) : (
         <>
-          <h3 className="text-2xl font-semibold mb-4 leading-snug">
+          <h3 className="font-display font-bold text-hedut-abissal text-2xl mb-4 leading-snug">
             Projeto — Modelagem MEP/BIM
           </h3>
 
-          <p className="text-neutral-700 leading-relaxed max-w-md">
+          <p className="text-hedut-abissal/80 leading-relaxed max-w-md">
             Modelagem tridimensional integrada dos sistemas de climatização, elétrica
             e hidráulica em plataforma BIM. O detalhamento antecipa interferências entre
             disciplinas, otimiza trajetos de dutos e tubulações e assegura precisão

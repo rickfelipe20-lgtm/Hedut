@@ -5,11 +5,11 @@ export function Intro() {
     <section className="mt-16 mb-16 flex items-center justify-between">
       
       <div>
-        <h1 className="text-5xl md:text-5xl font-bold tracking-tight">
+        <h1 className="font-display font-extrabold text-hedut-abissal text-5xl md:text-5xl tracking-tight">
           Hedut Projetos
         </h1>
 
-        <h4 className="text-lg mt-4 text-neutral-600 max-w-xl">
+        <h4 className="font-display font-medium text-hedut-blue text-lg mt-4 max-w-xl">
           Onde a visão técnica garante a viabilidade do projeto
         </h4>
       </div>
@@ -24,10 +24,10 @@ export function Intro() {
         />
 
         <div className="mt-4 text-center">
-          <p className="font-semibold text-lg">
+          <p className="font-display font-bold text-hedut-abissal text-lg">
             Eng. Henrique Duarte
           </p>
-          <p className="text-sm text-neutral-500">
+          <p className="font-mono text-sm text-hedut-aco">
             CREA 2623524742
           </p>
         </div>

@@ -20,6 +20,32 @@ const config: Config = {
         "accent-7": "#333",
         success: "#0070f3",
         cyan: "#79FFE1",
+        hedut: {
+          abissal: "#08192C",
+          blue: "#0B4A80",
+          aco: "#8D99A8",
+          nevoa: "#EDF1F5",
+        },
+      },
+      fontFamily: {
+        sans: [
+          "var(--font-plex-sans)",
+          "ui-sans-serif",
+          "system-ui",
+          "sans-serif",
+        ],
+        display: [
+          "var(--font-saira)",
+          "ui-sans-serif",
+          "system-ui",
+          "sans-serif",
+        ],
+        mono: [
+          "var(--font-plex-mono)",
+          "ui-monospace",
+          "SFMono-Regular",
+          "monospace",
+        ],
       },
       spacing: {
         28: "7rem",

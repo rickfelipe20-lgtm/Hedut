@@ -2,12 +2,28 @@ import Header from "@/app/_components/header";
 import Footer from "@/app/_components/footer";
 import { HOME_OG_IMAGE_URL } from "@/lib/constants";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Saira, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import cn from "classnames";
 
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const saira = Saira({
+  subsets: ["latin"],
+  weight: ["500", "700", "800"],
+  variable: "--font-saira",
+});
+
+const plexSans = IBM_Plex_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-plex-sans",
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-plex-mono",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -33,8 +49,10 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body
         className={cn(
-          inter.className,
-          "dark:bg-slate-900 dark:text-slate-400"
+          saira.variable,
+          plexSans.variable,
+          plexMono.variable,
+          "text-hedut-abissal dark:bg-slate-900 dark:text-slate-400"
         )}
       >
         {/* 🔹 HEADER AQUI */}

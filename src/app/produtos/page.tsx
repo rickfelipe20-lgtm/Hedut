@@ -28,10 +28,10 @@ export default function ProdutosPage() {
     <main>
       <Container>
         <section className="mt-16 mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+          <h1 className="font-display font-extrabold text-hedut-abissal text-4xl md:text-5xl tracking-tight">
             Tipos de Projeto
           </h1>
-          <p className="text-lg mt-4 text-neutral-600 max-w-2xl">
+          <p className="text-lg mt-4 text-hedut-abissal/80 max-w-2xl">
             Somos especialistas em três frentes de climatização: ar-condicionado,
             automação e água gelada. Conheça cada uma delas abaixo.
           </p>
@@ -40,15 +40,15 @@ export default function ProdutosPage() {
         <section className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-16 mb-32">
           {especialidades.map((item) => (
             <div key={item.titulo}>
-              <div className="w-full aspect-[4/3] bg-neutral-100 border border-neutral-200 flex items-center justify-center text-neutral-400 text-sm mb-6">
+              <div className="w-full aspect-[4/3] bg-hedut-nevoa border border-hedut-aco/25 flex items-center justify-center font-mono text-hedut-aco text-sm mb-6">
                 Imagem em breve
               </div>
 
-              <h3 className="text-2xl font-semibold mb-3 leading-snug">
+              <h3 className="font-display font-bold text-hedut-abissal text-2xl mb-3 leading-snug">
                 {item.titulo}
               </h3>
 
-              <p className="text-neutral-700 leading-relaxed">
+              <p className="text-hedut-abissal/80 leading-relaxed">
                 {item.descricao}
               </p>
             </div>

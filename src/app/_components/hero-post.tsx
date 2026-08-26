@@ -13,12 +13,12 @@ export function HeroPost({ coverImage }: Props) {
 
         {/* LADO ESQUERDO */}
         <div>
-          <h2 className="text-4xl lg:text-5xl font-semibold leading-tight mb-6">
+          <h2 className="font-display font-extrabold text-hedut-abissal text-4xl lg:text-5xl leading-tight mb-6">
             Nossos Projetos
           </h2>
 
-          <p className="text-lg leading-relaxed text-neutral-700 mb-10 max-w-lg">
-            Materializamos seus projetos com as melhores tecnologias do mercado 
+          <p className="text-lg leading-relaxed text-hedut-abissal/80 mb-10 max-w-lg">
+            Materializamos seus projetos com as melhores tecnologias do mercado
             e uma equipe altamente qualificada para criar soluções personalizadas,
             respeitando as características de cada ambiente.
           </p>
@@ -31,7 +31,7 @@ export function HeroPost({ coverImage }: Props) {
               <div
                 className="
                   w-28 h-28
-                  bg-gradient-to-br from-neutral-100 to-neutral-200
+                  bg-gradient-to-br from-hedut-nevoa to-hedut-aco/20
                   rounded-3xl
                   flex items-center justify-center
                   border border-white/60
@@ -49,7 +49,7 @@ export function HeroPost({ coverImage }: Props) {
                 />
               </div>
 
-              <span className="mt-4 text-sm font-semibold text-neutral-700 tracking-wide">
+              <span className="mt-4 text-sm font-mono font-medium text-hedut-abissal/80 tracking-wide uppercase">
                 Revit 3D
               </span>
             </div>
@@ -59,7 +59,7 @@ export function HeroPost({ coverImage }: Props) {
               <div
                 className="
                   w-28 h-28
-                  bg-gradient-to-br from-neutral-100 to-neutral-200
+                  bg-gradient-to-br from-hedut-nevoa to-hedut-aco/20
                   rounded-3xl
                   flex items-center justify-center
                   border border-white/60
@@ -77,7 +77,7 @@ export function HeroPost({ coverImage }: Props) {
                 />
               </div>
 
-              <span className="mt-4 text-sm font-semibold text-neutral-700 tracking-wide">
+              <span className="mt-4 text-sm font-mono font-medium text-hedut-abissal/80 tracking-wide uppercase">
                 AutoCAD 2D
               </span>
             </div>
@@ -87,7 +87,7 @@ export function HeroPost({ coverImage }: Props) {
 
         {/* LADO DIREITO - IMAGEM PRINCIPAL */}
         <div>
-          <div className="w-[95%] bg-white p-5 rounded-3xl border border-neutral-200 shadow-[0_30px_60px_rgba(0,0,0,0.08)]">
+          <div className="w-[95%] bg-white p-5 rounded-3xl border border-hedut-aco/25 shadow-[0_30px_60px_rgba(0,0,0,0.08)]">
             <CoverImage
               title="Projeto em destaque"
               src={coverImage}

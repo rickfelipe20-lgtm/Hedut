@@ -22,10 +22,10 @@ export default function CursosPage() {
     <main>
       <Container>
         <section className="mt-16 mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+          <h1 className="font-display font-extrabold text-hedut-abissal text-4xl md:text-5xl tracking-tight">
             Cursos
           </h1>
-          <p className="text-lg mt-4 text-neutral-600 max-w-2xl">
+          <p className="text-lg mt-4 text-hedut-abissal/80 max-w-2xl">
             Cursos e treinamentos disponíveis para quem deseja se especializar em
             projetos de climatização.
           </p>
@@ -34,15 +34,15 @@ export default function CursosPage() {
         <section className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-16 mb-32">
           {cursos.map((curso, i) => (
             <div key={i}>
-              <div className="w-full aspect-video bg-neutral-100 border border-neutral-200 flex items-center justify-center text-neutral-400 text-sm mb-4">
+              <div className="w-full aspect-video bg-hedut-nevoa border border-hedut-aco/25 flex items-center justify-center font-mono text-hedut-aco text-sm mb-4">
                 Imagem em breve
               </div>
 
-              <h3 className="text-xl font-semibold mb-2 leading-snug">
+              <h3 className="font-display font-bold text-hedut-abissal text-xl mb-2 leading-snug">
                 {curso.titulo}
               </h3>
 
-              <p className="text-neutral-700 font-medium mb-4">
+              <p className="font-mono text-hedut-blue font-medium mb-4">
                 {curso.valor}
               </p>
 
