@@ -11,12 +11,12 @@ export function Footer() {
             Vamos transformar seu espaço em algo único.
           </h3>
 
-          <div className="flex flex-col lg:flex-row items-center gap-10">
+          <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10">
             <div className="flex flex-col justify-center items-center space-y-4">
 
  <a
   href="mailto:hedut.projetos@hotmail.com"
-  className="w-64 text-center bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-12 duration-200 transition-colors"
+  className="w-72 text-center bg-black hover:bg-white hover:text-black border border-black text-white font-bold text-lg py-4 px-12 duration-200 transition-colors"
 >
   Entre em contato
 </a>
@@ -25,7 +25,7 @@ export function Footer() {
   href="https://www.instagram.com/hedut.create"
   target="_blank"
   rel="noopener noreferrer"
-  className="w-64 text-center bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-12 duration-200 transition-colors"
+  className="w-72 text-center bg-black hover:bg-white hover:text-black border border-black text-white font-bold text-lg py-4 px-12 duration-200 transition-colors"
 >
   Instagram
 </a>
@@ -34,7 +34,7 @@ export function Footer() {
   href="https://www.linkedin.com/in/henrique-duarte-a07525156/"
   target="_blank"
   rel="noopener noreferrer"
-  className="w-64 text-center bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-12 duration-200 transition-colors"
+  className="w-72 text-center bg-black hover:bg-white hover:text-black border border-black text-white font-bold text-lg py-4 px-12 duration-200 transition-colors"
 >
   LinkedIn
 </a>
@@ -44,9 +44,9 @@ export function Footer() {
             <Image
               src="/hedut-assinatura-email.svg"
               alt="Henrique Duarte — Responsável técnico · CREA 2623524742"
-              width={280}
-              height={69}
-              className="w-full max-w-[280px] h-auto"
+              width={340}
+              height={84}
+              className="w-full max-w-[340px] h-auto"
             />
           </div>
         </div>

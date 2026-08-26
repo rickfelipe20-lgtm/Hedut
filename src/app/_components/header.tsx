@@ -22,9 +22,9 @@ const Header = () => {
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Image
-            src="/hedut-logo-vertical.svg"
+            src="/hedut-simbolo-abissal.svg"
             alt="Hedut Projetos"
-            width={98}
+            width={73}
             height={112}
             className="h-28 w-auto"
             priority
