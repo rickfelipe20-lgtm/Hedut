@@ -8,7 +8,7 @@ type Props = {
 
 export function HeroPost({ coverImage }: Props) {
   return (
-    <section className="w-full bg-hedut-nevoa border-y border-hedut-aco/25 py-20">
+    <section className="w-full bg-hedut-nevoa border-y border-hedut-aco/25 py-12 md:py-20">
       <Container>
       <div className="grid md:grid-cols-2 gap-6 items-center">
 
@@ -25,7 +25,7 @@ export function HeroPost({ coverImage }: Props) {
           </p>
 
           {/* LOGOS DOS SOFTWARES */}
-          <div className="flex gap-12">
+          <div className="flex flex-wrap gap-6 md:gap-12">
 
             {/* Revit */}
             <div className="flex flex-col items-center">

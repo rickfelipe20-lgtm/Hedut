@@ -17,22 +17,22 @@ const Header = () => {
 
   return (
     <header className="w-full bg-hedut-nevoa border-b border-hedut-aco/25">
-      <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 md:py-6 flex flex-wrap md:flex-nowrap items-center justify-between gap-y-3">
 
         {/* Logo */}
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="order-1 flex items-center">
           <Image
             src="/hedut-simbolo-abissal.svg"
             alt="Hedut Projetos"
             width={73}
             height={112}
-            className="h-28 w-auto"
+            className="h-12 md:h-28 w-auto"
             priority
           />
         </Link>
 
         {/* Menu CENTRAL */}
-        <nav className="flex gap-10 text-lg font-medium text-hedut-abissal">
+        <nav className="order-3 md:order-2 w-full md:w-auto flex flex-wrap justify-center gap-5 md:gap-10 text-base md:text-lg font-medium text-hedut-abissal">
           <Link href="/" className={linkStyle("/")}>
             Home
           </Link>
@@ -47,32 +47,32 @@ const Header = () => {
         </nav>
 
         {/* Ícones sociais */}
-        <div className="flex gap-4">
+        <div className="order-2 md:order-3 flex gap-3 md:gap-4">
           <a
             href="https://www.instagram.com/hedut.create"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-16 h-16 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-white hover:border-hedut-blue/40 transition"
+            className="w-10 h-10 md:w-16 md:h-16 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-white hover:border-hedut-blue/40 transition"
           >
-            <FaInstagram size={28} />
+            <FaInstagram className="text-[18px] md:text-[28px]" />
           </a>
 
           <a
             href="https://wa.me/5515991610562"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-16 h-16 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-white hover:border-hedut-blue/40 transition"
+            className="w-10 h-10 md:w-16 md:h-16 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-white hover:border-hedut-blue/40 transition"
           >
-            <FaWhatsapp size={28} />
+            <FaWhatsapp className="text-[18px] md:text-[28px]" />
           </a>
 
           <a
             href="https://www.linkedin.com/in/henrique-duarte-a07525156/"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-16 h-16 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-white hover:border-hedut-blue/40 transition"
+            className="w-10 h-10 md:w-16 md:h-16 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-white hover:border-hedut-blue/40 transition"
           >
-            <FaLinkedinIn size={28} />
+            <FaLinkedinIn className="text-[18px] md:text-[28px]" />
           </a>
         </div>
 

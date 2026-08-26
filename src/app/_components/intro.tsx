@@ -11,7 +11,7 @@ export function Intro() {
         Projeto executivo completo de HVAC
       </span>
 
-      <h1 className="font-display font-extrabold text-hedut-abissal text-5xl md:text-6xl tracking-tight mt-3">
+      <h1 className="font-display font-extrabold text-hedut-abissal text-4xl sm:text-5xl md:text-6xl tracking-tight mt-3">
         HEDUT <span className="text-hedut-blue">— Engenharia</span>
       </h1>
 

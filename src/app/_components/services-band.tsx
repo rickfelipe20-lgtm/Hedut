@@ -6,7 +6,7 @@ export function ServicesBand() {
   return (
     <section className="w-full bg-hedut-blue border-y-4 border-hedut-abissal">
       <Container>
-        <div className="py-16 grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div className="py-10 md:py-16 grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-12">
           {/* LOGO + TAGLINE */}
           <div>
             <svg viewBox="0 0 220 340" className="h-14 w-auto fill-white mb-4">
