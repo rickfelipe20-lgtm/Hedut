@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 
@@ -18,8 +19,17 @@ const Header = () => {
     <header className="w-full bg-white border-b border-hedut-aco/25">
       <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
 
-        {/* Espaço invisível à esquerda para centralizar menu */}
-        <div className="w-24" />
+        {/* Logo */}
+        <Link href="/" className="w-24 flex items-center">
+          <Image
+            src="/hedut-logo-vertical.svg"
+            alt="Hedut Projetos"
+            width={49}
+            height={56}
+            className="h-14 w-auto"
+            priority
+          />
+        </Link>
 
         {/* Menu CENTRAL */}
         <nav className="flex gap-10 text-base font-medium text-hedut-abissal">
