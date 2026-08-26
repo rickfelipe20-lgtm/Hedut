@@ -9,7 +9,7 @@ type Props = {
 
 export function HeroPost({ coverImage }: Props) {
   return (
-    <section className="w-full bg-hedut-nevoa border-y border-hedut-aco/25 py-20 mb-24">
+    <section className="w-full bg-hedut-nevoa border-y border-hedut-aco/25 py-20">
       <Container>
       <div className="grid md:grid-cols-2 gap-6 items-center">
 
