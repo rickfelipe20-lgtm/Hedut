@@ -1,17 +1,38 @@
+const servicos = [
+  { n: "01", t: "Projetos 3D" },
+  { n: "02", t: "Carga Térmica" },
+  { n: "03", t: "Seleção de Equipamentos" },
+];
+
 export function Intro() {
   return (
-    <section className="mt-16 mb-16 flex items-center">
+    <section className="mt-16 mb-20">
+      <span className="font-mono text-xs md:text-sm tracking-[0.2em] uppercase text-hedut-blue">
+        Projeto executivo completo de HVAC
+      </span>
 
-      <div>
-        <h1 className="font-display font-extrabold text-hedut-abissal text-5xl md:text-5xl tracking-tight">
-          Hedut Projetos
-        </h1>
+      <h1 className="font-display font-extrabold text-hedut-abissal text-5xl md:text-6xl tracking-tight mt-3">
+        HEDUT <span className="text-hedut-blue">— Engenharia</span>
+      </h1>
 
-        <h4 className="font-display font-medium text-hedut-blue text-lg mt-4 max-w-xl">
-          Onde a visão técnica garante a viabilidade do projeto
-        </h4>
+      <p className="text-lg text-hedut-abissal/80 mt-6 max-w-2xl leading-relaxed">
+        Projetos de climatização do cálculo de carga térmica ao detalhamento
+        executivo, com documentação pronta para execução e aprovação —
+        precisão técnica que evita retrabalho em obra.
+      </p>
+
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-12 pt-8 border-t border-hedut-aco/25 max-w-4xl">
+        {servicos.map((item) => (
+          <div key={item.n}>
+            <span className="font-mono text-xs tracking-[0.2em] text-hedut-blue">
+              {item.n}
+            </span>
+            <p className="font-display font-bold text-hedut-abissal text-xl mt-2">
+              {item.t}
+            </p>
+          </div>
+        ))}
       </div>
-
     </section>
   );
 }
