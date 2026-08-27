@@ -26,6 +26,7 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://hedut.xyz"),
   title: {
     default: "Hedut Projetos",
     template: "%s | Hedut Projetos",
