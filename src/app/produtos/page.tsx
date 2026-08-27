@@ -2,7 +2,9 @@ import Container from "@/app/_components/container";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Tipos de Projeto",
+  title: "Projetos de Ar-Condicionado, Automação e Água Gelada",
+  description:
+    "Projetos de ar-condicionado, automação para climatização e água gelada (chillers) para obras comerciais e residenciais. Dimensionamento técnico completo, do cálculo de carga térmica à documentação executiva.",
   alternates: {
     canonical: "/produtos",
   },

@@ -47,6 +47,48 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Hedut Projetos",
+  description:
+    "Projetos executivos de HVAC: ar-condicionado, automação para climatização, água gelada e modelagem MEP/BIM.",
+  url: "https://hedut.xyz",
+  email: "hedut.projetos@hotmail.com",
+  areaServed: "BR",
+  founder: {
+    "@type": "Person",
+    name: "Henrique Duarte",
+  },
+  sameAs: [
+    "https://www.instagram.com/hedut.create",
+    "https://www.linkedin.com/in/henrique-duarte-a07525156/",
+  ],
+  makesOffer: [
+    {
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: "Projeto de Ar-Condicionado",
+      },
+    },
+    {
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: "Automação para Climatização",
+      },
+    },
+    {
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: "Projeto de Água Gelada",
+      },
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -62,6 +104,11 @@ export default function RootLayout({
           "font-sans text-hedut-abissal dark:bg-slate-900 dark:text-slate-400"
         )}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+
         {/* 🔹 HEADER AQUI */}
         <Header />
 
