@@ -41,8 +41,12 @@ function ItemGrid({ items, botaoLabel }: { items: Item[]; botaoLabel: string }) 
             {item.titulo}
           </h3>
 
-          <p className="font-mono text-hedut-blue font-medium mb-4">
+          <p className="font-mono text-hedut-blue font-medium text-xl mb-1">
             {item.valor}
+          </p>
+
+          <p className="font-mono text-hedut-abissal/60 text-sm mb-4">
+            em até 6x sem juros
           </p>
 
           <a
