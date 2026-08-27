@@ -5,17 +5,52 @@ export const metadata: Metadata = {
   title: "Cursos",
 };
 
-type Curso = {
+type Item = {
   titulo: string;
   valor: string;
   link: string;
 };
 
-const cursos: Curso[] = [
+const cursos: Item[] = [
   { titulo: "Curso 1", valor: "R$ XX", link: "#" },
   { titulo: "Curso 2", valor: "R$ XX", link: "#" },
   { titulo: "Curso 3", valor: "R$ XX", link: "#" },
 ];
+
+const arquivos: Item[] = [
+  { titulo: "Arquivo 1", valor: "R$ XX", link: "#" },
+  { titulo: "Arquivo 2", valor: "R$ XX", link: "#" },
+  { titulo: "Arquivo 3", valor: "R$ XX", link: "#" },
+];
+
+function ItemGrid({ items, botaoLabel }: { items: Item[]; botaoLabel: string }) {
+  return (
+    <section className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-16 mb-32">
+      {items.map((item, i) => (
+        <div key={i}>
+          <div className="w-full aspect-video bg-hedut-nevoa border border-hedut-aco/25 flex items-center justify-center font-mono text-hedut-aco text-sm mb-4">
+            Imagem em breve
+          </div>
+
+          <h3 className="font-display font-bold text-hedut-abissal text-xl mb-2 leading-snug">
+            {item.titulo}
+          </h3>
+
+          <p className="font-mono text-hedut-blue font-medium mb-4">
+            {item.valor}
+          </p>
+
+          <a
+            href={item.link}
+            className="inline-block w-full text-center bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-2.5 px-6 duration-200 transition-colors"
+          >
+            {botaoLabel}
+          </a>
+        </div>
+      ))}
+    </section>
+  );
+}
 
 export default function CursosPage() {
   return (
@@ -31,30 +66,19 @@ export default function CursosPage() {
           </p>
         </section>
 
-        <section className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-16 mb-32">
-          {cursos.map((curso, i) => (
-            <div key={i}>
-              <div className="w-full aspect-video bg-hedut-nevoa border border-hedut-aco/25 flex items-center justify-center font-mono text-hedut-aco text-sm mb-4">
-                Imagem em breve
-              </div>
+        <ItemGrid items={cursos} botaoLabel="Acessar curso" />
 
-              <h3 className="font-display font-bold text-hedut-abissal text-xl mb-2 leading-snug">
-                {curso.titulo}
-              </h3>
-
-              <p className="font-mono text-hedut-blue font-medium mb-4">
-                {curso.valor}
-              </p>
-
-              <a
-                href={curso.link}
-                className="inline-block w-full text-center bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-2.5 px-6 duration-200 transition-colors"
-              >
-                Acessar curso
-              </a>
-            </div>
-          ))}
+        <section className="mb-8">
+          <h2 className="font-display font-extrabold text-hedut-abissal text-4xl md:text-5xl tracking-tight">
+            Arquivos
+          </h2>
+          <p className="text-lg mt-4 text-hedut-abissal/80 max-w-2xl">
+            Arquivos e templates prontos para agilizar o desenvolvimento dos
+            seus projetos de climatização.
+          </p>
         </section>
+
+        <ItemGrid items={arquivos} botaoLabel="Acessar arquivo" />
       </Container>
     </main>
   );
