@@ -40,7 +40,14 @@ export const metadata: Metadata = {
     title: "Hedut Projetos",
     description:
       "Projetos executivos de HVAC — ar-condicionado, automação para climatização, água gelada e modelagem MEP/BIM. Do cálculo de carga térmica ao detalhamento executivo.",
-    images: [HOME_OG_IMAGE_URL],
+    images: [
+      {
+        url: HOME_OG_IMAGE_URL,
+        width: 1200,
+        height: 630,
+        alt: "Hedut Engenharia — projetos de climatização",
+      },
+    ],
   },
   verification: {
     google: "x2sNPBgHEc1wXAXDxqKTtC9PctoKP1uXwHLwtf8IK3g",

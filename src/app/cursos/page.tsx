@@ -2,7 +2,9 @@ import Container from "@/app/_components/container";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Cursos",
+  title: "Cursos e Arquivos de Climatização",
+  description:
+    "Cursos, templates e arquivos técnicos para quem trabalha com projetos de ar-condicionado, automação para climatização e água gelada.",
   alternates: {
     canonical: "/cursos",
   },

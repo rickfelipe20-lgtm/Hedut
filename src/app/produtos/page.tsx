@@ -15,16 +15,22 @@ const especialidades = [
     titulo: "Ar-Condicionado",
     descricao:
       "Projetos de sistemas de ar-condicionado dimensionados para ambientes comerciais e residenciais, com foco em eficiência energética, conforto térmico e conformidade com as normas técnicas.",
+    detalhes:
+      "O projeto de ar-condicionado começa pelo cálculo de carga térmica de cada ambiente, considerando ocupação, iluminação, equipamentos e orientação solar. A partir daí é feita a seleção do sistema mais adequado — Split, VRF ou self-contained — e o dimensionamento de dutos, difusores e tubulações frigorígenas. O resultado é a documentação executiva completa (plantas, cortes, memorial de cálculo e especificações) pronta para orçamento e execução em obra.",
   },
   {
     titulo: "Automação para Climatização",
     descricao:
       "Integração de sensores, controladores e sistemas de supervisão para automatizar o funcionamento dos equipamentos de climatização, reduzindo consumo de energia e permitindo monitoramento remoto.",
+    detalhes:
+      "A automação conecta os equipamentos de climatização a controladores e sistemas de supervisão (BMS), permitindo programar horários de funcionamento, ajustar setpoints por ambiente e monitorar o sistema remotamente. Isso reduz o consumo de energia ao evitar operação desnecessária, antecipa manutenções a partir de alarmes de falha e dá ao gestor do edifício visibilidade completa sobre o desempenho da climatização em tempo real.",
   },
   {
     titulo: "Água Gelada",
     descricao:
       "Projetos de sistemas de água gelada (chillers) para climatização de grandes edificações, contemplando dimensionamento de tubulações, casa de máquinas e integração com fan-coils.",
+    detalhes:
+      "Sistemas de água gelada são a solução indicada para edificações de grande porte — hospitais, shoppings, centros empresariais — onde a centralização da produção de frio em chillers reduz custo operacional em relação a soluções descentralizadas. O projeto contempla o dimensionamento da casa de máquinas, da rede de tubulações primária e secundária, das bombas de recalque e da integração com os fan-coils e unidades de tratamento de ar de cada pavimento.",
   },
 ];
 
@@ -55,6 +61,10 @@ export default function ProdutosPage() {
 
               <p className="text-hedut-abissal/80 leading-relaxed">
                 {item.descricao}
+              </p>
+
+              <p className="text-hedut-abissal/70 leading-relaxed mt-4">
+                {item.detalhes}
               </p>
             </div>
           ))}
