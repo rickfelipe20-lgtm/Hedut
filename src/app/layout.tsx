@@ -39,6 +39,9 @@ export const metadata: Metadata = {
       "Engenharia e desenvolvimento de projetos com foco em qualidade, precisão e inovação.",
     images: [HOME_OG_IMAGE_URL],
   },
+  verification: {
+    google: "x2sNPBgHEc1wXAXDxqKTtC9PctoKP1uXwHLwtf8IK3g",
+  },
 };
 
 export default function RootLayout({
