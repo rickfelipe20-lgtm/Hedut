@@ -17,15 +17,15 @@ type Item = {
 };
 
 const cursos: Item[] = [
-  { titulo: "Curso 1", valor: "R$ XX", link: "#" },
-  { titulo: "Curso 2", valor: "R$ XX", link: "#" },
-  { titulo: "Curso 3", valor: "R$ XX", link: "#" },
+  { titulo: "Conceitos de HVAC para Arquitetos", valor: "R$ 147", link: "#" },
+  { titulo: "Carga Térmica", valor: "R$ 247", link: "#" },
+  { titulo: "Modelagem HVAC em Revit", valor: "R$ 347", link: "#" },
 ];
 
 const arquivos: Item[] = [
-  { titulo: "Arquivo 1", valor: "R$ XX", link: "#" },
-  { titulo: "Arquivo 2", valor: "R$ XX", link: "#" },
-  { titulo: "Arquivo 3", valor: "R$ XX", link: "#" },
+  { titulo: "Template - HVAC", valor: "R$ 97", link: "#" },
+  { titulo: "Planilha Ductulator HVAC", valor: "R$ 127", link: "#" },
+  { titulo: "Famílias - Revit - HVAC", valor: "R$ 197", link: "#" },
 ];
 
 function ItemGrid({ items, botaoLabel }: { items: Item[]; botaoLabel: string }) {
