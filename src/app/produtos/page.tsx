@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Tipos de Projeto",
+  alternates: {
+    canonical: "/produtos",
+  },
 };
 
 const especialidades = [

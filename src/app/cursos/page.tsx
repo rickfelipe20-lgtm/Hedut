@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Cursos",
+  alternates: {
+    canonical: "/cursos",
+  },
 };
 
 type Item = {
