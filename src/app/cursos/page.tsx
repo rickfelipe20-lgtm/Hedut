@@ -57,80 +57,95 @@ const arquivos: Item[] = [
   },
 ];
 
-const iconProps = {
-  viewBox: "0 0 48 48",
-  fill: "none",
-  stroke: "currentColor",
-  strokeWidth: 2.5,
-  strokeLinecap: "round" as const,
-  strokeLinejoin: "round" as const,
-};
+const ACCENT = "#3FA9F5";
+const SHADE = "#061420";
+
+function CardBg({ uid }: { uid: string }): ReactElement {
+  return (
+    <>
+      <defs>
+        <linearGradient id={`grad-${uid}`} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#0B4A80" />
+          <stop offset="1" stopColor="#08192C" />
+        </linearGradient>
+        <radialGradient id={`glow-${uid}`} cx="30%" cy="22%" r="70%">
+          <stop offset="0" stopColor="#FFFFFF" stopOpacity="0.28" />
+          <stop offset="1" stopColor="#FFFFFF" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      <rect x="0" y="0" width="320" height="180" rx="16" fill={`url(#grad-${uid})`} />
+      <rect x="0" y="0" width="320" height="180" rx="16" fill={`url(#glow-${uid})`} />
+    </>
+  );
+}
 
 const icones: Record<IconName, (props: { className?: string }) => ReactElement> = {
   compass: ({ className }) => (
-    <svg {...iconProps} className={className}>
-      <circle cx="24" cy="8" r="2.5" fill="currentColor" stroke="none" />
-      <line x1="24" y1="10.5" x2="24" y2="15" />
-      <line x1="24" y1="15" x2="15" y2="38" />
-      <line x1="24" y1="15" x2="33" y2="38" />
-      <line x1="18.5" y1="24.5" x2="29.5" y2="24.5" />
-      <path d="M13 40 L17.5 37" />
-      <path d="M30.5 37 L35 40" />
+    <svg viewBox="0 0 320 180" className={className}>
+      <CardBg uid="compass" />
+      <circle cx="160" cy="40" r="7" fill="#FFFFFF" />
+      <line x1="160" y1="47" x2="136" y2="138" stroke="#FFFFFF" strokeWidth="11" strokeLinecap="round" />
+      <line x1="160" y1="47" x2="184" y2="138" stroke={ACCENT} strokeWidth="11" strokeLinecap="round" />
+      <line x1="147" y1="93" x2="173" y2="93" stroke="#FFFFFF" strokeWidth="8" strokeLinecap="round" />
+      <line x1="128" y1="146" x2="140" y2="137" stroke="#FFFFFF" strokeWidth="9" strokeLinecap="round" />
+      <line x1="180" y1="137" x2="192" y2="146" stroke={ACCENT} strokeWidth="9" strokeLinecap="round" />
     </svg>
   ),
   thermometer: ({ className }) => (
-    <svg {...iconProps} className={className}>
-      <rect x="21" y="8" width="6" height="22" rx="3" />
-      <circle cx="24" cy="34" r="7" fill="currentColor" stroke="none" />
-      <line x1="30" y1="14" x2="33" y2="14" />
-      <line x1="30" y1="19" x2="34" y2="19" />
-      <line x1="30" y1="24" x2="33" y2="24" />
-      <line x1="33" y1="8" x2="36" y2="6" />
-      <line x1="37" y1="12" x2="40" y2="10" />
+    <svg viewBox="0 0 320 180" className={className}>
+      <CardBg uid="thermo" />
+      <rect x="148" y="32" width="24" height="82" rx="12" fill="#FFFFFF" />
+      <circle cx="160" cy="132" r="24" fill={ACCENT} />
+      <circle cx="152" cy="122" r="6" fill="#FFFFFF" fillOpacity="0.55" />
+      <line x1="178" y1="50" x2="190" y2="50" stroke="#FFFFFF" strokeWidth="6" strokeLinecap="round" />
+      <line x1="178" y1="64" x2="192" y2="64" stroke="#FFFFFF" strokeWidth="6" strokeLinecap="round" />
+      <line x1="178" y1="78" x2="190" y2="78" stroke="#FFFFFF" strokeWidth="6" strokeLinecap="round" />
+      <line x1="196" y1="34" x2="206" y2="26" stroke={ACCENT} strokeWidth="6" strokeLinecap="round" />
+      <line x1="208" y1="42" x2="218" y2="36" stroke={ACCENT} strokeWidth="6" strokeLinecap="round" />
     </svg>
   ),
   cube: ({ className }) => (
-    <svg {...iconProps} className={className}>
-      <path d="M24 6 L38 14 L24 22 L10 14 Z" />
-      <path d="M10 14 L24 22 L24 38 L10 30 Z" />
-      <path d="M38 14 L24 22 L24 38 L38 30 Z" />
-      <circle cx="24" cy="14" r="2" fill="currentColor" stroke="none" />
-      <line x1="17" y1="22" x2="17" y2="34" />
-      <line x1="31" y1="22" x2="31" y2="34" />
+    <svg viewBox="0 0 320 180" className={className}>
+      <CardBg uid="cube" />
+      <path d="M160 40 L208 66 L160 92 L112 66 Z" fill="#FFFFFF" />
+      <path d="M112 66 L160 92 L160 144 L112 118 Z" fill={ACCENT} />
+      <path d="M208 66 L160 92 L160 144 L208 118 Z" fill={SHADE} />
+      <line x1="128" y1="70" x2="152" y2="83" stroke={SHADE} strokeWidth="3" strokeLinecap="round" opacity="0.5" />
+      <line x1="192" y1="70" x2="168" y2="83" stroke={SHADE} strokeWidth="3" strokeLinecap="round" opacity="0.5" />
     </svg>
   ),
   document: ({ className }) => (
-    <svg {...iconProps} className={className}>
-      <path d="M16 8 H30 L36 14 V44 H16 Z" opacity="0.35" />
-      <path d="M14 6 H28 L34 12 V42 H14 Z" />
-      <path d="M28 6 V12 H34" />
-      <rect x="18" y="19" width="3" height="3" fill="currentColor" stroke="none" />
-      <line x1="24" y1="20.5" x2="30" y2="20.5" />
-      <rect x="18" y="25" width="3" height="3" fill="currentColor" stroke="none" />
-      <line x1="24" y1="26.5" x2="30" y2="26.5" />
-      <rect x="18" y="31" width="3" height="3" fill="currentColor" stroke="none" />
-      <line x1="24" y1="32.5" x2="27" y2="32.5" />
+    <svg viewBox="0 0 320 180" className={className}>
+      <CardBg uid="document" />
+      <rect x="147" y="50" width="64" height="90" rx="4" fill="#FFFFFF" fillOpacity="0.35" />
+      <path d="M123 28 H179 L197 46 V140 H123 Z" fill="#FFFFFF" />
+      <path d="M179 28 L179 46 L197 46 Z" fill={ACCENT} />
+      <rect x="135" y="66" width="10" height="10" fill={SHADE} />
+      <line x1="153" y1="71" x2="185" y2="71" stroke={SHADE} strokeWidth="5" strokeLinecap="round" />
+      <rect x="135" y="88" width="10" height="10" fill={SHADE} />
+      <line x1="153" y1="93" x2="185" y2="93" stroke={SHADE} strokeWidth="5" strokeLinecap="round" />
+      <rect x="135" y="110" width="10" height="10" fill={SHADE} />
+      <line x1="153" y1="115" x2="173" y2="115" stroke={SHADE} strokeWidth="5" strokeLinecap="round" />
     </svg>
   ),
   grid: ({ className }) => (
-    <svg {...iconProps} className={className}>
-      <rect x="8" y="10" width="32" height="28" rx="1" />
-      <line x1="8" y1="18" x2="40" y2="18" />
-      <line x1="8" y1="26" x2="40" y2="26" />
-      <line x1="8" y1="34" x2="40" y2="34" />
-      <line x1="18" y1="10" x2="18" y2="38" />
-      <line x1="29" y1="10" x2="29" y2="38" />
-      <rect x="19" y="19" width="10" height="7" fill="currentColor" stroke="none" />
+    <svg viewBox="0 0 320 180" className={className}>
+      <CardBg uid="grid" />
+      <rect x="100" y="34" width="120" height="112" rx="6" fill="#FFFFFF" />
+      <line x1="140" y1="34" x2="140" y2="146" stroke={SHADE} strokeWidth="3" strokeOpacity="0.6" />
+      <line x1="180" y1="34" x2="180" y2="146" stroke={SHADE} strokeWidth="3" strokeOpacity="0.6" />
+      <line x1="100" y1="64" x2="220" y2="64" stroke={SHADE} strokeWidth="3" strokeOpacity="0.6" />
+      <line x1="100" y1="94" x2="220" y2="94" stroke={SHADE} strokeWidth="3" strokeOpacity="0.6" />
+      <line x1="100" y1="124" x2="220" y2="124" stroke={SHADE} strokeWidth="3" strokeOpacity="0.6" />
+      <rect x="141" y="65" width="38" height="28" fill={ACCENT} />
     </svg>
   ),
   layers: ({ className }) => (
-    <svg {...iconProps} className={className}>
-      <path d="M24 8 L40 16 L24 24 L8 16 Z" />
-      <path d="M8 24 L24 32 L40 24" />
-      <path d="M8 32 L24 40 L40 32" />
-      <circle cx="24" cy="16" r="2" fill="currentColor" stroke="none" />
-      <circle cx="24" cy="32" r="1.5" fill="currentColor" stroke="none" />
-      <circle cx="24" cy="40" r="1.5" fill="currentColor" stroke="none" />
+    <svg viewBox="0 0 320 180" className={className}>
+      <CardBg uid="layers" />
+      <path d="M160 96 L214 120 L160 144 L106 120 Z" fill={SHADE} />
+      <path d="M160 66 L214 90 L160 114 L106 90 Z" fill={ACCENT} />
+      <path d="M160 36 L214 60 L160 84 L106 60 Z" fill="#FFFFFF" />
     </svg>
   ),
 };
@@ -142,10 +157,8 @@ function ItemGrid({ items, botaoLabel }: { items: Item[]; botaoLabel: string }) 
         const Icone = icones[item.icone];
         return (
           <div key={i}>
-            <div className="w-full aspect-video bg-hedut-nevoa border border-hedut-aco/25 flex items-center justify-center mb-4">
-              <div className="w-20 h-20 rounded-full bg-hedut-blue flex items-center justify-center shadow-[0_10px_20px_rgba(11,74,128,0.25)]">
-                <Icone className="w-10 h-10 text-white" />
-              </div>
+            <div className="w-full aspect-video rounded-2xl overflow-hidden mb-4 shadow-[0_15px_30px_rgba(8,25,44,0.25)]">
+              <Icone className="w-full h-full block" />
             </div>
 
             <h3 className="font-display font-bold text-hedut-abissal text-xl mb-2 leading-snug">
