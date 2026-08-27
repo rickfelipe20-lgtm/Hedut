@@ -32,11 +32,11 @@ export const metadata: Metadata = {
     template: "%s | Hedut Projetos",
   },
   description:
-    "Hedut Projetos – Engenharia, desenvolvimento de projetos e soluções técnicas com excelência.",
+    "Hedut Engenharia — projetos executivos de HVAC: ar-condicionado, automação para climatização, água gelada e modelagem MEP/BIM. Do cálculo de carga térmica ao detalhamento pronto para execução.",
   openGraph: {
     title: "Hedut Projetos",
     description:
-      "Engenharia e desenvolvimento de projetos com foco em qualidade, precisão e inovação.",
+      "Projetos executivos de HVAC — ar-condicionado, automação para climatização, água gelada e modelagem MEP/BIM. Do cálculo de carga térmica ao detalhamento executivo.",
     images: [HOME_OG_IMAGE_URL],
   },
   verification: {
