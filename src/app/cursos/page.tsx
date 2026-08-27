@@ -61,7 +61,7 @@ const iconProps = {
   viewBox: "0 0 48 48",
   fill: "none",
   stroke: "currentColor",
-  strokeWidth: 2,
+  strokeWidth: 2.5,
   strokeLinecap: "round" as const,
   strokeLinejoin: "round" as const,
 };
@@ -69,20 +69,24 @@ const iconProps = {
 const icones: Record<IconName, (props: { className?: string }) => ReactElement> = {
   compass: ({ className }) => (
     <svg {...iconProps} className={className}>
-      <circle cx="24" cy="10" r="3" />
-      <line x1="24" y1="13" x2="14" y2="38" />
-      <line x1="24" y1="13" x2="34" y2="38" />
-      <line x1="12" y1="40" x2="18" y2="36" />
-      <line x1="30" y1="36" x2="36" y2="40" />
+      <circle cx="24" cy="8" r="2.5" fill="currentColor" stroke="none" />
+      <line x1="24" y1="10.5" x2="24" y2="15" />
+      <line x1="24" y1="15" x2="15" y2="38" />
+      <line x1="24" y1="15" x2="33" y2="38" />
+      <line x1="18.5" y1="24.5" x2="29.5" y2="24.5" />
+      <path d="M13 40 L17.5 37" />
+      <path d="M30.5 37 L35 40" />
     </svg>
   ),
   thermometer: ({ className }) => (
     <svg {...iconProps} className={className}>
       <rect x="21" y="8" width="6" height="22" rx="3" />
-      <circle cx="24" cy="34" r="7" />
+      <circle cx="24" cy="34" r="7" fill="currentColor" stroke="none" />
       <line x1="30" y1="14" x2="33" y2="14" />
-      <line x1="30" y1="19" x2="33" y2="19" />
+      <line x1="30" y1="19" x2="34" y2="19" />
       <line x1="30" y1="24" x2="33" y2="24" />
+      <line x1="33" y1="8" x2="36" y2="6" />
+      <line x1="37" y1="12" x2="40" y2="10" />
     </svg>
   ),
   cube: ({ className }) => (
@@ -90,15 +94,22 @@ const icones: Record<IconName, (props: { className?: string }) => ReactElement> 
       <path d="M24 6 L38 14 L24 22 L10 14 Z" />
       <path d="M10 14 L24 22 L24 38 L10 30 Z" />
       <path d="M38 14 L24 22 L24 38 L38 30 Z" />
+      <circle cx="24" cy="14" r="2" fill="currentColor" stroke="none" />
+      <line x1="17" y1="22" x2="17" y2="34" />
+      <line x1="31" y1="22" x2="31" y2="34" />
     </svg>
   ),
   document: ({ className }) => (
     <svg {...iconProps} className={className}>
+      <path d="M16 8 H30 L36 14 V44 H16 Z" opacity="0.35" />
       <path d="M14 6 H28 L34 12 V42 H14 Z" />
       <path d="M28 6 V12 H34" />
-      <line x1="18" y1="20" x2="30" y2="20" />
-      <line x1="18" y1="26" x2="30" y2="26" />
-      <line x1="18" y1="32" x2="26" y2="32" />
+      <rect x="18" y="19" width="3" height="3" fill="currentColor" stroke="none" />
+      <line x1="24" y1="20.5" x2="30" y2="20.5" />
+      <rect x="18" y="25" width="3" height="3" fill="currentColor" stroke="none" />
+      <line x1="24" y1="26.5" x2="30" y2="26.5" />
+      <rect x="18" y="31" width="3" height="3" fill="currentColor" stroke="none" />
+      <line x1="24" y1="32.5" x2="27" y2="32.5" />
     </svg>
   ),
   grid: ({ className }) => (
@@ -109,6 +120,7 @@ const icones: Record<IconName, (props: { className?: string }) => ReactElement> 
       <line x1="8" y1="34" x2="40" y2="34" />
       <line x1="18" y1="10" x2="18" y2="38" />
       <line x1="29" y1="10" x2="29" y2="38" />
+      <rect x="19" y="19" width="10" height="7" fill="currentColor" stroke="none" />
     </svg>
   ),
   layers: ({ className }) => (
@@ -116,6 +128,9 @@ const icones: Record<IconName, (props: { className?: string }) => ReactElement> 
       <path d="M24 8 L40 16 L24 24 L8 16 Z" />
       <path d="M8 24 L24 32 L40 24" />
       <path d="M8 32 L24 40 L40 32" />
+      <circle cx="24" cy="16" r="2" fill="currentColor" stroke="none" />
+      <circle cx="24" cy="32" r="1.5" fill="currentColor" stroke="none" />
+      <circle cx="24" cy="40" r="1.5" fill="currentColor" stroke="none" />
     </svg>
   ),
 };
@@ -128,7 +143,9 @@ function ItemGrid({ items, botaoLabel }: { items: Item[]; botaoLabel: string }) 
         return (
           <div key={i}>
             <div className="w-full aspect-video bg-hedut-nevoa border border-hedut-aco/25 flex items-center justify-center mb-4">
-              <Icone className="w-14 h-14 text-hedut-blue" />
+              <div className="w-20 h-20 rounded-full bg-hedut-blue flex items-center justify-center shadow-[0_10px_20px_rgba(11,74,128,0.25)]">
+                <Icone className="w-10 h-10 text-white" />
+              </div>
             </div>
 
             <h3 className="font-display font-bold text-hedut-abissal text-xl mb-2 leading-snug">
