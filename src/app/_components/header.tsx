@@ -42,7 +42,7 @@ const Header = () => {
           </Link>
 
           <Link href="/cursos" className={linkStyle("/cursos")}>
-            Cursos
+            Shop
           </Link>
         </nav>
 
