@@ -8,7 +8,7 @@ export function Footer() {
       <Container>
         <div className="py-16 lg:py-28 flex flex-col lg:flex-row items-center justify-between gap-12">
           <h3 className="font-display font-extrabold text-hedut-abissal text-3xl lg:text-[2.0rem] tracking-tighter leading-tight text-center lg:text-left lg:w-1/3">
-            Vamos transformar seu espaço em algo único.
+            Vamos elevar o nível do seu projeto!
           </h3>
 
           <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10">
