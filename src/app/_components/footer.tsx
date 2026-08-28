@@ -1,6 +1,7 @@
 import Container from "@/app/_components/container";
 import { EXAMPLE_PATH } from "@/lib/constants";
 import Image from "next/image";
+import Link from "next/link";
 
 export function Footer() {
   return (
@@ -14,12 +15,12 @@ export function Footer() {
           <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10">
             <div className="flex flex-col justify-start items-center space-y-4">
 
- <a
-  href="mailto:hedut.projetos@hotmail.com"
+ <Link
+  href="/contato"
   className="w-full max-w-xs sm:w-72 text-center bg-black hover:bg-white hover:text-black border border-black text-white font-bold text-lg py-4 px-12 duration-200 transition-colors"
 >
   Entre em contato
-</a>
+</Link>
 
  <a
   href="https://www.instagram.com/hedut.create"
