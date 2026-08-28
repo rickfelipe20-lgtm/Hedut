@@ -1,6 +1,8 @@
 import Container from "@/app/_components/container";
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
+import { cursos, arquivos, type Item } from "./data";
 
 export const metadata: Metadata = {
   title: "Cursos e Arquivos de Climatização",
@@ -11,60 +13,11 @@ export const metadata: Metadata = {
   },
 };
 
-type Item = {
-  titulo: string;
-  valor: string;
-  link: string;
-  foto: string;
-};
-
-const cursos: Item[] = [
-  {
-    titulo: "Conceitos de HVAC para Arquitetos",
-    valor: "R$ 147",
-    link: "#",
-    foto: "/assets/cursos/compass.jpg",
-  },
-  {
-    titulo: "Carga Térmica",
-    valor: "R$ 247",
-    link: "#",
-    foto: "/assets/cursos/thermal.jpg",
-  },
-  {
-    titulo: "Modelagem HVAC em Revit",
-    valor: "R$ 347",
-    link: "#",
-    foto: "/assets/cursos/bim.jpg",
-  },
-];
-
-const arquivos: Item[] = [
-  {
-    titulo: "Template - HVAC",
-    valor: "R$ 97",
-    link: "#",
-    foto: "/assets/cursos/documents.jpg",
-  },
-  {
-    titulo: "Planilha Ductulator HVAC",
-    valor: "R$ 127",
-    link: "#",
-    foto: "/assets/cursos/ducts.jpg",
-  },
-  {
-    titulo: "Famílias - Revit - HVAC",
-    valor: "R$ 197",
-    link: "#",
-    foto: "/assets/cursos/units.jpg",
-  },
-];
-
 function ItemGrid({ items, botaoLabel }: { items: Item[]; botaoLabel: string }) {
   return (
     <section className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-16 mb-32">
-      {items.map((item, i) => (
-        <div key={i}>
+      {items.map((item) => (
+        <div key={item.slug}>
           <div className="relative w-full aspect-video rounded-2xl overflow-hidden mb-4 shadow-[0_15px_30px_rgba(8,25,44,0.25)]">
             <Image
               src={item.foto}
@@ -89,12 +42,12 @@ function ItemGrid({ items, botaoLabel }: { items: Item[]; botaoLabel: string }) 
             em até 6x sem juros
           </p>
 
-          <a
-            href={item.link}
+          <Link
+            href={`/cursos/${item.slug}`}
             className="inline-block w-full text-center bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-2.5 px-6 duration-200 transition-colors"
           >
             {botaoLabel}
-          </a>
+          </Link>
         </div>
       ))}
     </section>
