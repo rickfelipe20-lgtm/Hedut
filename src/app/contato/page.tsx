@@ -16,9 +16,6 @@ type Props = {
 
 export default async function ContatoPage({ searchParams }: Props) {
   const params = await searchParams;
-  const descricaoInicial = params.servico
-    ? `Tenho interesse em: ${params.servico}.\n\n`
-    : "";
 
   return (
     <main>
@@ -50,11 +47,18 @@ export default async function ContatoPage({ searchParams }: Props) {
             name="_next"
             value="https://hedut.xyz/contato/obrigado"
           />
+          {params.servico && (
+            <input
+              type="hidden"
+              name="Serviço de interesse"
+              value={params.servico}
+            />
+          )}
 
           <div>
             <label
               htmlFor="name"
-              className="block font-mono text-sm text-hedut-abissal/70 mb-2"
+              className="block font-mono text-base text-hedut-abissal/70 mb-2"
             >
               Nome
             </label>
@@ -70,7 +74,7 @@ export default async function ContatoPage({ searchParams }: Props) {
           <div>
             <label
               htmlFor="email"
-              className="block font-mono text-sm text-hedut-abissal/70 mb-2"
+              className="block font-mono text-base text-hedut-abissal/70 mb-2"
             >
               E-mail
             </label>
@@ -85,8 +89,23 @@ export default async function ContatoPage({ searchParams }: Props) {
 
           <div>
             <label
+              htmlFor="telefone"
+              className="block font-mono text-base text-hedut-abissal/70 mb-2"
+            >
+              Telefone
+            </label>
+            <input
+              id="telefone"
+              name="telefone"
+              type="tel"
+              className="w-full border border-hedut-aco/40 px-4 py-3 focus:outline-none focus:border-hedut-blue"
+            />
+          </div>
+
+          <div>
+            <label
               htmlFor="empresa"
-              className="block font-mono text-sm text-hedut-abissal/70 mb-2"
+              className="block font-mono text-base text-hedut-abissal/70 mb-2"
             >
               Empresa
             </label>
@@ -101,7 +120,7 @@ export default async function ContatoPage({ searchParams }: Props) {
           <div>
             <label
               htmlFor="servico"
-              className="block font-mono text-sm text-hedut-abissal/70 mb-2"
+              className="block font-mono text-base text-hedut-abissal/70 mb-2"
             >
               Descreva o serviço
             </label>
@@ -110,7 +129,6 @@ export default async function ContatoPage({ searchParams }: Props) {
               name="servico"
               required
               rows={6}
-              defaultValue={descricaoInicial}
               className="w-full border border-hedut-aco/40 px-4 py-3 focus:outline-none focus:border-hedut-blue"
             />
           </div>
