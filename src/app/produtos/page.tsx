@@ -1,5 +1,6 @@
 import Container from "@/app/_components/container";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Projetos de Ar-Condicionado, Automação e Água Gelada",
@@ -66,6 +67,13 @@ export default function ProdutosPage() {
               <p className="text-hedut-abissal/70 leading-relaxed mt-4">
                 {item.detalhes}
               </p>
+
+              <Link
+                href={`/contato?servico=${encodeURIComponent(item.titulo)}`}
+                className="inline-block w-full text-center bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-2.5 px-6 duration-200 transition-colors mt-6"
+              >
+                Entre em contato
+              </Link>
             </div>
           ))}
         </section>
