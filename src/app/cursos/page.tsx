@@ -71,10 +71,10 @@ function ItemGrid({ items, botaoLabel }: { items: Item[]; botaoLabel: string }) 
               alt={item.titulo}
               fill
               sizes="(max-width: 768px) 100vw, 33vw"
-              className="object-cover grayscale contrast-125"
+              className="object-cover saturate-125 brightness-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-hedut-blue to-hedut-abissal mix-blend-color" />
-            <div className="absolute inset-0 bg-hedut-abissal/10" />
+            <div className="absolute inset-0 bg-gradient-to-br from-hedut-blue/40 to-transparent mix-blend-overlay" />
+            <div className="absolute inset-0 bg-hedut-blue/10" />
           </div>
 
           <h3 className="font-display font-bold text-hedut-abissal text-xl mb-2 leading-snug">
