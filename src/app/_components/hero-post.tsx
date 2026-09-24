@@ -8,12 +8,12 @@ type Props = {
 
 export function HeroPost({ coverImage }: Props) {
   return (
-    <section className="w-full bg-hedut-nevoa border-y border-hedut-aco/25 py-12 md:py-20">
+    <section className="w-full bg-hedut-nevoa border-y border-hedut-aco/25">
       <Container>
-      <div className="grid md:grid-cols-2 gap-6 items-center">
+      <div className="grid md:grid-cols-2 gap-6 items-stretch">
 
         {/* LADO ESQUERDO */}
-        <div>
+        <div className="py-12 md:py-20">
           <h2 className="font-display font-extrabold text-hedut-abissal text-4xl lg:text-5xl leading-tight mb-6">
             Nossos Projetos
           </h2>
@@ -143,20 +143,16 @@ export function HeroPost({ coverImage }: Props) {
         </div>
 
         {/* LADO DIREITO - IMAGEM PRINCIPAL */}
-        <div>
-          <div className="w-[85%]">
-            <div
-              className="relative w-full aspect-[4/5] overflow-hidden bg-hedut-nevoa [mask-image:linear-gradient(to_right,transparent_0%,black_35%,black_92%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_35%,black_92%,transparent_100%)]"
-            >
-              <Image
-                src={coverImage}
-                alt="Projeto em destaque"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
-              />
-            </div>
-          </div>
+        <div
+          className="relative w-[85%] aspect-[4/5] md:aspect-auto md:h-full overflow-hidden bg-hedut-nevoa [mask-image:linear-gradient(to_right,transparent_0%,black_35%,black_92%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_35%,black_92%,transparent_100%)]"
+        >
+          <Image
+            src={coverImage}
+            alt="Projeto em destaque"
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover"
+          />
         </div>
 
       </div>
