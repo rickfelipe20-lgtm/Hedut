@@ -1,4 +1,5 @@
 import Container from "@/app/_components/container";
+import { BuyButton } from "@/app/_components/buy-button";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -85,12 +86,10 @@ export default async function ItemPage(props: Params) {
             </div>
           )}
 
-          <a
-            href="#"
-            className="inline-block w-full sm:w-auto text-center bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-10 duration-200 transition-colors"
-          >
-            {item.modulos ? "Acessar curso" : "Acessar arquivo"}
-          </a>
+          <BuyButton
+            slug={item.slug}
+            label={item.modulos ? "Comprar curso" : "Comprar arquivo"}
+          />
         </section>
       </Container>
     </main>

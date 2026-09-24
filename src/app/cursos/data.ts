@@ -7,6 +7,7 @@ export type Item = {
   slug: string;
   titulo: string;
   valor: string;
+  preco: number;
   foto: string;
   descricao: string;
   modulos?: Modulo[];
@@ -17,6 +18,7 @@ export const cursos: Item[] = [
     slug: "conceitos-hvac-arquitetos",
     titulo: "Conceitos de HVAC para Arquitetos",
     valor: "R$ 147",
+    preco: 147,
     foto: "/assets/cursos/compass.jpg",
     descricao:
       "Curso introdutório para arquitetos e estudantes que querem entender como os sistemas de climatização impactam o projeto arquitetônico — sem precisar se tornar um engenheiro de HVAC. Você vai aprender a reconhecer as necessidades de espaço, prever pontos de conflito com a documentação executiva antes que virem retrabalho em obra, e conversar com mais autonomia com o projetista de climatização.",
@@ -55,6 +57,7 @@ export const cursos: Item[] = [
     slug: "carga-termica",
     titulo: "Carga Térmica",
     valor: "R$ 247",
+    preco: 247,
     foto: "/assets/cursos/thermal.jpg",
     descricao:
       "Curso técnico sobre o cálculo de carga térmica — a base de qualquer projeto de ar-condicionado bem dimensionado. Você vai entender as variáveis que compõem o cálculo, aplicar o método na prática e interpretar os resultados para selecionar o equipamento correto, evitando super ou subdimensionamento.",
@@ -93,6 +96,7 @@ export const cursos: Item[] = [
     slug: "modelagem-hvac-revit",
     titulo: "Modelagem HVAC em Revit",
     valor: "R$ 347",
+    preco: 347,
     foto: "/assets/cursos/bim.jpg",
     descricao:
       "Curso prático de modelagem de sistemas de climatização em Revit, do zero à documentação executiva. Ideal para quem já conhece o básico do Revit e quer aplicar o fluxo de trabalho MEP para HVAC — dutos, tubulações, equipamentos e compatibilização com as demais disciplinas.",
@@ -141,6 +145,7 @@ export const arquivos: Item[] = [
     slug: "template-hvac",
     titulo: "Template - HVAC",
     valor: "R$ 97",
+    preco: 97,
     foto: "/assets/cursos/documents.jpg",
     descricao:
       "Template de projeto pronto para começar um projeto de HVAC do zero: estrutura de pranchas, legendas, tabelas de simbologia e folha de rosto padronizadas. Economize as horas iniciais de configuração e comece direto pelo que importa — o dimensionamento.",
@@ -149,6 +154,7 @@ export const arquivos: Item[] = [
     slug: "planilha-ductulator-hvac",
     titulo: "Planilha Ductulator HVAC",
     valor: "R$ 127",
+    preco: 127,
     foto: "/assets/cursos/ducts.jpg",
     descricao:
       "Planilha de dimensionamento de dutos (método da igual perda de carga / velocidade) pronta para uso. Insira a vazão de ar e as dimensões desejadas e obtenha automaticamente a perda de carga, velocidade e recomendações de ajuste — sem precisar abrir um Ductulator físico.",
@@ -157,6 +163,7 @@ export const arquivos: Item[] = [
     slug: "familias-revit-hvac",
     titulo: "Famílias - Revit - HVAC",
     valor: "R$ 197",
+    preco: 197,
     foto: "/assets/cursos/units.jpg",
     descricao:
       "Biblioteca de famílias Revit para projetos de HVAC: difusores, grelhas, fan-coils, chillers, VRFs e conexões de duto, todas parametrizadas e prontas para inserir no seu modelo. Economize horas de modelagem manual de componentes que você usa em praticamente todo projeto.",
