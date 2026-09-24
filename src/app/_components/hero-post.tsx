@@ -144,7 +144,7 @@ export function HeroPost({ coverImage }: Props) {
 
         {/* LADO DIREITO - IMAGEM PRINCIPAL */}
         <div>
-          <div className="w-full">
+          <div className="w-[85%]">
             <div
               className="relative w-full aspect-[4/5] overflow-hidden bg-hedut-nevoa [mask-image:linear-gradient(to_right,transparent_0%,black_35%,black_92%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_35%,black_92%,transparent_100%)]"
             >
