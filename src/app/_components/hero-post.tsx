@@ -145,7 +145,9 @@ export function HeroPost({ coverImage }: Props) {
         {/* LADO DIREITO - IMAGEM PRINCIPAL */}
         <div>
           <div className="w-[64%] mx-auto md:mx-0">
-            <div className="relative w-full aspect-[4/5] overflow-hidden bg-hedut-nevoa rounded-3xl shadow-[0_30px_60px_rgba(0,0,0,0.18)]">
+            <div
+              className="relative w-full aspect-[4/5] overflow-hidden bg-hedut-nevoa [mask-image:radial-gradient(ellipse_62%_62%_at_center,black_50%,transparent_100%)] [-webkit-mask-image:radial-gradient(ellipse_62%_62%_at_center,black_50%,transparent_100%)]"
+            >
               <Image
                 src={coverImage}
                 alt="Projeto em destaque"
