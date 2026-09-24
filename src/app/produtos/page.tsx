@@ -1,5 +1,6 @@
 import Container from "@/app/_components/container";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 const especialidades = [
   {
     titulo: "Projetos de HVAC",
+    foto: "/assets/produtos/hvac.jpg",
     descricao:
       "Projetos de sistemas de ar-condicionado dimensionados para ambientes comerciais e residenciais, com foco em eficiência energética, conforto térmico e conformidade com as normas técnicas.",
     detalhes:
@@ -21,6 +23,7 @@ const especialidades = [
   },
   {
     titulo: "Projetos de Automação",
+    foto: "/assets/produtos/automacao.jpg",
     descricao:
       "Integração de sensores, controladores e sistemas de supervisão para automatizar o funcionamento dos equipamentos de climatização, reduzindo consumo de energia e permitindo monitoramento remoto.",
     detalhes:
@@ -28,6 +31,7 @@ const especialidades = [
   },
   {
     titulo: "Projetos de Água Gelada (CAG)",
+    foto: "/assets/produtos/agua-gelada.jpg",
     descricao:
       "Projetos de sistemas de água gelada (chillers) para climatização de grandes edificações, contemplando dimensionamento de tubulações, casa de máquinas e integração com fan-coils.",
     detalhes:
@@ -52,8 +56,16 @@ export default function ProdutosPage() {
         <section className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-16 mb-32">
           {especialidades.map((item) => (
             <div key={item.titulo}>
-              <div className="w-full aspect-[4/3] bg-hedut-nevoa border border-hedut-aco/25 flex items-center justify-center font-mono text-hedut-aco text-sm mb-6">
-                Imagem em breve
+              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-6 shadow-[0_15px_30px_rgba(8,25,44,0.2)]">
+                <Image
+                  src={item.foto}
+                  alt={item.titulo}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover saturate-125 brightness-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-hedut-blue/40 to-transparent mix-blend-overlay" />
+                <div className="absolute inset-0 bg-hedut-blue/10" />
               </div>
 
               <h3 className="font-display font-bold text-hedut-abissal text-2xl mb-3 leading-snug">
