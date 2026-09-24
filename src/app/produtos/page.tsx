@@ -17,13 +17,13 @@ const especialidades = [
     titulo: "Projetos de HVAC",
     foto: "/assets/produtos/hvac.jpg",
     descricao:
-      "Projeto técnico de ar-condicionado em 2D e 3D, do cálculo de carga térmica à seleção do sistema — Split, VRF ou self-contained. Documentação executiva completa (plantas, cortes e memorial de cálculo) pronta para obra.",
+      "Projeto técnico de ar-condicionado em 2D e 3D, do cálculo de carga térmica à seleção do sistema mais adequado. Documentação executiva completa (plantas, cortes e memorial de cálculo) pronta para obra.",
   },
   {
     titulo: "Projetos de Automação",
     foto: "/assets/produtos/automacao.jpg",
     descricao:
-      "Projeto 2D e 3D de automação para climatização: integração de sensores, controladores e supervisão (BMS) para reduzir consumo de energia e permitir monitoramento remoto do sistema.",
+      "Projeto 2D e 3D de automação para sistemas de HVAC: integração de sensores, controladores e supervisão (BMS) para reduzir consumo de energia e permitir monitoramento remoto.",
   },
   {
     titulo: "Projetos de Água Gelada (CAG)",
