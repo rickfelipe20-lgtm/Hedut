@@ -47,7 +47,7 @@ const Header = () => {
         </nav>
 
         {/* Ícones sociais */}
-        <div className="order-2 md:order-3 flex flex-col items-end gap-2">
+        <div className="order-2 md:order-3 flex flex-col items-center gap-2">
           <div className="flex gap-3 md:gap-4">
             <a
               href="https://www.instagram.com/hedut.create"
@@ -79,7 +79,7 @@ const Header = () => {
 
           <Link
             href="/ferramentas"
-            className="text-xs md:text-sm font-mono uppercase tracking-wide text-hedut-abissal/70 hover:text-hedut-blue transition"
+            className="text-base md:text-lg font-medium text-hedut-abissal hover:text-hedut-blue transition"
           >
             Ferramentas
           </Link>
