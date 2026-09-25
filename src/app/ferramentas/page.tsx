@@ -19,16 +19,16 @@ const ferramentas = [
       "Calcule a área, velocidade do ar e perda de carga em dutos retangulares e circulares pelo método Darcy-Weisbach.",
   },
   {
-    slug: "estudo-psicrometrico",
-    titulo: "Estudo Psicrométrico",
-    descricao:
-      "Informe duas correntes de ar (temperatura, umidade e vazão) e veja o resultado da mistura na carta psicrométrica, com todos os dados.",
-  },
-  {
     slug: "carga-termica",
     titulo: "Cálculo de Carga Térmica",
     descricao:
       "Envoltória, ocupação, iluminação, equipamentos e ventilação — carga térmica sensível, latente e total com detalhamento por fonte.",
+  },
+  {
+    slug: "estudo-psicrometrico",
+    titulo: "Estudo Psicrométrico",
+    descricao:
+      "Informe duas correntes de ar (temperatura, umidade e vazão) e veja o resultado da mistura na carta psicrométrica, com todos os dados.",
   },
 ];
 
