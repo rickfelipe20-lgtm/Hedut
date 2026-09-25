@@ -15,6 +15,22 @@ const MATERIAIS = [
 const RHO_AR = 1.204; // kg/m³ a 20°C
 const MU_AR = 1.81e-5; // Pa·s a 20°C
 
+const TIPOS_CURVA = [
+  { nome: "90° raio longo (R/D ≥ 1,5)", k: 0.15 },
+  { nome: "90° raio curto (R/D = 1,0)", k: 0.22 },
+  { nome: "90° raio curto (R/D = 0,75)", k: 0.33 },
+  { nome: "90° com pás direcionadoras", k: 0.18 },
+  { nome: "90° em gomos (sem raio)", k: 1.2 },
+  { nome: "45° raio longo", k: 0.09 },
+] as const;
+
+const TIPOS_REDUCAO = [
+  { nome: "Gradual 15°", k: 0.05 },
+  { nome: "Gradual 30°", k: 0.06 },
+  { nome: "Gradual 45°", k: 0.07 },
+  { nome: "Brusca (> 45°)", k: 0.15 },
+] as const;
+
 function inputClass() {
   return "w-full border border-hedut-aco/40 px-4 py-2.5 focus:outline-none focus:border-hedut-blue";
 }
@@ -31,6 +47,10 @@ export function Calculadora() {
   const [altura, setAltura] = useState(200); // mm
   const [comprimento, setComprimento] = useState(10); // m
   const [materialIndex, setMaterialIndex] = useState(0);
+  const [qtdCurvas, setQtdCurvas] = useState(0);
+  const [tipoCurvaIndex, setTipoCurvaIndex] = useState(0);
+  const [qtdReducoes, setQtdReducoes] = useState(0);
+  const [tipoReducaoIndex, setTipoReducaoIndex] = useState(0);
 
   const resultado = useMemo(() => {
     const Q = vazao / 3600; // m³/s
@@ -73,7 +93,16 @@ export function Calculadora() {
     const perdaPorMetro =
       (fatorAtrito * RHO_AR * velocidade ** 2) /
       (2 * diametroHidraulicoM); // Pa/m
-    const perdaTotal = perdaPorMetro * comprimento; // Pa
+    const perdaTrechoReto = perdaPorMetro * comprimento; // Pa
+
+    // Perdas localizadas (acessórios): ΔP = K * pressão dinâmica
+    const pressaoDinamica = (RHO_AR * velocidade ** 2) / 2; // Pa
+    const perdaCurvas =
+      qtdCurvas * TIPOS_CURVA[tipoCurvaIndex].k * pressaoDinamica;
+    const perdaReducoes =
+      qtdReducoes * TIPOS_REDUCAO[tipoReducaoIndex].k * pressaoDinamica;
+    const perdaAcessorios = perdaCurvas + perdaReducoes;
+    const perdaTotal = perdaTrechoReto + perdaAcessorios; // Pa
 
     let faixaVelocidade: "baixa" | "adequada" | "alta";
     if (velocidade < 4) faixaVelocidade = "baixa";
@@ -87,10 +116,24 @@ export function Calculadora() {
       reynolds,
       fatorAtrito,
       perdaPorMetro,
+      perdaTrechoReto,
+      perdaAcessorios,
       perdaTotal,
       faixaVelocidade,
     };
-  }, [tipoDuto, vazao, diametro, largura, altura, comprimento, materialIndex]);
+  }, [
+    tipoDuto,
+    vazao,
+    diametro,
+    largura,
+    altura,
+    comprimento,
+    materialIndex,
+    qtdCurvas,
+    tipoCurvaIndex,
+    qtdReducoes,
+    tipoReducaoIndex,
+  ]);
 
   return (
     <section className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-32">
@@ -196,6 +239,70 @@ export function Calculadora() {
             ))}
           </select>
         </div>
+
+        <div className="pt-6 border-t border-hedut-aco/25">
+          <h3 className="font-display font-bold text-hedut-abissal text-lg mb-4">
+            Curvas e Reduções
+          </h3>
+
+          <div className="space-y-4">
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className={labelClass()}>Quantidade de curvas</label>
+                <input
+                  type="number"
+                  min={0}
+                  value={qtdCurvas}
+                  onChange={(e) => setQtdCurvas(Number(e.target.value))}
+                  className={inputClass()}
+                />
+              </div>
+              <div>
+                <label className={labelClass()}>Tipo de curva</label>
+                <select
+                  value={tipoCurvaIndex}
+                  onChange={(e) => setTipoCurvaIndex(Number(e.target.value))}
+                  className={inputClass()}
+                >
+                  {TIPOS_CURVA.map((c, i) => (
+                    <option key={c.nome} value={i}>
+                      {c.nome}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className={labelClass()}>Quantidade de reduções</label>
+                <input
+                  type="number"
+                  min={0}
+                  value={qtdReducoes}
+                  onChange={(e) => setQtdReducoes(Number(e.target.value))}
+                  className={inputClass()}
+                />
+              </div>
+              <div>
+                <label className={labelClass()}>Tipo / ângulo de redução</label>
+                <select
+                  value={tipoReducaoIndex}
+                  onChange={(e) =>
+                    setTipoReducaoIndex(Number(e.target.value))
+                  }
+                  className={inputClass()}
+                >
+                  {TIPOS_REDUCAO.map((r, i) => (
+                    <option key={r.nome} value={i}>
+                      {r.nome}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* RESULTADOS */}
@@ -272,7 +379,7 @@ export function Calculadora() {
             <div className="grid grid-cols-2 gap-5 pt-5 border-t border-hedut-aco/25">
               <div>
                 <p className="font-mono text-xs tracking-[0.15em] uppercase text-hedut-aco mb-1">
-                  Perda de carga
+                  Perda de carga (trecho reto)
                 </p>
                 <p className="font-medium text-hedut-abissal">
                   {resultado.perdaPorMetro.toFixed(2)} Pa/m
@@ -281,9 +388,27 @@ export function Calculadora() {
 
               <div>
                 <p className="font-mono text-xs tracking-[0.15em] uppercase text-hedut-aco mb-1">
-                  Perda total no trecho
+                  Perda no trecho reto
                 </p>
                 <p className="font-medium text-hedut-abissal">
+                  {resultado.perdaTrechoReto.toFixed(1)} Pa
+                </p>
+              </div>
+
+              <div>
+                <p className="font-mono text-xs tracking-[0.15em] uppercase text-hedut-aco mb-1">
+                  Perda em curvas e reduções
+                </p>
+                <p className="font-medium text-hedut-abissal">
+                  {resultado.perdaAcessorios.toFixed(1)} Pa
+                </p>
+              </div>
+
+              <div>
+                <p className="font-mono text-xs tracking-[0.15em] uppercase text-hedut-aco mb-1">
+                  Perda de carga total
+                </p>
+                <p className="font-display font-bold text-hedut-blue text-lg">
                   {resultado.perdaTotal.toFixed(1)} Pa
                 </p>
               </div>
