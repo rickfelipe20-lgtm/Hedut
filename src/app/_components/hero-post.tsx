@@ -116,7 +116,7 @@ export function HeroPost({ coverImage }: Props) {
               Equipamentos que especificamos
             </span>
 
-            <div className="flex flex-wrap items-center gap-3 mt-4">
+            <div className="grid grid-cols-3 gap-3 mt-4">
               {[
                 { nome: "Daikin", src: "/marcas/daikin.svg" },
                 { nome: "Carrier", src: "/marcas/carrier.svg" },
@@ -128,13 +128,13 @@ export function HeroPost({ coverImage }: Props) {
               ].map((marca) => (
                 <div
                   key={marca.nome}
-                  className="px-5 py-3 bg-white border border-hedut-aco/25 rounded-xl flex items-center justify-center"
+                  className="h-16 px-5 py-3 bg-white border border-hedut-aco/25 rounded-xl flex items-center justify-center"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={marca.src}
                     alt={marca.nome}
-                    className="h-6 w-auto max-w-[100px] object-contain grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition"
+                    className="h-[26.4px] w-auto max-w-full object-contain grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition"
                   />
                 </div>
               ))}
