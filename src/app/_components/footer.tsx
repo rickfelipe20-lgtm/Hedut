@@ -32,7 +32,7 @@ export function Footer() {
 </a>
 
 <a
-  href="https://www.linkedin.com/in/henrique-duarte-a07525156/"
+  href="https://www.linkedin.com/company/hedut/about/?viewAsMember=true"
   target="_blank"
   rel="noopener noreferrer"
   className="w-full max-w-xs sm:w-72 text-center bg-black hover:bg-white hover:text-black border border-black text-white font-bold text-lg py-4 px-12 duration-200 transition-colors"

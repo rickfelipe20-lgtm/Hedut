@@ -69,7 +69,7 @@ const jsonLd = {
   },
   sameAs: [
     "https://www.instagram.com/hedut.create",
-    "https://www.linkedin.com/in/henrique-duarte-a07525156/",
+    "https://www.linkedin.com/company/hedut/about/?viewAsMember=true",
   ],
   makesOffer: [
     {
