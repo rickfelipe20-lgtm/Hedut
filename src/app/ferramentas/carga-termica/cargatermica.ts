@@ -35,6 +35,15 @@ export const GSI_ORIENTACAO: Record<Orientacao, number> = {
   noroeste: 265,
 };
 
+// Irradiância horizontal de referência para a cobertura (W/m²) — pico
+// de radiação global horizontal em dia de céu claro, clima tropical/
+// subtropical brasileiro.
+export const GSI_COBERTURA_HORIZONTAL = 900;
+
+// Coeficiente de película externa (ASHRAE Fundamentals, superfície
+// exterior, vento de verão) usado no cálculo da temperatura sol-ar.
+export const H0_EXTERNO = 22.7; // W/(m²·K)
+
 export const TIPOS_PAREDE = [
   { nome: "Alvenaria simples (tijolo furado)", u: 2.5 },
   { nome: "Bloco de concreto", u: 2.3 },
@@ -58,10 +67,12 @@ export const TIPOS_COBERTURA = [
   { nome: "Cobertura c/ isolamento reforçado", u: 0.6 },
 ] as const;
 
-export const CORES_COBERTURA = [
-  { nome: "Clara", deltaTAdicional: 5 },
-  { nome: "Média", deltaTAdicional: 8 },
-  { nome: "Escura", deltaTAdicional: 12 },
+// Absortância solar (α) por cor de superfície — usada tanto nas
+// paredes quanto na cobertura para o cálculo da temperatura sol-ar.
+export const CORES_SUPERFICIE = [
+  { nome: "Clara", alfa: 0.3 },
+  { nome: "Média", alfa: 0.6 },
+  { nome: "Escura", alfa: 0.9 },
 ] as const;
 
 export const NIVEIS_ATIVIDADE = [
@@ -76,6 +87,7 @@ export type DadosParede = {
   orientacao: Orientacao;
   area: number; // m²
   tipoParedeIndex: number;
+  corIndex: number;
   areaVidro: number; // m²
   tipoVidroIndex: number;
 };
@@ -142,19 +154,26 @@ export function calcularCargaTermica(
   dados.paredes.forEach((p) => {
     const tipoParede = TIPOS_PAREDE[p.tipoParedeIndex];
     const tipoVidro = TIPOS_VIDRO[p.tipoVidroIndex];
+    const corParede = CORES_SUPERFICIE[p.corIndex];
     const areaParedeLiquida = Math.max(0, p.area - p.areaVidro);
+    const gsiFachada = GSI_ORIENTACAO[p.orientacao];
 
-    qParedes += tipoParede.u * areaParedeLiquida * deltaT;
+    // Temperatura sol-ar (ASHRAE): a parede opaca também absorve
+    // radiação solar incidente na fachada, não só a esquadria de
+    // vidro — por isso ela gera carga mesmo sem nenhuma área de vidro.
+    const deltaTeParede = deltaT + (corParede.alfa * gsiFachada) / H0_EXTERNO;
+
+    qParedes += tipoParede.u * areaParedeLiquida * deltaTeParede;
     qVidrosConducao += tipoVidro.u * p.areaVidro * deltaT;
-    qVidrosSolar += p.areaVidro * tipoVidro.fs * GSI_ORIENTACAO[p.orientacao];
+    qVidrosSolar += p.areaVidro * tipoVidro.fs * gsiFachada;
   });
 
   const tipoCobertura = TIPOS_COBERTURA[dados.tipoCoberturaIndex];
-  const corCobertura = CORES_COBERTURA[dados.corCoberturaIndex];
-  const deltaTCobertura = dados.coberturaExposta
-    ? deltaT + corCobertura.deltaTAdicional
+  const corCobertura = CORES_SUPERFICIE[dados.corCoberturaIndex];
+  const deltaTeCobertura = dados.coberturaExposta
+    ? deltaT + (corCobertura.alfa * GSI_COBERTURA_HORIZONTAL) / H0_EXTERNO
     : deltaT;
-  const qCobertura = tipoCobertura.u * dados.areaCobertura * deltaTCobertura;
+  const qCobertura = tipoCobertura.u * dados.areaCobertura * deltaTeCobertura;
 
   const atividade = NIVEIS_ATIVIDADE[dados.atividadeIndex];
   const qPessoasSensivel = dados.numPessoas * atividade.sensivel;
@@ -219,6 +238,7 @@ export function fachadaPadrao(
     orientacao,
     area: 0,
     tipoParedeIndex: 0,
+    corIndex: 0,
     areaVidro: 0,
     tipoVidroIndex: 0,
   };

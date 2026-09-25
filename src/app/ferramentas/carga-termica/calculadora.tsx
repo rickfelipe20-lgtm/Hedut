@@ -6,7 +6,7 @@ import {
   TIPOS_PAREDE,
   TIPOS_VIDRO,
   TIPOS_COBERTURA,
-  CORES_COBERTURA,
+  CORES_SUPERFICIE,
   NIVEIS_ATIVIDADE,
   calcularCargaTermica,
   fachadaPadrao,
@@ -127,7 +127,7 @@ function CardFachada({
           />
         </div>
       </div>
-      <div className="grid grid-cols-1 gap-3">
+      <div className="grid grid-cols-2 gap-3 mb-3">
         <div>
           <label className={labelClass()}>Tipo de parede</label>
           <select
@@ -144,6 +144,22 @@ function CardFachada({
             ))}
           </select>
         </div>
+        <div>
+          <label className={labelClass()}>Cor da parede</label>
+          <select
+            value={dados.corIndex}
+            onChange={(e) => onChange({ corIndex: Number(e.target.value) })}
+            className={inputClass()}
+          >
+            {CORES_SUPERFICIE.map((c, i) => (
+              <option key={c.nome} value={i}>
+                {c.nome} (α={c.alfa})
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 gap-3">
         <div>
           <label className={labelClass()}>Tipo de vidro</label>
           <select
@@ -590,9 +606,9 @@ export function Calculadora() {
                   className={inputClass()}
                   disabled={!coberturaExposta}
                 >
-                  {CORES_COBERTURA.map((c, i) => (
+                  {CORES_SUPERFICIE.map((c, i) => (
                     <option key={c.nome} value={i}>
-                      {c.nome} (+{c.deltaTAdicional}°C)
+                      {c.nome} (α={c.alfa})
                     </option>
                   ))}
                 </select>
@@ -768,7 +784,10 @@ export function Calculadora() {
               <h3 className="font-display font-bold text-hedut-abissal text-lg mb-4">
                 Detalhamento
               </h3>
-              {linhaResultado("Paredes (condução)", resultado.detalhamento.paredes)}
+              {linhaResultado(
+                "Paredes (condução + sol-ar)",
+                resultado.detalhamento.paredes
+              )}
               {linhaResultado(
                 "Vidros (condução)",
                 resultado.detalhamento.vidrosConducao
@@ -805,13 +824,18 @@ export function Calculadora() {
       </div>
 
       <p className="font-mono text-xs text-hedut-abissal/50 mt-8 leading-relaxed max-w-3xl">
-        Cálculo pelo método simplificado (condução por U×A×ΔT, ganho solar em
-        vidros por orientação com valores médios de referência para clima
-        tropical/subtropical, ganhos internos por tabela ASHRAE de ocupação e
-        ventilação calculada via propriedades psicrométricas reais). Não
-        substitui o método detalhado CLTD/RTS da ASHRAE para projetos que
-        exigam essa precisão. Resultado de referência — valide com as normas
-        do seu projeto antes de especificar.
+        Cálculo pelo método simplificado: condução em paredes e cobertura
+        usando a temperatura sol-ar (ASHRAE) — considera não só a diferença
+        de temperatura, mas também a radiação solar absorvida pela própria
+        superfície opaca, conforme a orientação e a cor —, ganho solar em
+        vidros por orientação com valores de irradiância de referência para
+        clima tropical/subtropical, ganhos internos por tabela ASHRAE de
+        ocupação e ventilação calculada via propriedades psicrométricas
+        reais. Não substitui o método detalhado CLTD/RTS da ASHRAE (usado
+        por softwares como o HAP) para projetos que exigam essa precisão,
+        pois não considera a inércia térmica das superfícies nem a variação
+        horária do calor acumulado. Resultado de referência — valide com as
+        normas do seu projeto antes de especificar.
       </p>
     </div>
   );
