@@ -47,7 +47,7 @@ const Header = () => {
         </nav>
 
         {/* Ícones sociais */}
-        <div className="order-2 md:order-3 flex flex-col items-center gap-2">
+        <div className="order-2 md:order-3 flex flex-col items-center gap-4 md:gap-5">
           <div className="flex gap-3 md:gap-4">
             <a
               href="https://www.instagram.com/hedut.create"
