@@ -19,6 +19,7 @@ const TIPOS_CURVA = [
   { nome: "90° raio longo (R/D ≥ 1,5)", k: 0.15 },
   { nome: "90° raio curto (R/D = 1,0)", k: 0.22 },
   { nome: "90° raio curto (R/D = 0,75)", k: 0.33 },
+  { nome: "90° raio curto (R/D ≥ 0,5)", k: 0.5 },
   { nome: "90° com pás direcionadoras", k: 0.18 },
   { nome: "90° em gomos (sem raio)", k: 1.2 },
   { nome: "45° raio longo", k: 0.09 },
@@ -359,88 +360,83 @@ export function Calculadora() {
                     </select>
                   </div>
 
-                  <div className="pt-5 border-t border-hedut-aco/25">
-                    <p className="font-mono text-sm font-medium text-hedut-abissal mb-4">
-                      Curvas e Reduções neste trecho
+                  <div className="pt-4 border-t border-hedut-aco/25">
+                    <p className="font-mono text-xs tracking-[0.1em] uppercase text-hedut-aco mb-3">
+                      Curvas e reduções neste trecho
                     </p>
 
-                    <div className="space-y-4">
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <label className={labelClass()}>
-                            Quantidade de curvas
-                          </label>
-                          <input
-                            type="number"
-                            min={0}
-                            value={trecho.qtdCurvas}
-                            onChange={(e) =>
-                              atualizarTrecho(trecho.id, {
-                                qtdCurvas: Number(e.target.value),
-                              })
-                            }
-                            className={inputClass()}
-                          />
-                        </div>
-                        <div>
-                          <label className={labelClass()}>
-                            Tipo de curva
-                          </label>
-                          <select
-                            value={trecho.tipoCurvaIndex}
-                            onChange={(e) =>
-                              atualizarTrecho(trecho.id, {
-                                tipoCurvaIndex: Number(e.target.value),
-                              })
-                            }
-                            className={inputClass()}
-                          >
-                            {TIPOS_CURVA.map((c, i) => (
-                              <option key={c.nome} value={i}>
-                                {c.nome}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                      <div>
+                        <label className="block font-mono text-xs text-hedut-abissal/60 mb-1">
+                          Qtd. curvas
+                        </label>
+                        <input
+                          type="number"
+                          min={0}
+                          value={trecho.qtdCurvas}
+                          onChange={(e) =>
+                            atualizarTrecho(trecho.id, {
+                              qtdCurvas: Number(e.target.value),
+                            })
+                          }
+                          className="w-full border border-hedut-aco/40 px-3 py-2 text-sm focus:outline-none focus:border-hedut-blue"
+                        />
                       </div>
-
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <label className={labelClass()}>
-                            Quantidade de reduções
-                          </label>
-                          <input
-                            type="number"
-                            min={0}
-                            value={trecho.qtdReducoes}
-                            onChange={(e) =>
-                              atualizarTrecho(trecho.id, {
-                                qtdReducoes: Number(e.target.value),
-                              })
-                            }
-                            className={inputClass()}
-                          />
-                        </div>
-                        <div>
-                          <label className={labelClass()}>
-                            Tipo / ângulo de redução
-                          </label>
-                          <select
-                            value={trecho.tipoReducaoIndex}
-                            onChange={(e) =>
-                              atualizarTrecho(trecho.id, {
-                                tipoReducaoIndex: Number(e.target.value),
-                              })
-                            }
-                            className={inputClass()}
-                          >
-                            {TIPOS_REDUCAO.map((r, i) => (
-                              <option key={r.nome} value={i}>
-                                {r.nome}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
+                      <div>
+                        <label className="block font-mono text-xs text-hedut-abissal/60 mb-1">
+                          Tipo de curva
+                        </label>
+                        <select
+                          value={trecho.tipoCurvaIndex}
+                          onChange={(e) =>
+                            atualizarTrecho(trecho.id, {
+                              tipoCurvaIndex: Number(e.target.value),
+                            })
+                          }
+                          className="w-full border border-hedut-aco/40 px-2 py-2 text-sm focus:outline-none focus:border-hedut-blue"
+                        >
+                          {TIPOS_CURVA.map((c, i) => (
+                            <option key={c.nome} value={i}>
+                              {c.nome}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      <div>
+                        <label className="block font-mono text-xs text-hedut-abissal/60 mb-1">
+                          Qtd. reduções
+                        </label>
+                        <input
+                          type="number"
+                          min={0}
+                          value={trecho.qtdReducoes}
+                          onChange={(e) =>
+                            atualizarTrecho(trecho.id, {
+                              qtdReducoes: Number(e.target.value),
+                            })
+                          }
+                          className="w-full border border-hedut-aco/40 px-3 py-2 text-sm focus:outline-none focus:border-hedut-blue"
+                        />
+                      </div>
+                      <div>
+                        <label className="block font-mono text-xs text-hedut-abissal/60 mb-1">
+                          Ângulo de redução
+                        </label>
+                        <select
+                          value={trecho.tipoReducaoIndex}
+                          onChange={(e) =>
+                            atualizarTrecho(trecho.id, {
+                              tipoReducaoIndex: Number(e.target.value),
+                            })
+                          }
+                          className="w-full border border-hedut-aco/40 px-2 py-2 text-sm focus:outline-none focus:border-hedut-blue"
+                        >
+                          {TIPOS_REDUCAO.map((r, i) => (
+                            <option key={r.nome} value={i}>
+                              {r.nome}
+                            </option>
+                          ))}
+                        </select>
                       </div>
                     </div>
                   </div>
