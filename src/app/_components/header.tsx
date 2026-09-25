@@ -79,7 +79,7 @@ const Header = () => {
 
           <Link
             href="/ferramentas"
-            className="text-base md:text-lg font-medium text-hedut-abissal hover:text-hedut-blue transition"
+            className="text-sm md:text-base font-semibold text-white bg-hedut-blue px-4 py-1.5 md:px-5 md:py-2 rounded-full shadow-[0_0_0_rgba(11,74,128,0)] hover:shadow-[0_0_22px_rgba(11,74,128,0.7)] hover:brightness-110 hover:scale-105 transition-all duration-300"
           >
             Ferramentas
           </Link>
