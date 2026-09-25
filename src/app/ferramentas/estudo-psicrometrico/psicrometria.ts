@@ -35,15 +35,32 @@ function bulboUmido(tdb: number, w: number, p: number): number {
   let hi = tdb;
   for (let i = 0; i < 60; i++) {
     const mid = (lo + hi) / 2;
-    const psatMid = pressaoSaturacao(mid);
-    const wsatMid = (0.622 * psatMid) / (p - psatMid);
-    const wCalc =
-      ((2501 - 2.326 * mid) * wsatMid - 1.006 * (tdb - mid)) /
-      (2501 + 1.86 * tdb - 4.186 * mid);
+    const wCalc = umidadeParaBulboUmido(tdb, mid, p);
     if (wCalc < w) lo = mid;
     else hi = mid;
   }
   return (lo + hi) / 2;
+}
+
+// Umidade absoluta (kg/kg) para um par (Tbs, Tbu) — relação psicrométrica
+// direta da ASHRAE, usada para traçar linhas de bulbo úmido constante.
+export function umidadeParaBulboUmido(
+  tdb: number,
+  twb: number,
+  p: number = P_ATM
+): number {
+  const psatTwb = pressaoSaturacao(twb);
+  const wsatTwb = (0.622 * psatTwb) / (p - psatTwb);
+  return (
+    ((2501 - 2.326 * twb) * wsatTwb - 1.006 * (tdb - twb)) /
+    (2501 + 1.86 * tdb - 4.186 * twb)
+  );
+}
+
+// Umidade absoluta (kg/kg) para um par (Tbs, entalpia h em kJ/kg) — usada
+// para traçar linhas de entalpia constante.
+export function umidadeParaEntalpia(tdb: number, h: number): number {
+  return (h - 1.006 * tdb) / (2501 + 1.86 * tdb);
 }
 
 // Calcula todas as propriedades psicrométricas a partir de Tbs e UR.

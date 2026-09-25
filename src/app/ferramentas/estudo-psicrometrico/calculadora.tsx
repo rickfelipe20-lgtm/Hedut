@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { calcularEstado, misturarAr, type EstadoAr } from "./psicrometria";
 import { CartaPsicrometrica } from "./grafico";
+import { gerarMemorialPsicrometricoPDF } from "./gerar-pdf";
 
 function inputClass() {
   return "w-full border border-hedut-aco/40 px-4 py-2.5 focus:outline-none focus:border-hedut-blue";
@@ -136,6 +137,10 @@ export function Calculadora() {
     [ar1, vazao1, ar2, vazao2]
   );
 
+  function handleBaixarPDF() {
+    gerarMemorialPsicrometricoPDF(ar1, vazao1, ar2, vazao2, mistura);
+  }
+
   return (
     <div className="mb-32">
       {/* AR 1 e AR 2 */}
@@ -164,9 +169,18 @@ export function Calculadora() {
 
       {/* RESULTADO DA MISTURA */}
       <div className="bg-hedut-abissal text-white rounded-2xl p-8 mb-10">
-        <p className="font-mono text-xs tracking-[0.15em] uppercase text-white/60 mb-2">
-          Ar Misturado — Resultado ({mistura.vazaoTotal.toFixed(0)} m³/h)
-        </p>
+        <div className="flex flex-wrap items-start justify-between gap-4 mb-2">
+          <p className="font-mono text-xs tracking-[0.15em] uppercase text-white/60">
+            Ar Misturado — Resultado ({mistura.vazaoTotal.toFixed(0)} m³/h)
+          </p>
+          <button
+            type="button"
+            onClick={handleBaixarPDF}
+            className="whitespace-nowrap bg-white text-hedut-abissal font-bold py-2.5 px-6 text-sm hover:bg-hedut-nevoa transition"
+          >
+            Baixar PDF
+          </button>
+        </div>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
           <div>
             <p className="text-white/60 text-xs mb-1">Bulbo seco</p>
@@ -204,9 +218,11 @@ export function Calculadora() {
           <CartaPsicrometrica ar1={ar1} ar2={ar2} mistura={mistura} />
           <p className="font-mono text-xs text-hedut-abissal/50 mt-4 leading-relaxed">
             Carta simplificada (eixos ortogonais), com curvas de umidade
-            relativa de 10% a 100%. A linha tracejada liga Ar 1 e Ar 2; o
-            ponto da mistura se aproxima dessa reta conforme as vazões se
-            equilibram.
+            relativa de 10% a 100%, linhas de bulbo úmido e de entalpia
+            constantes (ver legenda no canto do gráfico). A escala se ajusta
+            automaticamente aos pontos plotados. A linha tracejada liga Ar 1
+            e Ar 2; o ponto da mistura se aproxima dessa reta conforme as
+            vazões se equilibram.
           </p>
         </div>
 
