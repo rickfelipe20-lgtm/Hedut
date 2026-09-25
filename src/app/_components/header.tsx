@@ -47,33 +47,42 @@ const Header = () => {
         </nav>
 
         {/* Ícones sociais */}
-        <div className="order-2 md:order-3 flex gap-3 md:gap-4">
-          <a
-            href="https://www.instagram.com/hedut.create"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-10 h-10 md:w-16 md:h-16 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-white hover:border-hedut-blue/40 transition"
-          >
-            <FaInstagram className="text-[18px] md:text-[28px]" />
-          </a>
+        <div className="order-2 md:order-3 flex flex-col items-end gap-2">
+          <div className="flex gap-3 md:gap-4">
+            <a
+              href="https://www.instagram.com/hedut.create"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 md:w-16 md:h-16 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-white hover:border-hedut-blue/40 transition"
+            >
+              <FaInstagram className="text-[18px] md:text-[28px]" />
+            </a>
 
-          <a
-            href="https://wa.me/5515991610562"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-10 h-10 md:w-16 md:h-16 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-white hover:border-hedut-blue/40 transition"
-          >
-            <FaWhatsapp className="text-[18px] md:text-[28px]" />
-          </a>
+            <a
+              href="https://wa.me/5515991610562"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 md:w-16 md:h-16 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-white hover:border-hedut-blue/40 transition"
+            >
+              <FaWhatsapp className="text-[18px] md:text-[28px]" />
+            </a>
 
-          <a
-            href="https://www.linkedin.com/in/henrique-duarte-a07525156/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-10 h-10 md:w-16 md:h-16 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-white hover:border-hedut-blue/40 transition"
+            <a
+              href="https://www.linkedin.com/in/henrique-duarte-a07525156/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 md:w-16 md:h-16 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-white hover:border-hedut-blue/40 transition"
+            >
+              <FaLinkedinIn className="text-[18px] md:text-[28px]" />
+            </a>
+          </div>
+
+          <Link
+            href="/ferramentas"
+            className="text-xs md:text-sm font-mono uppercase tracking-wide text-hedut-abissal/70 hover:text-hedut-blue transition"
           >
-            <FaLinkedinIn className="text-[18px] md:text-[28px]" />
-          </a>
+            Ferramentas
+          </Link>
         </div>
 
       </div>
