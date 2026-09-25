@@ -26,7 +26,7 @@ function labelClass() {
 function Secao({
   titulo,
   children,
-  padraoAberta = true,
+  padraoAberta = false,
 }: {
   titulo: string;
   children: React.ReactNode;
@@ -171,12 +171,12 @@ function linhaResultado(label: string, valorW: number) {
 }
 
 export function Calculadora() {
-  const [areaPiso, setAreaPiso] = useState(50);
-  const [peDireito, setPeDireito] = useState(2.8);
-  const [tempExterna, setTempExterna] = useState(35);
-  const [tempInterna, setTempInterna] = useState(24);
-  const [urExterna, setUrExterna] = useState(60);
-  const [urInterna, setUrInterna] = useState(50);
+  const [areaPiso, setAreaPiso] = useState(0);
+  const [peDireito, setPeDireito] = useState(0);
+  const [tempExterna, setTempExterna] = useState(0);
+  const [tempInterna, setTempInterna] = useState(0);
+  const [urExterna, setUrExterna] = useState(0);
+  const [urInterna, setUrInterna] = useState(0);
 
   const [paredes, setParedes] = useState<DadosParede[]>([fachadaPadrao(1)]);
   const proximoIdParede = useRef(2);
@@ -186,13 +186,13 @@ export function Calculadora() {
   const [corCoberturaIndex, setCorCoberturaIndex] = useState(0);
   const [coberturaExposta, setCoberturaExposta] = useState(false);
 
-  const [numPessoas, setNumPessoas] = useState(10);
+  const [numPessoas, setNumPessoas] = useState(0);
   const [atividadeIndex, setAtividadeIndex] = useState(1);
-  const [potenciaIluminacao, setPotenciaIluminacao] = useState(1000);
-  const [potenciaEquipamentos, setPotenciaEquipamentos] = useState(2000);
+  const [potenciaIluminacao, setPotenciaIluminacao] = useState(0);
+  const [potenciaEquipamentos, setPotenciaEquipamentos] = useState(0);
 
-  const [vazaoRenovacao, setVazaoRenovacao] = useState(300);
-  const [fatorSeguranca, setFatorSeguranca] = useState(10);
+  const [vazaoRenovacao, setVazaoRenovacao] = useState(0);
+  const [fatorSeguranca, setFatorSeguranca] = useState(0);
 
   function atualizarFachada(id: number, patch: Partial<DadosParede>) {
     setParedes((atual) =>

@@ -217,9 +217,9 @@ export function fachadaPadrao(
   return {
     id,
     orientacao,
-    area: 20,
+    area: 0,
     tipoParedeIndex: 0,
-    areaVidro: 4,
+    areaVidro: 0,
     tipoVidroIndex: 0,
   };
 }
