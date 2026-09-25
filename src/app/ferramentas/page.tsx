@@ -24,6 +24,12 @@ const ferramentas = [
     descricao:
       "Informe duas correntes de ar (temperatura, umidade e vazão) e veja o resultado da mistura na carta psicrométrica, com todos os dados.",
   },
+  {
+    slug: "carga-termica",
+    titulo: "Cálculo de Carga Térmica",
+    descricao:
+      "Envoltória, ocupação, iluminação, equipamentos e ventilação — carga térmica sensível, latente e total com detalhamento por fonte.",
+  },
 ];
 
 export default function FerramentasPage() {
