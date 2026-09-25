@@ -125,6 +125,8 @@ export function HeroPost({ coverImage }: Props) {
                 { nome: "Trox", src: "/marcas/trox.svg" },
                 { nome: "Samsung", src: "/marcas/samsung.svg" },
                 { nome: "Trane", src: "/marcas/trane.svg" },
+                { nome: "Sicflux", src: "/marcas/sicflux.png" },
+                { nome: "Projelmec", src: "/marcas/projelmec.png" },
               ].map((marca) => (
                 <div
                   key={marca.nome}
