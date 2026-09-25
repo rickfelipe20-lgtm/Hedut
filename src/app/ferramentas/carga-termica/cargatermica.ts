@@ -1,21 +1,38 @@
 import { calcularEstado } from "@/app/ferramentas/estudo-psicrometrico/psicrometria";
 
-export type Orientacao = "norte" | "sul" | "leste" | "oeste";
+export type Orientacao =
+  | "norte"
+  | "nordeste"
+  | "leste"
+  | "sudeste"
+  | "sul"
+  | "sudoeste"
+  | "oeste"
+  | "noroeste";
 
 export const ORIENTACOES: { chave: Orientacao; nome: string }[] = [
-  { chave: "norte", nome: "Norte" },
-  { chave: "sul", nome: "Sul" },
-  { chave: "leste", nome: "Leste" },
-  { chave: "oeste", nome: "Oeste" },
+  { chave: "norte", nome: "Norte (N)" },
+  { chave: "nordeste", nome: "Nordeste (NE)" },
+  { chave: "leste", nome: "Leste (L)" },
+  { chave: "sudeste", nome: "Sudeste (SE)" },
+  { chave: "sul", nome: "Sul (S)" },
+  { chave: "sudoeste", nome: "Sudoeste (SO)" },
+  { chave: "oeste", nome: "Oeste (O)" },
+  { chave: "noroeste", nome: "Noroeste (NO)" },
 ];
 
 // Ganho solar instantâneo médio de referência por orientação (W/m²)
-// — valores médios para clima tropical/subtropical brasileiro.
+// — valores médios para clima tropical/subtropical brasileiro; as
+// orientações intermediárias usam a média das duas cardeais vizinhas.
 export const GSI_ORIENTACAO: Record<Orientacao, number> = {
   norte: 130,
-  sul: 80,
+  nordeste: 265,
   leste: 400,
+  sudeste: 240,
+  sul: 80,
+  sudoeste: 240,
   oeste: 400,
+  noroeste: 265,
 };
 
 export const TIPOS_PAREDE = [
@@ -55,6 +72,8 @@ export const NIVEIS_ATIVIDADE = [
 ] as const;
 
 export type DadosParede = {
+  id: number;
+  orientacao: Orientacao;
   area: number; // m²
   tipoParedeIndex: number;
   areaVidro: number; // m²
@@ -69,7 +88,7 @@ export type EntradaCargaTermica = {
   urExterna: number;
   urInterna: number;
 
-  paredes: Record<Orientacao, DadosParede>;
+  paredes: DadosParede[];
 
   areaCobertura: number;
   tipoCoberturaIndex: number;
@@ -120,15 +139,14 @@ export function calcularCargaTermica(
   let qVidrosConducao = 0;
   let qVidrosSolar = 0;
 
-  ORIENTACOES.forEach(({ chave }) => {
-    const p = dados.paredes[chave];
+  dados.paredes.forEach((p) => {
     const tipoParede = TIPOS_PAREDE[p.tipoParedeIndex];
     const tipoVidro = TIPOS_VIDRO[p.tipoVidroIndex];
     const areaParedeLiquida = Math.max(0, p.area - p.areaVidro);
 
     qParedes += tipoParede.u * areaParedeLiquida * deltaT;
     qVidrosConducao += tipoVidro.u * p.areaVidro * deltaT;
-    qVidrosSolar += p.areaVidro * tipoVidro.fs * GSI_ORIENTACAO[chave];
+    qVidrosSolar += p.areaVidro * tipoVidro.fs * GSI_ORIENTACAO[p.orientacao];
   });
 
   const tipoCobertura = TIPOS_COBERTURA[dados.tipoCoberturaIndex];
@@ -192,6 +210,16 @@ export function calcularCargaTermica(
   };
 }
 
-export function trechoParedePadrao(): DadosParede {
-  return { area: 20, tipoParedeIndex: 0, areaVidro: 4, tipoVidroIndex: 0 };
+export function fachadaPadrao(
+  id: number,
+  orientacao: Orientacao = "norte"
+): DadosParede {
+  return {
+    id,
+    orientacao,
+    area: 20,
+    tipoParedeIndex: 0,
+    areaVidro: 4,
+    tipoVidroIndex: 0,
+  };
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import {
   ORIENTACOES,
   TIPOS_PAREDE,
@@ -9,7 +9,7 @@ import {
   CORES_COBERTURA,
   NIVEIS_ATIVIDADE,
   calcularCargaTermica,
-  trechoParedePadrao,
+  fachadaPadrao,
   type Orientacao,
   type DadosParede,
   type EntradaCargaTermica,
@@ -26,34 +26,79 @@ function labelClass() {
 function Secao({
   titulo,
   children,
+  padraoAberta = true,
 }: {
   titulo: string;
   children: React.ReactNode;
+  padraoAberta?: boolean;
 }) {
+  const [aberta, setAberta] = useState(padraoAberta);
   return (
     <div className="border border-hedut-aco/25 rounded-2xl p-6 mb-6">
-      <h3 className="font-display font-bold text-hedut-abissal text-xl mb-5">
-        {titulo}
-      </h3>
-      {children}
+      <button
+        type="button"
+        onClick={() => setAberta((v) => !v)}
+        className="w-full flex items-center justify-between gap-4 text-left"
+        aria-expanded={aberta}
+      >
+        <h3 className="font-display font-bold text-hedut-abissal text-xl">
+          {titulo}
+        </h3>
+        <svg
+          viewBox="0 0 20 20"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={2}
+          className={`w-5 h-5 shrink-0 text-hedut-abissal/50 transition-transform ${
+            aberta ? "rotate-180" : ""
+          }`}
+        >
+          <path d="M5 7.5 10 12.5 15 7.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+      {aberta && <div className="mt-5">{children}</div>}
     </div>
   );
 }
 
-function CardOrientacao({
-  nome,
+function CardFachada({
   dados,
   onChange,
+  onRemover,
+  podeRemover,
 }: {
-  nome: string;
   dados: DadosParede;
   onChange: (patch: Partial<DadosParede>) => void;
+  onRemover: () => void;
+  podeRemover: boolean;
 }) {
   return (
     <div className="border border-hedut-aco/20 rounded-xl p-4">
-      <p className="font-mono text-xs tracking-[0.15em] uppercase text-hedut-blue mb-3">
-        {nome}
-      </p>
+      <div className="flex items-center justify-between gap-3 mb-3">
+        <select
+          value={dados.orientacao}
+          onChange={(e) =>
+            onChange({ orientacao: e.target.value as Orientacao })
+          }
+          className="font-mono text-xs tracking-[0.12em] uppercase text-hedut-blue border border-hedut-aco/30 px-2 py-1 bg-transparent focus:outline-none focus:border-hedut-blue"
+        >
+          {ORIENTACOES.map((o) => (
+            <option key={o.chave} value={o.chave}>
+              {o.nome}
+            </option>
+          ))}
+        </select>
+        {podeRemover && (
+          <button
+            type="button"
+            onClick={onRemover}
+            aria-label="Remover fachada"
+            className="text-hedut-abissal/40 hover:text-red-600 transition text-lg leading-none px-1"
+          >
+            ×
+          </button>
+        )}
+      </div>
       <div className="grid grid-cols-2 gap-3 mb-3">
         <div>
           <label className={labelClass()}>Área de parede (m²)</label>
@@ -133,12 +178,8 @@ export function Calculadora() {
   const [urExterna, setUrExterna] = useState(60);
   const [urInterna, setUrInterna] = useState(50);
 
-  const [paredes, setParedes] = useState<Record<Orientacao, DadosParede>>({
-    norte: trechoParedePadrao(),
-    sul: trechoParedePadrao(),
-    leste: trechoParedePadrao(),
-    oeste: trechoParedePadrao(),
-  });
+  const [paredes, setParedes] = useState<DadosParede[]>([fachadaPadrao(1)]);
+  const proximoIdParede = useRef(2);
 
   const [areaCobertura, setAreaCobertura] = useState(0);
   const [tipoCoberturaIndex, setTipoCoberturaIndex] = useState(0);
@@ -153,11 +194,22 @@ export function Calculadora() {
   const [vazaoRenovacao, setVazaoRenovacao] = useState(300);
   const [fatorSeguranca, setFatorSeguranca] = useState(10);
 
-  function atualizarParede(orientacao: Orientacao, patch: Partial<DadosParede>) {
-    setParedes((atual) => ({
-      ...atual,
-      [orientacao]: { ...atual[orientacao], ...patch },
-    }));
+  function atualizarFachada(id: number, patch: Partial<DadosParede>) {
+    setParedes((atual) =>
+      atual.map((p) => (p.id === id ? { ...p, ...patch } : p))
+    );
+  }
+
+  function adicionarFachada() {
+    const nova = fachadaPadrao(proximoIdParede.current);
+    proximoIdParede.current += 1;
+    setParedes((atual) => [...atual, nova]);
+  }
+
+  function removerFachada(id: number) {
+    setParedes((atual) =>
+      atual.length > 1 ? atual.filter((p) => p.id !== id) : atual
+    );
   }
 
   const entrada: EntradaCargaTermica = useMemo(
@@ -279,16 +331,24 @@ export function Calculadora() {
           </Secao>
 
           <Secao titulo="Paredes e Vidros por Orientação">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {ORIENTACOES.map(({ chave, nome }) => (
-                <CardOrientacao
-                  key={chave}
-                  nome={nome}
-                  dados={paredes[chave]}
-                  onChange={(patch) => atualizarParede(chave, patch)}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              {paredes.map((p) => (
+                <CardFachada
+                  key={p.id}
+                  dados={p}
+                  onChange={(patch) => atualizarFachada(p.id, patch)}
+                  onRemover={() => removerFachada(p.id)}
+                  podeRemover={paredes.length > 1}
                 />
               ))}
             </div>
+            <button
+              type="button"
+              onClick={adicionarFachada}
+              className="font-mono text-xs uppercase tracking-wide text-hedut-blue border border-hedut-blue/40 px-4 py-2 rounded-full hover:bg-hedut-blue hover:text-white transition"
+            >
+              + Adicionar fachada
+            </button>
           </Secao>
 
           <Secao titulo="Cobertura">
