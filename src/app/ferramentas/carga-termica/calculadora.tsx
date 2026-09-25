@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ORIENTACOES,
   TIPOS_PAREDE,
@@ -14,6 +14,12 @@ import {
   type DadosParede,
   type EntradaCargaTermica,
 } from "./cargatermica";
+import {
+  carregarAmbientes,
+  salvarAmbientesStorage,
+  gerarId,
+  type AmbienteSalvo,
+} from "./ambientes";
 
 function inputClass() {
   return "w-full border border-hedut-aco/40 px-3 py-2 text-sm focus:outline-none focus:border-hedut-blue";
@@ -194,6 +200,106 @@ export function Calculadora() {
   const [vazaoRenovacao, setVazaoRenovacao] = useState(0);
   const [fatorSeguranca, setFatorSeguranca] = useState(0);
 
+  const [ambientes, setAmbientes] = useState<AmbienteSalvo[]>([]);
+  const [ambienteCarregadoId, setAmbienteCarregadoId] = useState<
+    string | null
+  >(null);
+  const [nomeAmbiente, setNomeAmbiente] = useState("");
+  const carregouStorage = useRef(false);
+
+  useEffect(() => {
+    setAmbientes(carregarAmbientes());
+    carregouStorage.current = true;
+  }, []);
+
+  useEffect(() => {
+    if (!carregouStorage.current) return;
+    salvarAmbientesStorage(ambientes);
+  }, [ambientes]);
+
+  function aplicarEntrada(dados: EntradaCargaTermica) {
+    setAreaPiso(dados.areaPiso);
+    setPeDireito(dados.peDireito);
+    setTempExterna(dados.tempExterna);
+    setTempInterna(dados.tempInterna);
+    setUrExterna(dados.urExterna);
+    setUrInterna(dados.urInterna);
+    const paredesCopia = dados.paredes.map((p) => ({ ...p }));
+    setParedes(paredesCopia);
+    proximoIdParede.current =
+      Math.max(0, ...paredesCopia.map((p) => p.id)) + 1;
+    setAreaCobertura(dados.areaCobertura);
+    setTipoCoberturaIndex(dados.tipoCoberturaIndex);
+    setCorCoberturaIndex(dados.corCoberturaIndex);
+    setCoberturaExposta(dados.coberturaExposta);
+    setNumPessoas(dados.numPessoas);
+    setAtividadeIndex(dados.atividadeIndex);
+    setPotenciaIluminacao(dados.potenciaIluminacao);
+    setPotenciaEquipamentos(dados.potenciaEquipamentos);
+    setVazaoRenovacao(dados.vazaoRenovacao);
+    setFatorSeguranca(dados.fatorSeguranca);
+  }
+
+  function handleCarregarAmbiente(ambiente: AmbienteSalvo) {
+    aplicarEntrada(ambiente.entrada);
+    setAmbienteCarregadoId(ambiente.id);
+    setNomeAmbiente(ambiente.nome);
+  }
+
+  function handleNovoAmbiente() {
+    aplicarEntrada({
+      areaPiso: 0,
+      peDireito: 0,
+      tempExterna: 0,
+      tempInterna: 0,
+      urExterna: 0,
+      urInterna: 0,
+      paredes: [fachadaPadrao(1)],
+      areaCobertura: 0,
+      tipoCoberturaIndex: 0,
+      corCoberturaIndex: 0,
+      coberturaExposta: false,
+      numPessoas: 0,
+      atividadeIndex: 1,
+      potenciaIluminacao: 0,
+      potenciaEquipamentos: 0,
+      vazaoRenovacao: 0,
+      fatorSeguranca: 0,
+    });
+    setAmbienteCarregadoId(null);
+    setNomeAmbiente("");
+  }
+
+  function handleExcluirAmbiente(id: string) {
+    setAmbientes((atual) => atual.filter((a) => a.id !== id));
+    if (ambienteCarregadoId === id) setAmbienteCarregadoId(null);
+  }
+
+  function handleSalvarAmbiente() {
+    const nome = nomeAmbiente.trim();
+    if (!nome) return;
+    const agora = Date.now();
+    if (ambienteCarregadoId) {
+      setAmbientes((atual) =>
+        atual.map((a) =>
+          a.id === ambienteCarregadoId
+            ? { ...a, nome, entrada, atualizadoEm: agora }
+            : a
+        )
+      );
+    } else {
+      const novo: AmbienteSalvo = {
+        id: gerarId(),
+        nome,
+        criadoEm: agora,
+        atualizadoEm: agora,
+        entrada,
+      };
+      setAmbientes((atual) => [...atual, novo]);
+      setAmbienteCarregadoId(novo.id);
+    }
+  }
+
   function atualizarFachada(id: number, patch: Partial<DadosParede>) {
     setParedes((atual) =>
       atual.map((p) => (p.id === id ? { ...p, ...patch } : p))
@@ -255,8 +361,93 @@ export function Calculadora() {
 
   const resultado = useMemo(() => calcularCargaTermica(entrada), [entrada]);
 
+  const resumoAmbientes = useMemo(
+    () =>
+      ambientes.map((a) => ({
+        ambiente: a,
+        resultado: calcularCargaTermica(a.entrada),
+      })),
+    [ambientes]
+  );
+
+  const somaTotalAmbientes = useMemo(
+    () => resumoAmbientes.reduce((soma, r) => soma + r.resultado.total, 0),
+    [resumoAmbientes]
+  );
+
   return (
     <div className="mb-32">
+      <Secao titulo={`Ambientes Salvos${ambientes.length ? ` (${ambientes.length})` : ""}`}>
+        {ambientes.length === 0 ? (
+          <p className="text-hedut-abissal/60 text-sm">
+            Nenhum ambiente salvo ainda. Preencha os dados abaixo e clique em
+            &quot;Salvar ambiente&quot; no final do formulário.
+          </p>
+        ) : (
+          <>
+            <div className="bg-hedut-nevoa border border-hedut-aco/20 rounded-xl p-4 mb-4 flex flex-wrap gap-8">
+              <div>
+                <p className="font-mono text-[11px] uppercase tracking-wide text-hedut-abissal/50">
+                  Soma dos ambientes salvos
+                </p>
+                <p className="font-display font-bold text-hedut-abissal text-lg">
+                  {somaTotalAmbientes.toFixed(0)} W
+                </p>
+              </div>
+              <div>
+                <p className="font-mono text-[11px] uppercase tracking-wide text-hedut-abissal/50">
+                  Em TR
+                </p>
+                <p className="font-display font-bold text-hedut-abissal text-lg">
+                  {(somaTotalAmbientes / 3517).toFixed(2)}
+                </p>
+              </div>
+            </div>
+            <div className="space-y-3">
+              {resumoAmbientes.map(({ ambiente, resultado: r }) => (
+                <div
+                  key={ambiente.id}
+                  className={`border rounded-xl p-4 flex flex-wrap items-center justify-between gap-3 ${
+                    ambiente.id === ambienteCarregadoId
+                      ? "border-hedut-blue"
+                      : "border-hedut-aco/20"
+                  }`}
+                >
+                  <div>
+                    <p className="font-medium text-hedut-abissal">
+                      {ambiente.nome}
+                    </p>
+                    <p className="font-mono text-xs text-hedut-abissal/50">
+                      {r.total.toFixed(0)} W · {r.totalTR.toFixed(2)} TR ·{" "}
+                      {new Date(ambiente.atualizadoEm).toLocaleDateString(
+                        "pt-BR"
+                      )}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => handleCarregarAmbiente(ambiente)}
+                      className="font-mono text-xs uppercase tracking-wide text-hedut-blue border border-hedut-blue/40 px-3 py-1.5 rounded-full hover:bg-hedut-blue hover:text-white transition"
+                    >
+                      Carregar
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleExcluirAmbiente(ambiente.id)}
+                      aria-label={`Excluir ${ambiente.nome}`}
+                      className="font-mono text-xs uppercase tracking-wide text-hedut-abissal/40 hover:text-red-600 transition px-2 py-1.5"
+                    >
+                      Excluir
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+      </Secao>
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* FORMULÁRIO */}
         <div className="lg:col-span-2">
@@ -488,6 +679,41 @@ export function Calculadora() {
               </div>
             </div>
           </Secao>
+
+          <div className="border border-hedut-aco/25 rounded-2xl p-6">
+            <div className="flex flex-wrap items-end gap-3">
+              <div className="flex-1 min-w-[220px]">
+                <label className={labelClass()}>Nome do ambiente</label>
+                <input
+                  type="text"
+                  value={nomeAmbiente}
+                  onChange={(e) => setNomeAmbiente(e.target.value)}
+                  placeholder="Ex: Sala de servidores - Bloco A"
+                  className={inputClass()}
+                />
+              </div>
+              <button
+                type="button"
+                onClick={handleSalvarAmbiente}
+                disabled={!nomeAmbiente.trim()}
+                className="font-mono text-xs uppercase tracking-wide bg-hedut-blue text-white px-5 py-2.5 rounded-full hover:bg-hedut-abissal transition disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                {ambienteCarregadoId ? "Atualizar ambiente" : "Salvar ambiente"}
+              </button>
+              {ambienteCarregadoId && (
+                <button
+                  type="button"
+                  onClick={handleNovoAmbiente}
+                  className="font-mono text-xs uppercase tracking-wide text-hedut-abissal/60 hover:text-hedut-abissal transition px-3 py-2.5"
+                >
+                  + Novo ambiente
+                </button>
+              )}
+            </div>
+            <p className="font-mono text-[11px] text-hedut-abissal/50 mt-3">
+              Salvo neste navegador — não sincroniza entre dispositivos.
+            </p>
+          </div>
         </div>
 
         {/* RESULTADO */}
