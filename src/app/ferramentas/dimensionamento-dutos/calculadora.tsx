@@ -6,6 +6,7 @@ type TipoDuto = "circular" | "retangular";
 
 const MATERIAIS = [
   { nome: "Chapa Galvanizada", rugosidade: 0.09 },
+  { nome: "Painel MPU (Poliuretano)", rugosidade: 0.09 },
   { nome: "Fibra de Vidro", rugosidade: 0.9 },
   { nome: "Duto Flexível", rugosidade: 3.0 },
   { nome: "PVC / Plástico Liso", rugosidade: 0.03 },
