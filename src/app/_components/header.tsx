@@ -68,7 +68,7 @@ const Header = () => {
             </a>
 
             <a
-              href="https://www.linkedin.com/company/hedut/about/?viewAsMember=true"
+              href="https://www.linkedin.com/company/hedut/about/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 md:w-16 md:h-16 flex items-center justify-center rounded-full border border-hedut-aco/40 text-hedut-abissal hover:bg-white hover:border-hedut-blue/40 transition"
