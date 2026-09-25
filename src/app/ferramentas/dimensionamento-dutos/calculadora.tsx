@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useRef, useState } from "react";
+import { gerarMemorialPDF } from "./gerar-pdf";
 
 type TipoDuto = "circular" | "retangular";
 
@@ -173,10 +174,46 @@ export function Calculadora() {
     (r) => r.resultado?.faixaVelocidade === "alta"
   );
 
+  function handleBaixarPDF() {
+    const dados = trechos.map((t, index) => {
+      const resultado =
+        resultados.find((r) => r.id === t.id)?.resultado ?? null;
+
+      return {
+        numero: index + 1,
+        tipoDuto: t.tipoDuto,
+        vazao: t.vazao,
+        diametro: t.diametro,
+        largura: t.largura,
+        altura: t.altura,
+        comprimento: t.comprimento,
+        materialNome: MATERIAIS[t.materialIndex].nome,
+        qtdCurvas: t.qtdCurvas,
+        tipoCurvaNome: TIPOS_CURVA[t.tipoCurvaIndex].nome,
+        qtdReducoes: t.qtdReducoes,
+        tipoReducaoNome: TIPOS_REDUCAO[t.tipoReducaoIndex].nome,
+        resultado: resultado
+          ? {
+              areaM2: resultado.areaM2,
+              velocidade: resultado.velocidade,
+              diametroEquivalenteMm: resultado.diametroEquivalenteMm,
+              reynolds: resultado.reynolds,
+              fatorAtrito: resultado.fatorAtrito,
+              perdaTrechoReto: resultado.perdaTrechoReto,
+              perdaAcessorios: resultado.perdaAcessorios,
+              perdaTotal: resultado.perdaTotal,
+            }
+          : null,
+      };
+    });
+
+    gerarMemorialPDF(dados, perdaTotalSistema);
+  }
+
   return (
     <div className="mb-32">
       {/* RESUMO GERAL */}
-      <div className="bg-hedut-abissal text-white rounded-2xl p-8 mb-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="bg-hedut-abissal text-white rounded-2xl p-8 mb-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
         <div>
           <p className="font-mono text-xs tracking-[0.15em] uppercase text-white/60 mb-1">
             Perda de carga total do sistema ({trechos.length}{" "}
@@ -192,11 +229,21 @@ export function Calculadora() {
             </p>
           )}
         </div>
-        <p className="text-white/70 text-sm max-w-sm">
-          Some a perda de todos os trechos do caminho mais crítico (do
-          ventilador até o difusor mais distante) para dimensionar o
-          equipamento.
-        </p>
+
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+          <p className="text-white/70 text-sm max-w-xs">
+            Some a perda de todos os trechos do caminho mais crítico (do
+            ventilador até o difusor mais distante) para dimensionar o
+            equipamento.
+          </p>
+          <button
+            type="button"
+            onClick={handleBaixarPDF}
+            className="whitespace-nowrap bg-white text-hedut-abissal font-bold py-3 px-8 hover:bg-hedut-nevoa transition"
+          >
+            Baixar PDF
+          </button>
+        </div>
       </div>
 
       {/* TRECHOS */}
