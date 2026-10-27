@@ -20,6 +20,13 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Item não encontrado." }, { status: 404 });
   }
 
+  if (item.emDesenvolvimento) {
+    return NextResponse.json(
+      { error: "Este item ainda está em desenvolvimento." },
+      { status: 409 }
+    );
+  }
+
   const preference = {
     items: [
       {

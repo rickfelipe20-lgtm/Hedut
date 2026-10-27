@@ -32,6 +32,22 @@ export default async function ItemPage(props: Params) {
         </section>
 
         <section className="max-w-3xl mb-16">
+          {item.emDesenvolvimento && (
+            <div className="border-2 border-hedut-blue bg-hedut-nevoa rounded-2xl px-6 py-8 md:px-10 md:py-10 mb-8 text-center">
+              <p className="font-mono text-xs tracking-[0.25em] uppercase text-hedut-blue mb-3">
+                Shop · {item.modulos ? "curso" : "arquivo"}
+              </p>
+              <p className="font-display font-extrabold text-hedut-abissal text-4xl md:text-6xl tracking-tight mb-3">
+                Em desenvolvimento
+              </p>
+              <p className="text-hedut-abissal/80 text-lg leading-relaxed max-w-xl mx-auto">
+                {item.modulos
+                  ? "Este curso ainda está sendo produzido. Em breve ele estará disponível para compra aqui na Shop."
+                  : "Este arquivo ainda está sendo finalizado. Em breve ele estará disponível para compra aqui na Shop."}
+              </p>
+            </div>
+          )}
+
           <div className="w-full aspect-video bg-hedut-nevoa border border-hedut-aco/25 flex items-center justify-center font-mono text-hedut-aco text-sm mb-8 rounded-2xl">
             Vídeo em breve
           </div>
@@ -86,10 +102,20 @@ export default async function ItemPage(props: Params) {
             </div>
           )}
 
-          <BuyButton
-            slug={item.slug}
-            label={item.modulos ? "Comprar curso" : "Comprar arquivo"}
-          />
+          {item.emDesenvolvimento ? (
+            <button
+              type="button"
+              disabled
+              className="w-full sm:w-auto bg-hedut-aco/30 text-hedut-abissal/60 font-bold py-3 px-8 cursor-not-allowed"
+            >
+              Em desenvolvimento — compra indisponível
+            </button>
+          ) : (
+            <BuyButton
+              slug={item.slug}
+              label={item.modulos ? "Comprar curso" : "Comprar arquivo"}
+            />
+          )}
         </section>
       </Container>
     </main>
