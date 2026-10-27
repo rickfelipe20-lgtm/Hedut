@@ -30,6 +30,12 @@ const ferramentas = [
     descricao:
       "Informe duas correntes de ar (temperatura, umidade e vazão) e veja o resultado da mistura na carta psicrométrica, com todos os dados.",
   },
+  {
+    slug: "ibutg",
+    titulo: "Cálculo de IBUTG (NR-15)",
+    descricao:
+      "Estime o IBUTG de projeto a partir do ar, das superfícies radiantes e do ciclo de trabalho, e compare com o limite da NR-15 e o nível de ação da NR-9.",
+  },
 ];
 
 export default function FerramentasPage() {
