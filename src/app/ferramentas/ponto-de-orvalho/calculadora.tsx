@@ -29,7 +29,7 @@ function Secao({
 }) {
   const [aberta, setAberta] = useState(padraoAberta);
   return (
-    <div className="bg-white border border-hedut-aco/30 rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6 mb-6">
+    <div className="bg-white border border-hedut-aco/70 rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6 mb-6">
       <button
         type="button"
         onClick={() => setAberta((v) => !v)}
@@ -165,7 +165,7 @@ export function Calculadora() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* ENTRADAS */}
         <div className="lg:col-span-2">
-          <div className="bg-white border border-hedut-aco/30 rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6 mb-6">
+          <div className="bg-white border border-hedut-aco/70 rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6 mb-6">
             <h3 className="font-display font-bold text-hedut-abissal text-xl mb-5">
               Condições do ar
             </h3>
@@ -219,7 +219,7 @@ export function Calculadora() {
             )}
           </div>
 
-          <div className="bg-white border border-hedut-aco/30 rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6 mb-6">
+          <div className="bg-white border border-hedut-aco/70 rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6 mb-6">
             <h3 className="font-display font-bold text-hedut-abissal text-xl mb-2">
               Verificação de condensação
             </h3>
@@ -253,7 +253,7 @@ export function Calculadora() {
                   {tabela.map((linha) => (
                     <div
                       key={linha.ur}
-                      className="bg-hedut-nevoa border border-hedut-aco/30 rounded-xl px-3 py-3 text-center"
+                      className="bg-hedut-nevoa border border-hedut-aco/60 rounded-xl px-3 py-3 text-center"
                     >
                       <p className="font-mono text-xs text-hedut-abissal/60">
                         UR {linha.ur} %
@@ -395,7 +395,7 @@ export function Calculadora() {
               )}
             </div>
 
-            <div className="bg-white border border-hedut-aco/30 border-t-4 border-t-hedut-blue rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6">
+            <div className="bg-white border border-hedut-aco/70 border-t-4 border-t-hedut-blue rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6">
               <h3 className="font-display font-bold text-hedut-abissal text-lg mb-4">
                 Dados psicrométricos
               </h3>

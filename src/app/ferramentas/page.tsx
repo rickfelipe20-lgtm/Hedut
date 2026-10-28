@@ -61,7 +61,7 @@ export default function FerramentasPage() {
         <section className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-16 mb-32">
           {ferramentas.map((item) => (
             <Link key={item.slug} href={`/ferramentas/${item.slug}`}>
-              <div className="bg-white border border-hedut-aco/30 rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6 h-full hover:border-hedut-blue/50 hover:shadow-[0_15px_30px_rgba(8,25,44,0.08)] transition">
+              <div className="bg-white border border-hedut-aco/70 rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6 h-full hover:border-hedut-blue/50 hover:shadow-[0_15px_30px_rgba(8,25,44,0.08)] transition">
                 <h3 className="font-display font-bold text-hedut-abissal text-xl mb-3 leading-snug">
                   {item.titulo}
                 </h3>

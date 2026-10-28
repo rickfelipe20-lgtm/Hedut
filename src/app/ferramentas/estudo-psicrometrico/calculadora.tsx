@@ -33,7 +33,7 @@ function CardEntradaAr({
   onVazaoChange: (v: number) => void;
 }) {
   return (
-    <div className="bg-white border border-hedut-aco/30 rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6">
+    <div className="bg-white border border-hedut-aco/70 rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6">
       <h3
         className="font-display font-bold text-xl mb-5"
         style={{ color: cor }}
@@ -211,7 +211,7 @@ export function Calculadora() {
 
       {/* CARTA + PAINEL LATERAL */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 bg-white border border-hedut-aco/30 rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6">
+        <div className="lg:col-span-2 bg-white border border-hedut-aco/70 rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6">
           <h3 className="font-display font-bold text-hedut-abissal text-xl mb-4">
             Carta Psicrométrica
           </h3>
@@ -226,7 +226,7 @@ export function Calculadora() {
           </p>
         </div>
 
-        <div className="bg-white border border-hedut-aco/30 border-t-4 border-t-hedut-blue rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6">
+        <div className="bg-white border border-hedut-aco/70 border-t-4 border-t-hedut-blue rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6">
           <h3 className="font-display font-bold text-hedut-abissal text-xl mb-5">
             Dados Psicrométricos
           </h3>

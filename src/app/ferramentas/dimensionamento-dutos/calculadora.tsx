@@ -255,7 +255,7 @@ export function Calculadora() {
           return (
             <div
               key={trecho.id}
-              className="bg-white border border-hedut-aco/30 rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6 md:p-8"
+              className="bg-white border border-hedut-aco/70 rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6 md:p-8"
             >
               <div className="flex items-center justify-between mb-6">
                 <h3 className="font-display font-bold text-hedut-abissal text-xl">
@@ -491,7 +491,7 @@ export function Calculadora() {
                 </div>
 
                 {/* RESULTADO DO TRECHO */}
-                <div className="bg-white border border-hedut-aco/30 border-t-4 border-t-hedut-blue rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6">
+                <div className="bg-white border border-hedut-aco/70 border-t-4 border-t-hedut-blue rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6">
                   {resultado ? (
                     <div className="space-y-5">
                       <div>

@@ -44,7 +44,7 @@ function Secao({
 }) {
   const [aberta, setAberta] = useState(padraoAberta);
   return (
-    <div className="bg-white border border-hedut-aco/30 rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6 mb-6">
+    <div className="bg-white border border-hedut-aco/70 rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6 mb-6">
       <button
         type="button"
         onClick={() => setAberta((v) => !v)}
@@ -130,7 +130,7 @@ function CardSituacao({
   const cor = CORES_SITUACAO[index % CORES_SITUACAO.length];
 
   return (
-    <div className="border border-hedut-aco/30 border-l-4 border-l-hedut-blue/50 rounded-xl p-5 mb-4 last:mb-0">
+    <div className="border border-hedut-aco/60 border-l-4 border-l-hedut-blue/50 rounded-xl p-5 mb-4 last:mb-0">
       <div className="flex items-center justify-between gap-3 mb-4">
         <p
           className="font-mono text-xs tracking-[0.15em] uppercase"
@@ -349,7 +349,7 @@ function CardSuperficie({
   onRemover: () => void;
 }) {
   return (
-    <div className="border border-hedut-aco/30 border-l-4 border-l-hedut-blue/50 rounded-xl p-4">
+    <div className="border border-hedut-aco/60 border-l-4 border-l-hedut-blue/50 rounded-xl p-4">
       <div className="flex items-start gap-3 mb-3">
         <select
           value={superficie.item}
@@ -1010,7 +1010,7 @@ export function Calculadora() {
               </div>
             </div>
 
-            <div className="bg-white border border-hedut-aco/30 border-t-4 border-t-hedut-blue rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6">
+            <div className="bg-white border border-hedut-aco/70 border-t-4 border-t-hedut-blue rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6">
               <h3 className="font-display font-bold text-hedut-abissal text-lg mb-4">
                 Por situação
               </h3>
