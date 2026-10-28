@@ -36,6 +36,12 @@ const ferramentas = [
     descricao:
       "Estime o IBUTG de projeto a partir do ar, das superfícies radiantes e do ciclo de trabalho, e compare com o limite da NR-15 e o nível de ação da NR-9.",
   },
+  {
+    slug: "ponto-de-orvalho",
+    titulo: "Ponto de Orvalho (ASHRAE)",
+    descricao:
+      "Calcule o ponto de orvalho pelas equações do ASHRAE Fundamentals e verifique o risco de condensação em tubulações, dutos e superfícies frias.",
+  },
 ];
 
 export default function FerramentasPage() {
