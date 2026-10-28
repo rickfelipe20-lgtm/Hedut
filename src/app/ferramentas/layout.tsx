@@ -5,5 +5,7 @@ export default function FerramentasLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <div className="bg-[#E3EAF2]">{children}</div>;
+  // flow-root: impede que as margens do conteúdo vazem para fora do fundo
+  // (senão aparece uma faixa branca no topo e na base).
+  return <div className="bg-[#E3EAF2] flow-root">{children}</div>;
 }
