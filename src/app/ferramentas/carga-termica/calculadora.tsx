@@ -22,7 +22,7 @@ import {
 } from "./ambientes";
 
 function inputClass() {
-  return "w-full border border-hedut-aco/40 px-3 py-2 text-sm focus:outline-none focus:border-hedut-blue";
+  return "w-full border border-hedut-aco/60 bg-hedut-nevoa focus:bg-white px-3 py-2 text-sm focus:outline-none focus:border-hedut-blue";
 }
 
 function labelClass() {
@@ -40,7 +40,7 @@ function Secao({
 }) {
   const [aberta, setAberta] = useState(padraoAberta);
   return (
-    <div className="border border-hedut-aco/25 rounded-2xl p-6 mb-6">
+    <div className="bg-white border border-hedut-aco/30 rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6 mb-6">
       <button
         type="button"
         onClick={() => setAberta((v) => !v)}
@@ -55,7 +55,7 @@ function Secao({
           fill="none"
           stroke="currentColor"
           strokeWidth={2}
-          className={`w-5 h-5 shrink-0 text-hedut-abissal/50 transition-transform ${
+          className={`w-5 h-5 shrink-0 text-hedut-abissal/60 transition-transform ${
             aberta ? "rotate-180" : ""
           }`}
         >
@@ -79,14 +79,14 @@ function CardFachada({
   podeRemover: boolean;
 }) {
   return (
-    <div className="border border-hedut-aco/20 rounded-xl p-4">
+    <div className="border border-hedut-aco/30 border-l-4 border-l-hedut-blue/50 rounded-xl p-4">
       <div className="flex items-center justify-between gap-3 mb-3">
         <select
           value={dados.orientacao}
           onChange={(e) =>
             onChange({ orientacao: e.target.value as Orientacao })
           }
-          className="font-mono text-xs tracking-[0.12em] uppercase text-hedut-blue border border-hedut-aco/30 px-2 py-1 bg-transparent focus:outline-none focus:border-hedut-blue"
+          className="font-mono text-xs tracking-[0.12em] uppercase text-hedut-blue border border-hedut-aco/30 px-2 py-1 bg-hedut-nevoa focus:outline-none focus:border-hedut-blue"
         >
           {ORIENTACOES.map((o) => (
             <option key={o.chave} value={o.chave}>
@@ -403,7 +403,7 @@ export function Calculadora() {
           <>
             <div className="bg-hedut-nevoa border border-hedut-aco/20 rounded-xl p-4 mb-4 flex flex-wrap gap-8">
               <div>
-                <p className="font-mono text-[11px] uppercase tracking-wide text-hedut-abissal/50">
+                <p className="font-mono text-[11px] uppercase tracking-wide text-hedut-abissal/60">
                   Soma dos ambientes salvos
                 </p>
                 <p className="font-display font-bold text-hedut-abissal text-lg">
@@ -411,7 +411,7 @@ export function Calculadora() {
                 </p>
               </div>
               <div>
-                <p className="font-mono text-[11px] uppercase tracking-wide text-hedut-abissal/50">
+                <p className="font-mono text-[11px] uppercase tracking-wide text-hedut-abissal/60">
                   Em TR
                 </p>
                 <p className="font-display font-bold text-hedut-abissal text-lg">
@@ -433,7 +433,7 @@ export function Calculadora() {
                     <p className="font-medium text-hedut-abissal">
                       {ambiente.nome}
                     </p>
-                    <p className="font-mono text-xs text-hedut-abissal/50">
+                    <p className="font-mono text-xs text-hedut-abissal/60">
                       {r.total.toFixed(0)} W · {r.totalTR.toFixed(2)} TR ·{" "}
                       {new Date(ambiente.atualizadoEm).toLocaleDateString(
                         "pt-BR"
@@ -696,7 +696,7 @@ export function Calculadora() {
             </div>
           </Secao>
 
-          <div className="border border-hedut-aco/25 rounded-2xl p-6">
+          <div className="bg-white border border-hedut-aco/30 rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6">
             <div className="flex flex-wrap items-end gap-3">
               <div className="flex-1 min-w-[220px]">
                 <label className={labelClass()}>Nome do ambiente</label>
@@ -726,7 +726,7 @@ export function Calculadora() {
                 </button>
               )}
             </div>
-            <p className="font-mono text-[11px] text-hedut-abissal/50 mt-3">
+            <p className="font-mono text-[11px] text-hedut-abissal/60 mt-3">
               Salvo neste navegador — não sincroniza entre dispositivos.
             </p>
           </div>
@@ -780,7 +780,7 @@ export function Calculadora() {
               </p>
             </div>
 
-            <div className="bg-hedut-nevoa border border-hedut-aco/25 rounded-2xl p-6">
+            <div className="bg-white border border-hedut-aco/30 border-t-4 border-t-hedut-blue rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6">
               <h3 className="font-display font-bold text-hedut-abissal text-lg mb-4">
                 Detalhamento
               </h3>
@@ -823,7 +823,7 @@ export function Calculadora() {
         </div>
       </div>
 
-      <p className="font-mono text-xs text-hedut-abissal/50 mt-8 leading-relaxed max-w-3xl">
+      <p className="font-mono text-xs text-hedut-abissal/60 mt-8 leading-relaxed max-w-3xl">
         Cálculo pelo método simplificado: condução em paredes e cobertura
         usando a temperatura sol-ar (ASHRAE) — considera não só a diferença
         de temperatura, mas também a radiação solar absorvida pela própria

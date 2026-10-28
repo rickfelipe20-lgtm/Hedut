@@ -133,7 +133,7 @@ function calcularResultado(t: Trecho) {
 }
 
 function inputClass() {
-  return "w-full border border-hedut-aco/40 px-4 py-2.5 focus:outline-none focus:border-hedut-blue";
+  return "w-full border border-hedut-aco/60 bg-hedut-nevoa focus:bg-white px-4 py-2.5 focus:outline-none focus:border-hedut-blue";
 }
 
 function labelClass() {
@@ -255,7 +255,7 @@ export function Calculadora() {
           return (
             <div
               key={trecho.id}
-              className="border border-hedut-aco/25 rounded-2xl p-6 md:p-8"
+              className="bg-white border border-hedut-aco/30 rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6 md:p-8"
             >
               <div className="flex items-center justify-between mb-6">
                 <h3 className="font-display font-bold text-hedut-abissal text-xl">
@@ -288,7 +288,7 @@ export function Calculadora() {
                         className={`flex-1 border py-2.5 font-medium transition-colors ${
                           trecho.tipoDuto === "retangular"
                             ? "bg-black text-white border-black"
-                            : "border-hedut-aco/40 text-hedut-abissal hover:border-hedut-blue"
+                            : "bg-hedut-nevoa border-hedut-aco/60 text-hedut-abissal hover:border-hedut-blue"
                         }`}
                       >
                         Retangular
@@ -301,7 +301,7 @@ export function Calculadora() {
                         className={`flex-1 border py-2.5 font-medium transition-colors ${
                           trecho.tipoDuto === "circular"
                             ? "bg-black text-white border-black"
-                            : "border-hedut-aco/40 text-hedut-abissal hover:border-hedut-blue"
+                            : "bg-hedut-nevoa border-hedut-aco/60 text-hedut-abissal hover:border-hedut-blue"
                         }`}
                       >
                         Circular
@@ -427,7 +427,7 @@ export function Calculadora() {
                               qtdCurvas: Number(e.target.value),
                             })
                           }
-                          className="w-full border border-hedut-aco/40 px-3 py-2 text-sm focus:outline-none focus:border-hedut-blue"
+                          className="w-full border border-hedut-aco/60 bg-hedut-nevoa focus:bg-white px-3 py-2 text-sm focus:outline-none focus:border-hedut-blue"
                         />
                       </div>
                       <div>
@@ -441,7 +441,7 @@ export function Calculadora() {
                               tipoCurvaIndex: Number(e.target.value),
                             })
                           }
-                          className="w-full border border-hedut-aco/40 px-2 py-2 text-sm focus:outline-none focus:border-hedut-blue"
+                          className="w-full border border-hedut-aco/60 bg-hedut-nevoa focus:bg-white px-2 py-2 text-sm focus:outline-none focus:border-hedut-blue"
                         >
                           {TIPOS_CURVA.map((c, i) => (
                             <option key={c.nome} value={i}>
@@ -463,7 +463,7 @@ export function Calculadora() {
                               qtdReducoes: Number(e.target.value),
                             })
                           }
-                          className="w-full border border-hedut-aco/40 px-3 py-2 text-sm focus:outline-none focus:border-hedut-blue"
+                          className="w-full border border-hedut-aco/60 bg-hedut-nevoa focus:bg-white px-3 py-2 text-sm focus:outline-none focus:border-hedut-blue"
                         />
                       </div>
                       <div>
@@ -477,7 +477,7 @@ export function Calculadora() {
                               tipoReducaoIndex: Number(e.target.value),
                             })
                           }
-                          className="w-full border border-hedut-aco/40 px-2 py-2 text-sm focus:outline-none focus:border-hedut-blue"
+                          className="w-full border border-hedut-aco/60 bg-hedut-nevoa focus:bg-white px-2 py-2 text-sm focus:outline-none focus:border-hedut-blue"
                         >
                           {TIPOS_REDUCAO.map((r, i) => (
                             <option key={r.nome} value={i}>
@@ -491,7 +491,7 @@ export function Calculadora() {
                 </div>
 
                 {/* RESULTADO DO TRECHO */}
-                <div className="bg-hedut-nevoa border border-hedut-aco/25 rounded-2xl p-6">
+                <div className="bg-white border border-hedut-aco/30 border-t-4 border-t-hedut-blue rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6">
                   {resultado ? (
                     <div className="space-y-5">
                       <div>
@@ -606,7 +606,7 @@ export function Calculadora() {
         + Adicionar trecho
       </button>
 
-      <p className="font-mono text-xs text-hedut-abissal/50 mt-8 leading-relaxed max-w-3xl">
+      <p className="font-mono text-xs text-hedut-abissal/60 mt-8 leading-relaxed max-w-3xl">
         Cálculo pelo método Darcy-Weisbach, fator de atrito estimado pela
         equação de Swamee-Jain. Ar a 20°C e 1 atm (ρ = 1,204 kg/m³).
         Resultado de referência — valide com as normas do seu projeto antes

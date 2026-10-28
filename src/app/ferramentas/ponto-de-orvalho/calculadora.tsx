@@ -10,7 +10,7 @@ import {
 
 function inputClass(erro = false) {
   return `w-full border px-4 py-2.5 focus:outline-none focus:border-hedut-blue ${
-    erro ? "border-red-400 bg-red-50/40" : "border-hedut-aco/40"
+    erro ? "border-red-400 bg-red-50/40" : "border-hedut-aco/60 bg-hedut-nevoa focus:bg-white"
   }`;
 }
 
@@ -29,7 +29,7 @@ function Secao({
 }) {
   const [aberta, setAberta] = useState(padraoAberta);
   return (
-    <div className="border border-hedut-aco/25 rounded-2xl p-6 mb-6">
+    <div className="bg-white border border-hedut-aco/30 rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6 mb-6">
       <button
         type="button"
         onClick={() => setAberta((v) => !v)}
@@ -44,7 +44,7 @@ function Secao({
           fill="none"
           stroke="currentColor"
           strokeWidth={2}
-          className={`w-5 h-5 shrink-0 text-hedut-abissal/50 transition-transform ${
+          className={`w-5 h-5 shrink-0 text-hedut-abissal/60 transition-transform ${
             aberta ? "rotate-180" : ""
           }`}
         >
@@ -143,8 +143,8 @@ export function Calculadora() {
               aria-pressed={ativo}
               className={`text-left rounded-2xl border px-5 py-4 transition ${
                 ativo
-                  ? "border-hedut-blue bg-hedut-nevoa"
-                  : "border-hedut-aco/25 hover:border-hedut-blue/50"
+                  ? "border-hedut-blue bg-white shadow-[0_2px_14px_rgba(11,74,128,0.22)]"
+                  : "border-hedut-aco/40 bg-white/70 hover:border-hedut-blue/50"
               }`}
             >
               <p
@@ -165,7 +165,7 @@ export function Calculadora() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* ENTRADAS */}
         <div className="lg:col-span-2">
-          <div className="border border-hedut-aco/25 rounded-2xl p-6 mb-6">
+          <div className="bg-white border border-hedut-aco/30 rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6 mb-6">
             <h3 className="font-display font-bold text-hedut-abissal text-xl mb-5">
               Condições do ar
             </h3>
@@ -219,7 +219,7 @@ export function Calculadora() {
             )}
           </div>
 
-          <div className="border border-hedut-aco/25 rounded-2xl p-6 mb-6">
+          <div className="bg-white border border-hedut-aco/30 rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6 mb-6">
             <h3 className="font-display font-bold text-hedut-abissal text-xl mb-2">
               Verificação de condensação
             </h3>
@@ -253,9 +253,9 @@ export function Calculadora() {
                   {tabela.map((linha) => (
                     <div
                       key={linha.ur}
-                      className="border border-hedut-aco/20 rounded-xl px-3 py-3 text-center"
+                      className="bg-hedut-nevoa border border-hedut-aco/30 rounded-xl px-3 py-3 text-center"
                     >
-                      <p className="font-mono text-xs text-hedut-abissal/50">
+                      <p className="font-mono text-xs text-hedut-abissal/60">
                         UR {linha.ur} %
                       </p>
                       <p className="font-display font-bold text-hedut-abissal text-lg">
@@ -395,7 +395,7 @@ export function Calculadora() {
               )}
             </div>
 
-            <div className="bg-hedut-nevoa border border-hedut-aco/25 rounded-2xl p-6">
+            <div className="bg-white border border-hedut-aco/30 border-t-4 border-t-hedut-blue rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6">
               <h3 className="font-display font-bold text-hedut-abissal text-lg mb-4">
                 Dados psicrométricos
               </h3>
@@ -422,7 +422,7 @@ export function Calculadora() {
         </div>
       </div>
 
-      <p className="font-mono text-xs text-hedut-abissal/50 mt-8 leading-relaxed max-w-3xl">
+      <p className="font-mono text-xs text-hedut-abissal/60 mt-8 leading-relaxed max-w-3xl">
         Cálculo conforme o ASHRAE Handbook — Fundamentals, cap. 1
         (Psychrometrics): pressão de saturação de Hyland-Wexler (eq. 5 sobre o
         gelo e eq. 6 sobre a água) e correlação do ponto de orvalho (eq. 37 e

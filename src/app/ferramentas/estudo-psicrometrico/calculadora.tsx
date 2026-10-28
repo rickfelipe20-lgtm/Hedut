@@ -6,7 +6,7 @@ import { CartaPsicrometrica } from "./grafico";
 import { gerarMemorialPsicrometricoPDF } from "./gerar-pdf";
 
 function inputClass() {
-  return "w-full border border-hedut-aco/40 px-4 py-2.5 focus:outline-none focus:border-hedut-blue";
+  return "w-full border border-hedut-aco/60 bg-hedut-nevoa focus:bg-white px-4 py-2.5 focus:outline-none focus:border-hedut-blue";
 }
 
 function labelClass() {
@@ -33,7 +33,7 @@ function CardEntradaAr({
   onVazaoChange: (v: number) => void;
 }) {
   return (
-    <div className="border border-hedut-aco/25 rounded-2xl p-6">
+    <div className="bg-white border border-hedut-aco/30 rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6">
       <h3
         className="font-display font-bold text-xl mb-5"
         style={{ color: cor }}
@@ -211,12 +211,12 @@ export function Calculadora() {
 
       {/* CARTA + PAINEL LATERAL */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 border border-hedut-aco/25 rounded-2xl p-6">
+        <div className="lg:col-span-2 bg-white border border-hedut-aco/30 rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6">
           <h3 className="font-display font-bold text-hedut-abissal text-xl mb-4">
             Carta Psicrométrica
           </h3>
           <CartaPsicrometrica ar1={ar1} ar2={ar2} mistura={mistura} />
-          <p className="font-mono text-xs text-hedut-abissal/50 mt-4 leading-relaxed">
+          <p className="font-mono text-xs text-hedut-abissal/60 mt-4 leading-relaxed">
             Carta simplificada (eixos ortogonais), com curvas de umidade
             relativa de 10% a 100%, linhas de bulbo úmido e de entalpia
             constantes (ver legenda no canto do gráfico). A escala se ajusta
@@ -226,7 +226,7 @@ export function Calculadora() {
           </p>
         </div>
 
-        <div className="bg-hedut-nevoa border border-hedut-aco/25 rounded-2xl p-6">
+        <div className="bg-white border border-hedut-aco/30 border-t-4 border-t-hedut-blue rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6">
           <h3 className="font-display font-bold text-hedut-abissal text-xl mb-5">
             Dados Psicrométricos
           </h3>
@@ -241,7 +241,7 @@ export function Calculadora() {
         </div>
       </div>
 
-      <p className="font-mono text-xs text-hedut-abissal/50 mt-8 leading-relaxed max-w-3xl">
+      <p className="font-mono text-xs text-hedut-abissal/60 mt-8 leading-relaxed max-w-3xl">
         Cálculo baseado nas correlações psicrométricas da ASHRAE Fundamentals
         (aproximação de Magnus-Tetens para pressão de saturação). Pressão
         atmosférica padrão ao nível do mar (101.325 Pa). Mistura adiabática

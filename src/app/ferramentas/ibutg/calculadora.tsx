@@ -25,7 +25,7 @@ const MAX_SUPERFICIES = 10;
 
 function inputClass(erro = false) {
   return `w-full border px-3 py-2 text-sm focus:outline-none focus:border-hedut-blue ${
-    erro ? "border-red-400 bg-red-50/40" : "border-hedut-aco/40"
+    erro ? "border-red-400 bg-red-50/40" : "border-hedut-aco/60 bg-hedut-nevoa focus:bg-white"
   }`;
 }
 
@@ -44,7 +44,7 @@ function Secao({
 }) {
   const [aberta, setAberta] = useState(padraoAberta);
   return (
-    <div className="border border-hedut-aco/25 rounded-2xl p-6 mb-6">
+    <div className="bg-white border border-hedut-aco/30 rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6 mb-6">
       <button
         type="button"
         onClick={() => setAberta((v) => !v)}
@@ -59,7 +59,7 @@ function Secao({
           fill="none"
           stroke="currentColor"
           strokeWidth={2}
-          className={`w-5 h-5 shrink-0 text-hedut-abissal/50 transition-transform ${
+          className={`w-5 h-5 shrink-0 text-hedut-abissal/60 transition-transform ${
             aberta ? "rotate-180" : ""
           }`}
         >
@@ -103,7 +103,7 @@ function CampoNumero({
         placeholder={placeholder}
         disabled={disabled}
         onChange={(e) => onChange(e.target.value)}
-        className={`${inputClass(erro)} ${disabled ? "bg-hedut-nevoa" : ""}`}
+        className={`${inputClass(erro)} ${disabled ? "!bg-hedut-aco/20 text-hedut-abissal/60 cursor-not-allowed" : ""}`}
       />
     </div>
   );
@@ -130,7 +130,7 @@ function CardSituacao({
   const cor = CORES_SITUACAO[index % CORES_SITUACAO.length];
 
   return (
-    <div className="border border-hedut-aco/20 rounded-xl p-5 mb-4 last:mb-0">
+    <div className="border border-hedut-aco/30 border-l-4 border-l-hedut-blue/50 rounded-xl p-5 mb-4 last:mb-0">
       <div className="flex items-center justify-between gap-3 mb-4">
         <p
           className="font-mono text-xs tracking-[0.15em] uppercase"
@@ -209,7 +209,7 @@ function CardSituacao({
         Recebe sol direto (muda a fórmula: 0,7·tbn + 0,2·tg + 0,1·tbs)
       </label>
 
-      <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-hedut-abissal/50 mb-3">
+      <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-hedut-abissal/60 mb-3">
         Ar no posto
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
@@ -292,7 +292,7 @@ function CardSituacao({
           </p>
         )}
 
-      <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-hedut-abissal/50 mb-3">
+      <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-hedut-abissal/60 mb-3">
         Calor radiante
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -349,7 +349,7 @@ function CardSuperficie({
   onRemover: () => void;
 }) {
   return (
-    <div className="border border-hedut-aco/20 rounded-xl p-4">
+    <div className="border border-hedut-aco/30 border-l-4 border-l-hedut-blue/50 rounded-xl p-4">
       <div className="flex items-start gap-3 mb-3">
         <select
           value={superficie.item}
@@ -498,7 +498,7 @@ function linhaMemoria(
         )}
       </div>
       <p className="md:col-span-2 md:text-right text-sm font-medium text-hedut-abissal">
-        {resultado} <span className="text-hedut-abissal/50">{unidade}</span>
+        {resultado} <span className="text-hedut-abissal/60">{unidade}</span>
       </p>
     </div>
   );
@@ -820,7 +820,7 @@ export function Calculadora() {
                 min={0}
               />
             </div>
-            <p className="font-mono text-xs text-hedut-abissal/50 mt-4 leading-relaxed">
+            <p className="font-mono text-xs text-hedut-abissal/60 mt-4 leading-relaxed">
               Altitude 0 = nível do mar (São Paulo ≈ 760 m). Temperatura e
               umidade externas: bulbo seco de verão do local (NBR 16401 /
               ASHRAE) — usadas só em ambientes ventilados.
@@ -930,7 +930,7 @@ export function Calculadora() {
             {sitMemoria.ativa ? (
               <>
                 <div>{linhasMemoria()}</div>
-                <p className="font-mono text-xs text-hedut-abissal/50 mt-3 leading-relaxed">
+                <p className="font-mono text-xs text-hedut-abissal/60 mt-3 leading-relaxed">
                   hr = troca por radiação; hc = troca por convecção (ar). Mais
                   vento → tg mais perto de ta; mais radiação → tg mais perto
                   de tr. tsi das superfícies = ta + (U/hi)·(t sol-ar − ta), com
@@ -945,7 +945,7 @@ export function Calculadora() {
             )}
             {linhasMemoriaGlobal().length > 0 && (
               <div className="mt-6">
-                <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-hedut-abissal/50 mb-1">
+                <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-hedut-abissal/60 mb-1">
                   Hora mais crítica (todas as situações)
                 </p>
                 {linhasMemoriaGlobal()}
@@ -1010,7 +1010,7 @@ export function Calculadora() {
               </div>
             </div>
 
-            <div className="bg-hedut-nevoa border border-hedut-aco/25 rounded-2xl p-6">
+            <div className="bg-white border border-hedut-aco/30 border-t-4 border-t-hedut-blue rounded-2xl shadow-[0_2px_14px_rgba(8,25,44,0.07)] p-6">
               <h3 className="font-display font-bold text-hedut-abissal text-lg mb-4">
                 Por situação
               </h3>
@@ -1050,7 +1050,7 @@ export function Calculadora() {
                           </span>
                         </div>
                       ))}
-                      <p className="font-mono text-[11px] text-hedut-abissal/50 mt-2">
+                      <p className="font-mono text-[11px] text-hedut-abissal/60 mt-2">
                         {s.solDireto
                           ? `0,7 × ${s.tbn!.toFixed(1)} + 0,2 × ${s.tg!.toFixed(1)} + 0,1 × ${s.ta!.toFixed(1)}`
                           : `0,7 × ${s.tbn!.toFixed(1)} + 0,3 × ${s.tg!.toFixed(1)} = ${(0.7 * s.tbn!).toFixed(1)} + ${(0.3 * s.tg!).toFixed(1)}`}{" "}
@@ -1065,7 +1065,7 @@ export function Calculadora() {
         </div>
       </div>
 
-      <p className="font-mono text-xs text-hedut-abissal/50 mt-8 leading-relaxed max-w-3xl">
+      <p className="font-mono text-xs text-hedut-abissal/60 mt-8 leading-relaxed max-w-3xl">
         Estimativa de projeto do IBUTG (NR-15 Anexo 3): a ferramenta calcula o
         que o termômetro de globo (ISO 7726) e o bulbo úmido natural (balanço
         de calor e massa no pavio, Hilpert/Morgan + Lewis) MARCARIAM, a partir
