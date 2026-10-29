@@ -42,6 +42,12 @@ const ferramentas = [
     descricao:
       "Calcule o ponto de orvalho pelas equações do ASHRAE Fundamentals e verifique o risco de condensação em tubulações, dutos e superfícies frias.",
   },
+  {
+    slug: "calculadora-psicrometrica",
+    titulo: "Calculadora Psicrométrica",
+    descricao:
+      "Informe quaisquer dois parâmetros do ar úmido (T, UR, ponto de orvalho, W, entalpia, bulbo úmido ou volume) e calcule os demais, em SI ou IP, com altitude e várias linhas.",
+  },
 ];
 
 export default function FerramentasPage() {
