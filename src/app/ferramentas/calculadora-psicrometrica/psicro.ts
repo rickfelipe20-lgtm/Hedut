@@ -19,14 +19,47 @@ export const T_MAX = 90;
 export const P_MIN_PA = 30000;
 export const P_MAX_PA = 120000;
 
-export const NOMES: Record<Chave, { nome: string; sigla: string }> = {
-  T: { nome: "Bulbo seco", sigla: "T" },
-  rH: { nome: "Umidade relativa", sigla: "UR" },
-  TDP: { nome: "Ponto de orvalho", sigla: "TDP" },
-  W: { nome: "Umidade absoluta", sigla: "W" },
-  h: { nome: "Entalpia", sigla: "h" },
-  Tw: { nome: "Bulbo úmido", sigla: "Tw" },
-  v: { nome: "Volume específico", sigla: "v" },
+export const NOMES: Record<
+  Chave,
+  { nome: string; sigla: string; descricao: string }
+> = {
+  T: {
+    nome: "Bulbo seco",
+    sigla: "T",
+    descricao: "Temperatura do ar medida por um termômetro comum.",
+  },
+  rH: {
+    nome: "Umidade relativa",
+    sigla: "UR",
+    descricao:
+      "Quanto vapor o ar tem em relação ao máximo possível naquela temperatura.",
+  },
+  TDP: {
+    nome: "Ponto de orvalho",
+    sigla: "TDP",
+    descricao: "Temperatura em que o vapor do ar começa a condensar.",
+  },
+  W: {
+    nome: "Umidade absoluta",
+    sigla: "W",
+    descricao: "Quantidade de vapor d'água por kg de ar seco.",
+  },
+  h: {
+    nome: "Entalpia",
+    sigla: "h",
+    descricao: "Energia total do ar (calor sensível + latente) por kg de ar seco.",
+  },
+  Tw: {
+    nome: "Bulbo úmido",
+    sigla: "Tw",
+    descricao:
+      "Temperatura de um termômetro com bulbo molhado; indica a capacidade de evaporação do ar.",
+  },
+  v: {
+    nome: "Volume específico",
+    sigla: "v",
+    descricao: "Volume ocupado por 1 kg de ar seco; é o inverso da densidade.",
+  },
 };
 
 export const UNIDADES: Record<Sistema, Record<Chave, string>> = {

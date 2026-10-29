@@ -317,10 +317,22 @@ export function Calculadora() {
                   : r.estado
                     ? fmt(c, paraDisplay(c, r.estado[c], sistema))
                     : (l.raw[c] ?? "");
+                const idDica = `dica-${l.id}-${c}`;
                 return (
-                  <div key={c}>
-                    <label className={labelClass()} title={NOMES[c].nome}>
-                      <span className="font-bold text-hedut-abissal">
+                  <div key={c} className="group relative">
+                    <span
+                      id={idDica}
+                      role="tooltip"
+                      className="pointer-events-none absolute bottom-full left-1/2 z-20 mb-2 w-52 -translate-x-1/2 rounded-xl bg-hedut-abissal px-3 py-2.5 text-xs leading-snug text-white opacity-0 shadow-[0_6px_20px_rgba(8,25,44,0.35)] transition-opacity duration-150 group-hover:opacity-100 group-focus-within:opacity-100"
+                    >
+                      <span className="mb-0.5 block font-mono text-[10px] uppercase tracking-[0.15em] text-white/60">
+                        {NOMES[c].nome}
+                      </span>
+                      {NOMES[c].descricao}
+                      <span className="absolute left-1/2 top-full -mt-1.5 h-3 w-3 -translate-x-1/2 rotate-45 bg-hedut-abissal" />
+                    </span>
+                    <label className={labelClass()}>
+                      <span className="cursor-help font-bold text-hedut-abissal underline decoration-dotted decoration-hedut-aco underline-offset-4">
                         {NOMES[c].sigla}
                       </span>{" "}
                       ({UNIDADES[sistema][c]})
@@ -330,6 +342,7 @@ export function Calculadora() {
                       step="any"
                       value={valor}
                       placeholder={NOMES[c].nome}
+                      aria-describedby={idDica}
                       onFocus={(e) => e.target.select()}
                       onChange={(e) => editar(l.id, c, e.target.value)}
                       className={`${inputClass()} ${
