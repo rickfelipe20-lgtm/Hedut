@@ -48,6 +48,12 @@ const ferramentas = [
     descricao:
       "Informe quaisquer dois parâmetros do ar úmido (T, UR, ponto de orvalho, W, entalpia, bulbo úmido ou volume) e calcule os demais, em SI ou IP, com altitude e várias linhas.",
   },
+  {
+    slug: "ventilacao-natural",
+    titulo: "Ventilação Natural (ASHRAE)",
+    descricao:
+      "Estime a vazão de ar por vento e efeito chaminé a partir das aberturas, ou dimensione a área das janelas para uma vazão necessária.",
+  },
 ];
 
 export default function FerramentasPage() {
