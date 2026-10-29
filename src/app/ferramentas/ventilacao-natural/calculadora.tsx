@@ -85,32 +85,99 @@ function Secao({
   );
 }
 
+const DICAS = {
+  ti: "Temperatura do ar dentro do ambiente. Quanto maior que a externa, mais forte o efeito chaminé.",
+  to: "Temperatura do ar lá fora (condição de projeto do local).",
+  u: "Velocidade do vento no local, na altura da edificação. Zero = calmaria.",
+  volume:
+    "Volume do ambiente (comprimento × largura × pé-direito). Usado nas trocas de ar por hora.",
+  areaPiso: "Área do piso do ambiente. Serve só para mostrar a abertura como % do piso.",
+  areaEntrada:
+    "Área livre por onde o ar entra, já descontando caixilhos, telas e venezianas.",
+  areaSaida:
+    "Área livre por onde o ar sai, já descontando caixilhos, telas e venezianas.",
+  h: "Distância vertical entre o centro da abertura de entrada e o da saída. Saída mais alta = mais efeito chaminé. 0 = mesma altura.",
+  criterio:
+    "Como você quer informar o ar necessário: por trocas por hora, por vazão direta ou pelo calor a remover.",
+  trocas: "Quantas vezes por hora o ar do ambiente deve ser renovado.",
+  vazao: "Volume de ar por hora que precisa atravessar o ambiente.",
+  calor:
+    "Calor sensível que a ventilação deve levar para fora (pessoas, equipamentos, sol…).",
+  razao: "Área de saída dividida pela de entrada. 1 = iguais.",
+  direcao:
+    "Ângulo do vento em relação à fachada da abertura de entrada. Define o coeficiente Cv.",
+  cv: "Efetividade das aberturas (0 a 1): quanto do vento vira vazão de ar.",
+  cd: "Coeficiente de descarga: perda de energia ao passar pela abertura. Cerca de 0,65 em aberturas comuns.",
+};
+
+// Envolve um campo com o balão explicativo (aparece no hover e no foco).
+function Dica({
+  id,
+  titulo,
+  texto,
+  children,
+}: {
+  id: string;
+  titulo: string;
+  texto: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="group relative">
+      <span
+        id={id}
+        role="tooltip"
+        className="pointer-events-none absolute bottom-full left-1/2 z-20 mb-2 w-56 -translate-x-1/2 rounded-xl bg-hedut-abissal px-3 py-2.5 text-xs leading-snug text-white opacity-0 shadow-[0_6px_20px_rgba(8,25,44,0.35)] transition-opacity duration-150 group-hover:opacity-100 group-focus-within:opacity-100"
+      >
+        <span className="mb-0.5 block font-mono text-[10px] uppercase tracking-[0.15em] text-white/60">
+          {titulo}
+        </span>
+        {texto}
+        <span className="absolute left-1/2 top-full -mt-1.5 h-3 w-3 -translate-x-1/2 rotate-45 bg-hedut-abissal" />
+      </span>
+      {children}
+    </div>
+  );
+}
+
 function Campo({
   label,
   value,
   onChange,
   placeholder,
   min,
+  dica,
 }: {
   label: string;
   value: string;
   onChange: (v: string) => void;
   placeholder?: string;
   min?: number;
+  dica?: string;
 }) {
-  return (
-    <div>
-      <label className={labelClass()}>{label}</label>
+  const id = `dica-${label.replace(/[^a-zA-Z0-9]+/g, "-")}`;
+  const campo = (
+    <>
+      <label className={`${labelClass()} ${dica ? "cursor-help" : ""}`}>
+        {label}
+      </label>
       <input
         type="number"
         step="any"
         min={min}
         value={value}
         placeholder={placeholder}
+        aria-describedby={dica ? id : undefined}
         onChange={(e) => onChange(e.target.value)}
         className={inputClass()}
       />
-    </div>
+    </>
+  );
+  if (!dica) return <div>{campo}</div>;
+  return (
+    <Dica id={id} titulo={label.replace(/\s*\(.*\)\s*$/, "")} texto={dica}>
+      {campo}
+    </Dica>
   );
 }
 
@@ -319,18 +386,21 @@ export function Calculadora() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
               <Campo
                 label="Temperatura interna (°C)"
+                dica={DICAS.ti}
                 value={e.ti}
                 onChange={(v) => atualizar({ ti: v })}
                 placeholder="Ex: 28"
               />
               <Campo
                 label="Temperatura externa (°C)"
+                dica={DICAS.to}
                 value={e.to}
                 onChange={(v) => atualizar({ to: v })}
                 placeholder="Ex: 24"
               />
               <Campo
                 label="Velocidade do vento (m/s)"
+                dica={DICAS.u}
                 value={e.u}
                 onChange={(v) => atualizar({ u: v })}
                 placeholder="0 = calmaria"
@@ -340,6 +410,7 @@ export function Calculadora() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <Campo
                 label="Volume do ambiente (m³)"
+                dica={DICAS.volume}
                 value={e.volume}
                 onChange={(v) => atualizar({ volume: v })}
                 placeholder="Opcional"
@@ -347,6 +418,7 @@ export function Calculadora() {
               />
               <Campo
                 label="Área do piso (m²)"
+                dica={DICAS.areaPiso}
                 value={e.areaPiso}
                 onChange={(v) => atualizar({ areaPiso: v })}
                 placeholder="Opcional"
@@ -372,6 +444,7 @@ export function Calculadora() {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <Campo
                   label="Área livre de entrada (m²)"
+                dica={DICAS.areaEntrada}
                   value={e.areaEntrada}
                   onChange={(v) => atualizar({ areaEntrada: v })}
                   placeholder="Ex: 1.5"
@@ -379,6 +452,7 @@ export function Calculadora() {
                 />
                 <Campo
                   label="Área livre de saída (m²)"
+                dica={DICAS.areaSaida}
                   value={e.areaSaida}
                   onChange={(v) => atualizar({ areaSaida: v })}
                   placeholder="Ex: 1.5"
@@ -386,6 +460,7 @@ export function Calculadora() {
                 />
                 <Campo
                   label="Desnível entrada → saída (m)"
+                dica={DICAS.h}
                   value={e.h}
                   onChange={(v) => atualizar({ h: v })}
                   placeholder="0 = mesma altura"
@@ -395,23 +470,35 @@ export function Calculadora() {
             ) : (
               <>
                 <div className="mb-4 max-w-sm">
-                  <label className={labelClass()}>Como definir a vazão?</label>
-                  <select
-                    value={e.criterio}
-                    onChange={(ev) =>
-                      atualizar({ criterio: ev.target.value as CriterioVazao })
-                    }
-                    className={inputClass()}
+                  <Dica
+                    id="dica-criterio"
+                    titulo="Como definir a vazão"
+                    texto={DICAS.criterio}
                   >
-                    <option value="trocas">Trocas de ar por hora</option>
-                    <option value="vazao">Vazão direta (m³/h)</option>
-                    <option value="calor">Remover calor sensível</option>
-                  </select>
+                    <label className={`${labelClass()} cursor-help`}>
+                      Como definir a vazão?
+                    </label>
+                    <select
+                      value={e.criterio}
+                      aria-describedby="dica-criterio"
+                      onChange={(ev) =>
+                        atualizar({
+                          criterio: ev.target.value as CriterioVazao,
+                        })
+                      }
+                      className={inputClass()}
+                    >
+                      <option value="trocas">Trocas de ar por hora</option>
+                      <option value="vazao">Vazão direta (m³/h)</option>
+                      <option value="calor">Remover calor sensível</option>
+                    </select>
+                  </Dica>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   {e.criterio === "trocas" && (
                     <Campo
                       label="Trocas por hora (1/h)"
+                dica={DICAS.trocas}
                       value={e.trocasAlvo}
                       onChange={(v) => atualizar({ trocasAlvo: v })}
                       placeholder="Ex: 10"
@@ -421,6 +508,7 @@ export function Calculadora() {
                   {e.criterio === "vazao" && (
                     <Campo
                       label="Vazão necessária (m³/h)"
+                dica={DICAS.vazao}
                       value={e.vazaoAlvo}
                       onChange={(v) => atualizar({ vazaoAlvo: v })}
                       placeholder="Ex: 3000"
@@ -430,6 +518,7 @@ export function Calculadora() {
                   {e.criterio === "calor" && (
                     <Campo
                       label="Calor sensível a remover (kW)"
+                dica={DICAS.calor}
                       value={e.calorKw}
                       onChange={(v) => atualizar({ calorKw: v })}
                       placeholder="Ex: 8"
@@ -438,6 +527,7 @@ export function Calculadora() {
                   )}
                   <Campo
                     label="Desnível entrada → saída (m)"
+                dica={DICAS.h}
                     value={e.h}
                     onChange={(v) => atualizar({ h: v })}
                     placeholder="0 = mesma altura"
@@ -445,6 +535,7 @@ export function Calculadora() {
                   />
                   <Campo
                     label="Razão área de saída / entrada"
+                dica={DICAS.razao}
                     value={e.razao}
                     onChange={(v) => atualizar({ razao: v })}
                     placeholder="1 = iguais"
@@ -471,10 +562,17 @@ export function Calculadora() {
             descricao="Valores típicos do ASHRAE Fundamentals; ajuste conforme a geometria real das aberturas."
           >
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div>
-                <label className={labelClass()}>Direção do vento (Cv)</label>
+              <Dica
+                id="dica-direcao"
+                titulo="Direção do vento"
+                texto={DICAS.direcao}
+              >
+                <label className={`${labelClass()} cursor-help`}>
+                  Direção do vento (Cv)
+                </label>
                 <select
                   value={e.direcao}
+                  aria-describedby="dica-direcao"
                   onChange={(ev) =>
                     atualizar({ direcao: ev.target.value as Direcao })
                   }
@@ -488,10 +586,11 @@ export function Calculadora() {
                   </option>
                   <option value="personalizado">Personalizado</option>
                 </select>
-              </div>
+              </Dica>
               {e.direcao === "personalizado" && (
                 <Campo
                   label="Cv (efetividade das aberturas)"
+                dica={DICAS.cv}
                   value={e.cvPersonalizado}
                   onChange={(v) => atualizar({ cvPersonalizado: v })}
                   placeholder="0 a 1"
@@ -500,6 +599,7 @@ export function Calculadora() {
               )}
               <Campo
                 label="Cd (coef. de descarga)"
+                dica={DICAS.cd}
                 value={e.cd}
                 onChange={(v) => atualizar({ cd: v })}
                 placeholder="0.65"
